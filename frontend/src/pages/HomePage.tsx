@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../api/client';
 import type { FloorSummary, ProductResponse, ShopResponse } from '../api/types';
+import { FALLBACK_FLOORS, FALLBACK_PRODUCTS, FALLBACK_SHOPS } from '../data/fallbackData';
 import ProductCard from '../components/ProductCard';
 import { getShopImage } from '../utils/images';
 import {
@@ -17,17 +18,40 @@ import {
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const [shops, setShops] = useState<ShopResponse[]>([]);
-  const [floors, setFloors] = useState<FloorSummary[]>([]);
-  const [featuredProducts, setFeaturedProducts] = useState<ProductResponse[]>([]);
+  const [shops, setShops] = useState<ShopResponse[]>(FALLBACK_SHOPS);
+  const [floors, setFloors] = useState<FloorSummary[]>(FALLBACK_FLOORS);
+  const [featuredProducts, setFeaturedProducts] = useState<ProductResponse[]>(FALLBACK_PRODUCTS.slice(0, 8));
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    api.get<ShopResponse[]>('/api/shops').then(setShops).catch(() => []);
-    api.get<FloorSummary[]>('/api/floors').then(setFloors).catch(() => []);
-    api.get<ProductResponse[]>('/api/products').then((items) => {
-      setFeaturedProducts(items.slice(0, 8));
-    }).catch(() => []);
+    api
+      .get<ShopResponse[]>('/api/shops')
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) setShops(data);
+      })
+      .catch(() => {
+        // Keep fallback data
+      });
+
+    api
+      .get<FloorSummary[]>('/api/floors')
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) setFloors(data);
+      })
+      .catch(() => {
+        // Keep fallback data
+      });
+
+    api
+      .get<ProductResponse[]>('/api/products')
+      .then((items) => {
+        if (Array.isArray(items) && items.length > 0) {
+          setFeaturedProducts(items.slice(0, 8));
+        }
+      })
+      .catch(() => {
+        // Keep fallback data
+      });
   }, []);
 
   const handleHeroSearch = (e: React.FormEvent) => {

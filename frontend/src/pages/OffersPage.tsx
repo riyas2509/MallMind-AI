@@ -5,11 +5,54 @@ import type { OfferResponse } from '../api/types';
 import { getShopImage } from '../utils/images';
 import { Tag, Sparkles, Compass, Clock } from 'lucide-react';
 
+const FALLBACK_OFFERS: OfferResponse[] = [
+  {
+    id: 1,
+    shopId: 7,
+    shopName: 'Zara',
+    title: 'Mid-Season Fashion Fest: Flat 20% Off',
+    description: 'Special weekend discount on all high-street jackets, denim, and winter apparel.',
+    validFrom: '2026-11-20',
+    validTo: '2026-12-05',
+    active: true,
+    sponsored: true,
+  },
+  {
+    id: 2,
+    shopId: 16,
+    shopName: 'Nike Store',
+    title: 'Buy 2 Get 1 Free on Dri-Fit Activewear',
+    description: 'Stock up on marathon training gear, breathable tees, and gym tights at Nexus.',
+    validFrom: '2026-11-20',
+    validTo: '2026-12-10',
+    active: true,
+    sponsored: false,
+  },
+  {
+    id: 3,
+    shopId: 11,
+    shopName: 'Starbucks Coffee',
+    title: 'Holiday Treat: Free Frappuccino Upsize',
+    description: 'Get an automatic Tall-to-Grande upsize on any seasonal holiday espresso beverage.',
+    validFrom: '2026-11-20',
+    validTo: '2026-11-30',
+    active: true,
+    sponsored: true,
+  },
+];
+
 export default function OffersPage() {
-  const [offers, setOffers] = useState<OfferResponse[] | null>(null);
+  const [offers, setOffers] = useState<OfferResponse[]>(FALLBACK_OFFERS);
 
   useEffect(() => {
-    api.get<OfferResponse[]>('/api/offers').then(setOffers).catch(() => []);
+    api
+      .get<OfferResponse[]>('/api/offers')
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) setOffers(data);
+      })
+      .catch(() => {
+        // Keep fallback offers
+      });
   }, []);
 
   if (!offers) return <div className="card muted" style={{ padding: 40, textAlign: 'center' }}>Loading flash deals & offers...</div>;

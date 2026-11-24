@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { api } from '../api/client';
 import type { ShopResponse, ProductResponse } from '../api/types';
+import { FALLBACK_PRODUCTS, FALLBACK_SHOPS } from '../data/fallbackData';
 import { getShopImage } from '../utils/images';
 import ProductCard from '../components/ProductCard';
 import {
@@ -27,9 +28,13 @@ const FLOOR_LABELS: Record<number, string> = {
 
 export default function ShopDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const [shop, setShop] = useState<ShopResponse | null>(null);
-  const [products, setProducts] = useState<ProductResponse[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [shop, setShop] = useState<ShopResponse | null>(() => {
+    return FALLBACK_SHOPS.find((s) => String(s.id) === id) || null;
+  });
+  const [products, setProducts] = useState<ProductResponse[]>(() => {
+    return FALLBACK_PRODUCTS.filter((p) => String(p.shopId) === id);
+  });
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -39,20 +44,35 @@ export default function ShopDetailPage() {
       setError(null);
       try {
         const shopData = await api.get<ShopResponse>(`/api/shops/${id}`);
-        setShop(shopData);
+        if (shopData && shopData.name) {
+          setShop(shopData);
+        }
 
         // Fetch products for this shop
         try {
           const prods = await api.get<ProductResponse[]>(`/api/products/shop/${id}`);
-          setProducts(prods);
+          if (Array.isArray(prods)) {
+            setProducts(prods);
+          }
         } catch {
           // Fallback: fetch all and filter by shopId
-          const allProds = await api.get<ProductResponse[]>('/api/products');
-          setProducts(allProds.filter((p) => p.shopId === Number(id)));
+          try {
+            const allProds = await api.get<ProductResponse[]>('/api/products');
+            if (Array.isArray(allProds)) {
+              setProducts(allProds.filter((p) => p.shopId === Number(id)));
+            }
+          } catch {
+            setProducts(FALLBACK_PRODUCTS.filter((p) => String(p.shopId) === id));
+          }
         }
       } catch (err) {
-        console.error('Failed to load shop details:', err);
-        setError('Failed to load store profile.');
+        const fallbackShop = FALLBACK_SHOPS.find((s) => String(s.id) === id);
+        if (fallbackShop) {
+          setShop(fallbackShop);
+          setProducts(FALLBACK_PRODUCTS.filter((p) => String(p.shopId) === id));
+        } else {
+          setError('Failed to load store profile.');
+        }
       } finally {
         setLoading(false);
       }

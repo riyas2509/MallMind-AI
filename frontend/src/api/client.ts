@@ -1,6 +1,7 @@
 import type { ApiError } from './types';
 
 const AUTH_TOKEN_KEY = 'mallmind.token';
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
 
 export function getToken(): string | null {
   return localStorage.getItem(AUTH_TOKEN_KEY);
@@ -21,6 +22,12 @@ export class HttpError extends Error {
   }
 }
 
+function resolveUrl(path: string): string {
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  if (API_BASE && path.startsWith('/')) return `${API_BASE}${path}`;
+  return path;
+}
+
 async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   const token = getToken();
   const headers = new Headers(init.headers);
@@ -29,7 +36,8 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
     headers.set('Content-Type', 'application/json');
   }
 
-  const res = await fetch(path, { ...init, headers });
+  const targetUrl = resolveUrl(path);
+  const res = await fetch(targetUrl, { ...init, headers });
 
   if (!res.ok) {
     let apiError: ApiError | null = null;
@@ -46,7 +54,8 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   if (contentType.includes('application/json')) {
     return (await res.json()) as T;
   }
-  return undefined as T;
+  // If the server returns 200 with HTML (e.g. SPA fallback rewrite on static host), treat it as an error
+  throw new HttpError(res.status, null, `Expected JSON response but received ${contentType || 'non-JSON'} from ${path}`);
 }
 
 export const api = {

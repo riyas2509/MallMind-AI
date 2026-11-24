@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { api } from '../api/client';
 import type { ProductResponse, RecommendationResponse } from '../api/types';
+import { FALLBACK_PRODUCTS } from '../data/fallbackData';
 import ProductCard from '../components/ProductCard';
 import {
   Search,
@@ -51,6 +52,18 @@ function buildQuery(params: Record<string, string>): string {
   return s ? `?${s}` : '';
 }
 
+function filterFallbackProducts(f: Filters): ProductResponse[] {
+  return FALLBACK_PRODUCTS.filter((p) => {
+    if (f.name && !p.name.toLowerCase().includes(f.name.toLowerCase())) return false;
+    if (f.category && f.category !== 'All Categories' && p.category !== f.category) return false;
+    if (f.brand && p.brand && !p.brand.toLowerCase().includes(f.brand.toLowerCase())) return false;
+    if (f.color && p.color && !p.color.toLowerCase().includes(f.color.toLowerCase())) return false;
+    if (f.maxPrice && p.effectivePrice > Number(f.maxPrice)) return false;
+    if (f.availableOnly && !p.available) return false;
+    return true;
+  });
+}
+
 export default function ProductsPage() {
   const [searchParams] = useSearchParams();
   const initialCategory = searchParams.get('category') || '';
@@ -61,7 +74,11 @@ export default function ProductsPage() {
     category: initialCategory,
     name: initialName,
   });
-  const [results, setResults] = useState<ProductResponse[] | null>(null);
+  const [results, setResults] = useState<ProductResponse[] | null>(() => filterFallbackProducts({
+    ...EMPTY_FILTERS,
+    category: initialCategory,
+    name: initialName,
+  }));
   const [recommended, setRecommended] = useState<RecommendationResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -89,10 +106,15 @@ export default function ProductsPage() {
           )
           .catch(() => null),
       ]);
-      setResults(searchRes);
+      if (Array.isArray(searchRes) && searchRes.length > 0) {
+        setResults(searchRes);
+      } else {
+        setResults(filterFallbackProducts(f));
+      }
       setRecommended(recRes);
     } catch {
-      setError('Could not load products right now.');
+      // Fallback to offline catalog
+      setResults(filterFallbackProducts(f));
     } finally {
       setLoading(false);
     }

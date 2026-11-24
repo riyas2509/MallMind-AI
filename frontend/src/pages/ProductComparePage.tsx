@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { api } from '../api/client';
 import type { ProductResponse } from '../api/types';
+import { FALLBACK_PRODUCTS } from '../data/fallbackData';
 import { getProductImage } from '../utils/images';
 import { useCart } from '../auth/CartContext';
 import {
@@ -26,38 +27,39 @@ const FLOOR_LABELS: Record<number, string> = {
 export default function ProductComparePage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { addToCart } = useCart();
-  const [allProducts, setAllProducts] = useState<ProductResponse[]>([]);
-  const [selectedIds, setSelectedIds] = useState<number[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [allProducts, setAllProducts] = useState<ProductResponse[]>(FALLBACK_PRODUCTS);
+  const [selectedIds, setSelectedIds] = useState<number[]>([1, 2]);
+  const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [addedId, setAddedId] = useState<number | null>(null);
 
   useEffect(() => {
     async function loadData() {
-      setLoading(true);
       try {
         const prods = await api.get<ProductResponse[]>('/api/products');
-        setAllProducts(prods);
+        if (Array.isArray(prods) && prods.length > 0) {
+          setAllProducts(prods);
 
-        // Read initial IDs from query params ?ids=1,2
-        const rawIds = searchParams.get('ids');
-        if (rawIds) {
-          const parsed = rawIds
-            .split(',')
-            .map(Number)
-            .filter((id) => !isNaN(id) && prods.some((p) => p.id === id));
-          if (parsed.length > 0) {
-            setSelectedIds(parsed.slice(0, 4));
-            return;
+          const rawIds = searchParams.get('ids');
+          if (rawIds) {
+            const parsed = rawIds
+              .split(',')
+              .map(Number)
+              .filter((id) => !isNaN(id) && prods.some((p) => p.id === id));
+            if (parsed.length > 0) {
+              setSelectedIds(parsed.slice(0, 4));
+              return;
+            }
+          }
+
+          if (prods.length >= 2) {
+            setSelectedIds([prods[0].id, prods[1].id]);
           }
         }
-
-        // Default to first 2 products if none specified
-        if (prods.length >= 2) {
-          setSelectedIds([prods[0].id, prods[1].id]);
-        }
       } catch (err) {
-        console.error('Failed to load products for comparison:', err);
+        // Fallback to FALLBACK_PRODUCTS
+        setAllProducts(FALLBACK_PRODUCTS);
+        setSelectedIds([FALLBACK_PRODUCTS[0].id, FALLBACK_PRODUCTS[1].id]);
       } finally {
         setLoading(false);
       }

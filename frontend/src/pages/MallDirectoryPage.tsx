@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { api } from '../api/client';
 import type { ShopResponse } from '../api/types';
+import { FALLBACK_SHOPS } from '../data/fallbackData';
 import { getShopImage } from '../utils/images';
 import {
   Store,
@@ -25,8 +26,8 @@ const FLOOR_LABELS: Record<number, string> = {
 
 export default function MallDirectoryPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [shops, setShops] = useState<ShopResponse[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [shops, setShops] = useState<ShopResponse[]>(FALLBACK_SHOPS);
+  const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   
   const selectedFloor = searchParams.get('floor') !== null ? Number(searchParams.get('floor')) : null;
@@ -37,9 +38,11 @@ export default function MallDirectoryPage() {
       setLoading(true);
       try {
         const data = await api.get<ShopResponse[]>('/api/shops');
-        setShops(data);
+        if (Array.isArray(data) && data.length > 0) {
+          setShops(data);
+        }
       } catch (err) {
-        console.error('Failed to load shops:', err);
+        console.warn('Using offline fallback shop directory:', err);
       } finally {
         setLoading(false);
       }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api, HttpError } from '../api/client';
 import type { ProductResponse, ShopResponse } from '../api/types';
+import { FALLBACK_PRODUCTS, FALLBACK_SHOPS } from '../data/fallbackData';
 import ProductCard from '../components/ProductCard';
 import { useAuth } from '../auth/AuthContext';
 import { useCart } from '../auth/CartContext';
@@ -21,8 +22,13 @@ export default function ProductDetailPage() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { addToCart } = useCart();
-  const [product, setProduct] = useState<ProductResponse | null>(null);
-  const [shop, setShop] = useState<ShopResponse | null>(null);
+  const [product, setProduct] = useState<ProductResponse | null>(() => {
+    return FALLBACK_PRODUCTS.find((p) => String(p.id) === id) || null;
+  });
+  const [shop, setShop] = useState<ShopResponse | null>(() => {
+    const prod = FALLBACK_PRODUCTS.find((p) => String(p.id) === id);
+    return prod ? FALLBACK_SHOPS.find((s) => s.id === prod.shopId) || null : null;
+  });
   const [similar, setSimilar] = useState<ProductResponse[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [wishlisted, setWishlisted] = useState(false);
@@ -38,11 +44,32 @@ export default function ProductDetailPage() {
         return api.get<ShopResponse>(`/api/shops/${p.shopId}`);
       })
       .then(setShop)
-      .catch((e) => setError(e instanceof HttpError ? e.message : 'Product not found.'));
+      .catch((e) => {
+        // Check fallback products
+        const fallbackProd = FALLBACK_PRODUCTS.find((p) => String(p.id) === id);
+        if (fallbackProd) {
+          setProduct(fallbackProd);
+          const fallbackShop = FALLBACK_SHOPS.find((s) => s.id === fallbackProd.shopId) || null;
+          setShop(fallbackShop);
+        } else {
+          setError(e instanceof HttpError ? e.message : 'Product not found.');
+        }
+      });
+
     api
       .get<ProductResponse[]>(`/api/products/${id}/similar`)
-      .then(setSimilar)
-      .catch(() => setSimilar([]));
+      .then((data) => {
+        if (Array.isArray(data)) setSimilar(data);
+      })
+      .catch(() => {
+        // Similar fallback products in same category
+        const currentProd = FALLBACK_PRODUCTS.find((p) => String(p.id) === id);
+        if (currentProd) {
+          setSimilar(FALLBACK_PRODUCTS.filter((p) => p.category === currentProd.category && p.id !== currentProd.id).slice(0, 4));
+        } else {
+          setSimilar([]);
+        }
+      });
   }, [id]);
 
   async function handleWishlist() {

@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { api, HttpError } from '../api/client';
+import { api } from '../api/client';
 import type { FacilityResponse, FloorMapResponse, FloorSummary, RouteResponse, ShopResponse } from '../api/types';
+import { FALLBACK_FLOORS, getFallbackFloorMap, getFallbackRoute } from '../data/fallbackData';
 import { getShopImage } from '../utils/images';
 import {
   Compass,
@@ -42,10 +43,14 @@ const ENTRANCE_QR = 'QR-G-ENTRANCE';
 
 export default function FloorMapPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [floors, setFloors] = useState<FloorSummary[]>([]);
+  const [floors, setFloors] = useState<FloorSummary[]>(FALLBACK_FLOORS);
   const [activeFloor, setActiveFloor] = useState<number>(Number(searchParams.get('floor') ?? 0));
-  const [floorMap, setFloorMap] = useState<FloorMapResponse | null>(null);
-  const [entrance, setEntrance] = useState<{ nodeId: number; floorNumber: number; label: string } | null>(null);
+  const [floorMap, setFloorMap] = useState<FloorMapResponse | null>(() => getFallbackFloorMap(Number(searchParams.get('floor') ?? 0)));
+  const [entrance, setEntrance] = useState<{ nodeId: number; floorNumber: number; label: string } | null>({
+    nodeId: 21,
+    floorNumber: 0,
+    label: 'Main Grand Entrance (Vastrapur Gate)',
+  });
   const [selected, setSelected] = useState<Selected | null>(null);
   const [route, setRoute] = useState<RouteResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -63,19 +68,35 @@ export default function FloorMapPage() {
 
   // Load floors and main entrance check-in
   useEffect(() => {
-    api.get<FloorSummary[]>('/api/floors').then(setFloors).catch(() => {});
+    api
+      .get<FloorSummary[]>('/api/floors')
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) setFloors(data);
+      })
+      .catch(() => {});
+
     api
       .get<{ nodeId: number; floorNumber: number; label: string }>(`/api/navigation/checkin?qrCode=${ENTRANCE_QR}`)
       .then(setEntrance)
       .catch(() => {
-        // Fallback entrance coordinates on Ground Floor (Vastrapur Gate)
         setEntrance({ nodeId: 21, floorNumber: 0, label: 'Main Grand Entrance (Vastrapur Gate)' });
       });
   }, []);
 
   // Load floor plan for current floor
   useEffect(() => {
-    api.get<FloorMapResponse>(`/api/floors/${activeFloor}/map`).then(setFloorMap).catch(() => {});
+    api
+      .get<FloorMapResponse>(`/api/floors/${activeFloor}/map`)
+      .then((data) => {
+        if (data && Array.isArray(data.shops)) {
+          setFloorMap(data);
+        } else {
+          setFloorMap(getFallbackFloorMap(activeFloor));
+        }
+      })
+      .catch(() => {
+        setFloorMap(getFallbackFloorMap(activeFloor));
+      });
   }, [activeFloor]);
 
   const computeRoute = useCallback(
@@ -97,9 +118,14 @@ export default function FloorMapPage() {
           setIsNavigating(true);
           setCurrentStepIndex(0);
         }
-      } catch (err) {
-        setRoute(null);
-        setError(err instanceof HttpError ? err.message : 'Could not compute a route.');
+      } catch {
+        // Compute client fallback route
+        const fallback = getFallbackRoute(fromId, toNodeId);
+        setRoute(fallback);
+        if (autoStart) {
+          setIsNavigating(true);
+          setCurrentStepIndex(0);
+        }
       } finally {
         setRouting(false);
       }
