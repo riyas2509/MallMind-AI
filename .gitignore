@@ -1,0 +1,57 @@
+# Java / Maven
+backend/target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+
+# Python
+model-service/__pycache__/
+model-service/**/__pycache__/
+model-service/.venv/
+model-service/*.egg-info/
+# Trained model binaries are regenerable via the documented training
+# commands (model-service/README.md) -- not committed. Evaluation results
+# (*.json/*.csv under models/, and small gradcam_examples.npz) ARE
+# committed as academic evidence.
+model-service/models/*.joblib
+model-service/models/*.pt
+model-service/models/*.pth
+model-service/models/*.onnx
+# Downloaded/derived image datasets -- regenerable via
+# data/prepare_image_dataset.py (downloads Fashion-MNIST, ~30MB).
+model-service/data/fashion_mnist_raw/
+model-service/data/product_images.npz
+*.ipynb_checkpoints
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+backend/src/main/resources/application-local.yml
+
+# IDE
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Root dependencies
+node_modules/
+
+# Local scratch and audit working files
+scratch/

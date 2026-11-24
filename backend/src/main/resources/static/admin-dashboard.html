@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MallMind Admin Analytics</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page-plane:     #f9f9f7;
+    --surface-1:      #fcfcfb;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --series-1:       #2a78d6;
+    --series-1-wash:  rgba(42, 120, 214, 0.10);
+    --gridline:       #e1e0d9;
+    --baseline:       #c3c2b7;
+    --border:         rgba(11, 11, 11, 0.10);
+    --status-warning: #fab219;
+    --status-good:    #0ca30c;
+    --status-critical:#d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --page-plane:     #0d0d0d;
+      --surface-1:      #1a1a19;
+      --text-primary:   #f0efec;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --series-1:       #3987e5;
+      --series-1-wash:  rgba(57, 135, 229, 0.14);
+      --gridline:       #2c2c2a;
+      --baseline:       #383835;
+      --border:         rgba(255, 255, 255, 0.10);
+      --status-warning: #fab219;
+      --status-good:    #0ca30c;
+      --status-critical:#d03b3b;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page-plane:     #0d0d0d;
+    --surface-1:      #1a1a19;
+    --text-primary:   #f0efec;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --series-1:       #3987e5;
+    --series-1-wash:  rgba(57, 135, 229, 0.14);
+    --gridline:       #2c2c2a;
+    --baseline:       #383835;
+    --border:         rgba(255, 255, 255, 0.10);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-plane);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 24px 16px 64px; }
+
+  h1 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
+  .subtitle { color: var(--text-secondary); font-size: 13px; margin: 0 0 24px; }
+
+  /* ---- login ---- */
+  #loginCard {
+    max-width: 360px; margin: 80px auto; padding: 24px;
+    background: var(--surface-1); border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  #loginCard h1 { font-size: 18px; }
+  #loginCard label { display: block; font-size: 13px; color: var(--text-secondary); margin: 14px 0 4px; }
+  #loginCard input {
+    width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--page-plane); color: var(--text-primary); font-size: 14px;
+  }
+  #loginCard button, .btn {
+    margin-top: 18px; width: 100%; padding: 9px 12px; border-radius: 6px; border: none;
+    background: var(--series-1); color: #fff; font-size: 14px; font-weight: 600; cursor: pointer;
+  }
+  #loginError { color: var(--status-critical); font-size: 13px; margin-top: 10px; min-height: 16px; }
+
+  /* ---- filter row ---- */
+  .filter-row { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .filter-row .spacer { flex: 1; }
+  .range-btn {
+    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+    background: var(--surface-1); color: var(--text-secondary); font-size: 13px; cursor: pointer;
+  }
+  .range-btn[aria-pressed="true"] {
+    background: var(--series-1); color: #fff; border-color: var(--series-1);
+  }
+  #signOut { background: none; border: 1px solid var(--border); color: var(--text-secondary);
+    padding: 6px 12px; border-radius: 999px; font-size: 13px; cursor: pointer; width: auto; margin: 0; }
+  #demandCategory {
+    padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--page-plane); color: var(--text-primary); font-size: 13px;
+  }
+
+  /* ---- stat tiles ---- */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .tile .label { font-size: 12px; color: var(--text-secondary); }
+  .tile .value { font-size: 24px; font-weight: 600; margin-top: 4px; }
+  .tile .value.warn { color: var(--status-warning); }
+
+  /* ---- cards ---- */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  @media (max-width: 760px) { .grid-2 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px; position: relative;
+  }
+  .card h2 { font-size: 14px; font-weight: 600; margin: 0 0 2px; }
+  .card .hint { font-size: 12px; color: var(--text-muted); margin: 0 0 12px; }
+  .card .empty { color: var(--text-muted); font-size: 13px; padding: 24px 0; text-align: center; }
+
+  /* ---- hbar list ---- */
+  .hbar-row { display: grid; grid-template-columns: 140px 1fr 48px; align-items: center; gap: 8px; height: 26px; margin-bottom: 6px; cursor: default; }
+  .hbar-row .name { font-size: 13px; color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .hbar-row .name .sub { color: var(--text-muted); font-size: 11px; display: block; }
+  .hbar-track { position: relative; height: 16px; background: var(--gridline); border-radius: 4px; }
+  .hbar-fill { position: absolute; left: 0; top: 0; height: 100%; background: var(--series-1); border-radius: 4px; min-width: 4px; }
+  .hbar-row .count { font-size: 12px; color: var(--text-secondary); text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ---- table ---- */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; color: var(--text-muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: .02em;
+       padding: 4px 6px; border-bottom: 1px solid var(--gridline); }
+  td { padding: 6px 6px; border-bottom: 1px solid var(--gridline); font-variant-numeric: tabular-nums; }
+  td.term { font-variant-numeric: normal; }
+  .toggle-row { display: flex; gap: 6px; margin-bottom: 10px; }
+  .toggle-btn { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); background: transparent;
+                color: var(--text-secondary); font-size: 12px; cursor: pointer; }
+  .toggle-btn[aria-pressed="true"] { background: var(--series-1); color: #fff; border-color: var(--series-1); }
+  .warning-chip { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--text-primary);
+                  background: color-mix(in srgb, var(--status-warning) 20%, transparent); border-radius: 999px; padding: 2px 8px; }
+  .warning-chip::before { content: "\26A0"; color: var(--status-warning); }
+
+  /* ---- tooltip ---- */
+  #tooltip {
+    position: fixed; pointer-events: none; z-index: 50; display: none;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 6px;
+    padding: 6px 10px; font-size: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    color: var(--text-primary); white-space: nowrap;
+  }
+  #tooltip .tt-value { font-weight: 600; }
+  #tooltip .tt-label { color: var(--text-secondary); margin-left: 6px; }
+
+  svg text { fill: var(--text-muted); font-size: 11px; font-family: inherit; }
+</style>
+</head>
+<body>
+
+<div id="loginCard">
+  <h1>MallMind Admin</h1>
+  <p class="subtitle" style="margin-bottom:0">Sign in with an ADMIN account to view analytics.</p>
+  <label for="email">Email</label>
+  <input id="email" type="email" value="admin@mallmind.local" autocomplete="username">
+  <label for="password">Password</label>
+  <input id="password" type="password" autocomplete="current-password">
+  <button id="loginBtn">Sign in</button>
+  <div id="loginError"></div>
+</div>
+
+<div class="wrap" id="dashboard" style="display:none">
+  <h1>Admin analytics</h1>
+  <p class="subtitle">Every number below is a real aggregate over real tables (searches, orders, order items) — nothing simulated, nothing per-visitor (Part 17).</p>
+
+  <div class="filter-row">
+    <button class="range-btn" data-days="7">Last 7 days</button>
+    <button class="range-btn" data-days="14" aria-pressed="true">Last 14 days</button>
+    <button class="range-btn" data-days="30">Last 30 days</button>
+    <div class="spacer"></div>
+    <button id="signOut">Sign out</button>
+  </div>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>Search volume</h2>
+      <p class="hint">Total shop + product searches per day</p>
+      <div id="searchVolumeChart"></div>
+    </div>
+    <div class="card">
+      <h2>Revenue</h2>
+      <p class="hint">Simulated/sandbox checkout — never a real payment (Part 12)</p>
+      <div id="revenueChart"></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>Top categories searched</h2>
+      <p class="hint">All-time, by matched category</p>
+      <div id="topCategories"></div>
+    </div>
+    <div class="card">
+      <h2>Best-selling products</h2>
+      <p class="hint">All-time, by quantity ordered (sandbox orders)</p>
+      <div id="topProducts"></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>Top search terms</h2>
+      <div class="toggle-row" data-toggle="terms">
+        <button class="toggle-btn" data-type="PRODUCT_SEARCH" aria-pressed="true">Products</button>
+        <button class="toggle-btn" data-type="SHOP_SEARCH" aria-pressed="false">Shops</button>
+      </div>
+      <div id="topTermsTable"></div>
+    </div>
+    <div class="card">
+      <h2><span class="warning-chip">Zero-result searches</span></h2>
+      <p class="hint">Catalogue gaps — things visitors looked for and didn't find</p>
+      <div class="toggle-row" data-toggle="zero">
+        <button class="toggle-btn" data-type="PRODUCT_SEARCH" aria-pressed="true">Products</button>
+        <button class="toggle-btn" data-type="SHOP_SEARCH" aria-pressed="false">Shops</button>
+      </div>
+      <div id="zeroResultTable"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:16px">
+    <h2>Demand forecast</h2>
+    <p class="hint">Phase 5's model (RandomForest on simulated search history) — called live, not cached</p>
+    <div class="filter-row" style="margin-bottom:0">
+      <select id="demandCategory"></select>
+      <button class="btn" id="demandForecastBtn" style="width:auto;margin:0">Forecast</button>
+      <div class="spacer"></div>
+    </div>
+    <div id="demandResult" style="margin-top:12px"></div>
+  </div>
+</div>
+
+<div id="tooltip"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var authToken = null;
+  var currentDays = 14;
+  var termsType = "PRODUCT_SEARCH";
+  var zeroType = "PRODUCT_SEARCH";
+
+  var tooltip = document.getElementById("tooltip");
+
+  function showTooltip(x, y, valueText, labelText) {
+    tooltip.innerHTML = "";
+    var v = document.createElement("span");
+    v.className = "tt-value";
+    v.textContent = valueText;
+    var l = document.createElement("span");
+    l.className = "tt-label";
+    l.textContent = labelText;
+    tooltip.appendChild(v);
+    tooltip.appendChild(l);
+    tooltip.style.left = (x + 12) + "px";
+    tooltip.style.top = (y + 12) + "px";
+    tooltip.style.display = "block";
+  }
+  function hideTooltip() { tooltip.style.display = "none"; }
+
+  function formatCompact(n) {
+    n = Number(n);
+    if (Math.abs(n) >= 1000000) return (n / 1000000).toFixed(1) + "M";
+    if (Math.abs(n) >= 10000) return (n / 1000).toFixed(1) + "K";
+    return n.toLocaleString("en-IN");
+  }
+  function formatMoney(n) { return "₹" + formatCompact(n); }
+  function formatPct(n) { return (n * 100).toFixed(0) + "%"; }
+
+  async function api(path) {
+    var res = await fetch(path, { headers: { "Authorization": "Bearer " + authToken } });
+    if (res.status === 401 || res.status === 403) {
+      authToken = null;
+      document.getElementById("dashboard").style.display = "none";
+      document.getElementById("loginCard").style.display = "block";
+      document.getElementById("loginError").textContent = "Session expired or not authorized as ADMIN -- please sign in again.";
+      throw new Error("unauthorized");
+    }
+    if (!res.ok) throw new Error("Request failed: " + path);
+    return res.json();
+  }
+
+  // ---------------- login ----------------
+  document.getElementById("loginBtn").addEventListener("click", async function () {
+    var email = document.getElementById("email").value.trim();
+    var password = document.getElementById("password").value;
+    var errEl = document.getElementById("loginError");
+    errEl.textContent = "";
+    try {
+      var res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email, password: password })
+      });
+      if (!res.ok) { errEl.textContent = "Sign-in failed -- check credentials."; return; }
+      var data = await res.json();
+      authToken = data.token;
+      document.getElementById("loginCard").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
+      loadAll();
+    } catch (e) {
+      errEl.textContent = "Could not reach the server.";
+    }
+  });
+
+  document.getElementById("signOut").addEventListener("click", function () {
+    authToken = null;
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("loginCard").style.display = "block";
+    document.getElementById("password").value = "";
+  });
+
+  // ---------------- filter row ----------------
+  document.querySelectorAll(".range-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll(".range-btn").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+      btn.setAttribute("aria-pressed", "true");
+      currentDays = parseInt(btn.dataset.days, 10);
+      loadTimeSeries();
+    });
+  });
+
+  document.querySelectorAll('[data-toggle="terms"] .toggle-btn').forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll('[data-toggle="terms"] .toggle-btn').forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+      btn.setAttribute("aria-pressed", "true");
+      termsType = btn.dataset.type;
+      loadTopTerms();
+    });
+  });
+  document.querySelectorAll('[data-toggle="zero"] .toggle-btn').forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll('[data-toggle="zero"] .toggle-btn').forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+      btn.setAttribute("aria-pressed", "true");
+      zeroType = btn.dataset.type;
+      loadZeroResults();
+    });
+  });
+
+  // ---------------- stat tiles ----------------
+  function renderTiles(summary) {
+    var tiles = [
+      { label: "Products", value: formatCompact(summary.totalProducts) },
+      { label: "Shops", value: formatCompact(summary.totalShops) },
+      { label: "Orders (sandbox)", value: formatCompact(summary.totalOrders) },
+      { label: "Revenue (sandbox)", value: formatMoney(summary.totalRevenue) },
+      { label: "Logged searches", value: formatCompact(summary.totalSearches) },
+      { label: "Zero-result rate (products)", value: formatPct(summary.productSearchZeroResultRate), warn: summary.productSearchZeroResultRate > 0.15 },
+      { label: "Zero-result rate (shops)", value: formatPct(summary.shopSearchZeroResultRate), warn: summary.shopSearchZeroResultRate > 0.15 }
+    ];
+    var el = document.getElementById("tiles");
+    el.innerHTML = "";
+    tiles.forEach(function (t) {
+      var div = document.createElement("div");
+      div.className = "tile";
+      var l = document.createElement("div"); l.className = "label"; l.textContent = t.label;
+      var v = document.createElement("div"); v.className = "value" + (t.warn ? " warn" : ""); v.textContent = t.value;
+      div.appendChild(l); div.appendChild(v);
+      el.appendChild(div);
+    });
+  }
+
+  // ---------------- line chart (search volume) ----------------
+  function renderLineChart(containerId, rows, valueKey) {
+    var container = document.getElementById(containerId);
+    container.innerHTML = "";
+    if (!rows.length || rows.every(function (r) { return r[valueKey] === 0; })) {
+      var empty = document.createElement("div");
+      empty.className = "empty";
+      empty.textContent = "No data in this range yet.";
+      container.appendChild(empty);
+      return;
+    }
+    var W = container.clientWidth || 480, H = 180, padL = 36, padR = 12, padT = 12, padB = 24;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var maxVal = Math.max(1, Math.max.apply(null, rows.map(function (r) { return r[valueKey]; })));
+    var niceMax = Math.ceil(maxVal / 5) * 5 || 5;
+
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", H);
+
+    function xAt(i) { return padL + (rows.length === 1 ? plotW / 2 : (plotW * i) / (rows.length - 1)); }
+    function yAt(v) { return padT + plotH - (plotH * v) / niceMax; }
+
+    // gridlines + y ticks
+    [0, 0.5, 1].forEach(function (frac) {
+      var y = padT + plotH * (1 - frac);
+      var line = document.createElementNS(svg.namespaceURI, "line");
+      line.setAttribute("x1", padL); line.setAttribute("x2", W - padR);
+      line.setAttribute("y1", y); line.setAttribute("y2", y);
+      line.setAttribute("stroke", "var(--gridline)"); line.setAttribute("stroke-width", "1");
+      svg.appendChild(line);
+      var text = document.createElementNS(svg.namespaceURI, "text");
+      text.setAttribute("x", padL - 6); text.setAttribute("y", y + 3);
+      text.setAttribute("text-anchor", "end");
+      text.textContent = Math.round(niceMax * frac);
+      svg.appendChild(text);
+    });
+
+    // x labels: first, middle, last
+    [0, Math.floor((rows.length - 1) / 2), rows.length - 1].forEach(function (i) {
+      var text = document.createElementNS(svg.namespaceURI, "text");
+      text.setAttribute("x", xAt(i)); text.setAttribute("y", H - 4);
+      text.setAttribute("text-anchor", "middle");
+      text.textContent = rows[i].date.slice(5);
+      svg.appendChild(text);
+    });
+
+    var points = rows.map(function (r, i) { return [xAt(i), yAt(r[valueKey])]; });
+    var path = points.map(function (p, i) { return (i === 0 ? "M" : "L") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+    var pathEl = document.createElementNS(svg.namespaceURI, "path");
+    pathEl.setAttribute("d", path);
+    pathEl.setAttribute("fill", "none");
+    pathEl.setAttribute("stroke", "var(--series-1)");
+    pathEl.setAttribute("stroke-width", "2");
+    pathEl.setAttribute("stroke-linejoin", "round");
+    pathEl.setAttribute("stroke-linecap", "round");
+    svg.appendChild(pathEl);
+
+    // area wash
+    var areaPath = path + " L" + points[points.length - 1][0].toFixed(1) + " " + (padT + plotH) +
+                    " L" + points[0][0].toFixed(1) + " " + (padT + plotH) + " Z";
+    var areaEl = document.createElementNS(svg.namespaceURI, "path");
+    areaEl.setAttribute("d", areaPath);
+    areaEl.setAttribute("fill", "var(--series-1-wash)");
+    svg.insertBefore(areaEl, pathEl);
+
+    points.forEach(function (p, i) {
+      var dot = document.createElementNS(svg.namespaceURI, "circle");
+      dot.setAttribute("cx", p[0]); dot.setAttribute("cy", p[1]); dot.setAttribute("r", 4);
+      dot.setAttribute("fill", "var(--series-1)");
+      dot.setAttribute("stroke", "var(--surface-1)"); dot.setAttribute("stroke-width", "2");
+      var hit = document.createElementNS(svg.namespaceURI, "circle");
+      hit.setAttribute("cx", p[0]); hit.setAttribute("cy", p[1]); hit.setAttribute("r", 14);
+      hit.setAttribute("fill", "transparent");
+      hit.style.cursor = "pointer";
+      hit.addEventListener("mousemove", function (ev) {
+        showTooltip(ev.clientX, ev.clientY, String(rows[i][valueKey]), rows[i].date);
+      });
+      hit.addEventListener("mouseleave", hideTooltip);
+      svg.appendChild(dot);
+      svg.appendChild(hit);
+    });
+
+    // direct label on last point
+    var last = points[points.length - 1];
+    var lastText = document.createElementNS(svg.namespaceURI, "text");
+    lastText.setAttribute("x", last[0]); lastText.setAttribute("y", last[1] - 10);
+    lastText.setAttribute("text-anchor", "middle");
+    lastText.setAttribute("fill", "var(--text-primary)");
+    lastText.setAttribute("font-weight", "600");
+    lastText.textContent = String(rows[rows.length - 1][valueKey]);
+    svg.appendChild(lastText);
+
+    container.appendChild(svg);
+  }
+
+  // ---------------- bar chart (revenue) ----------------
+  function renderBarChart(containerId, rows) {
+    var container = document.getElementById(containerId);
+    container.innerHTML = "";
+    if (!rows.length || rows.every(function (r) { return Number(r.revenue) === 0; })) {
+      var empty = document.createElement("div");
+      empty.className = "empty";
+      empty.textContent = "No revenue in this range yet.";
+      container.appendChild(empty);
+      return;
+    }
+    var W = container.clientWidth || 480, H = 180, padL = 44, padR = 12, padT = 12, padB = 24;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var maxVal = Math.max(1, Math.max.apply(null, rows.map(function (r) { return Number(r.revenue); })));
+    var niceMax = maxVal * 1.15;
+
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", H);
+
+    [0, 0.5, 1].forEach(function (frac) {
+      var y = padT + plotH * (1 - frac);
+      var line = document.createElementNS(svg.namespaceURI, "line");
+      line.setAttribute("x1", padL); line.setAttribute("x2", W - padR);
+      line.setAttribute("y1", y); line.setAttribute("y2", y);
+      line.setAttribute("stroke", "var(--gridline)"); line.setAttribute("stroke-width", "1");
+      svg.appendChild(line);
+      var text = document.createElementNS(svg.namespaceURI, "text");
+      text.setAttribute("x", padL - 6); text.setAttribute("y", y + 3);
+      text.setAttribute("text-anchor", "end");
+      text.textContent = formatMoney(niceMax * frac);
+      svg.appendChild(text);
+    });
+
+    var n = rows.length;
+    var slot = plotW / n;
+    var barW = Math.min(24, slot * 0.6);
+    rows.forEach(function (r, i) {
+      var v = Number(r.revenue);
+      var barH = plotH * (v / niceMax);
+      var x = padL + slot * i + (slot - barW) / 2;
+      var y = padT + plotH - barH;
+      var rect = document.createElementNS(svg.namespaceURI, "rect");
+      rect.setAttribute("x", x); rect.setAttribute("y", y);
+      rect.setAttribute("width", barW); rect.setAttribute("height", Math.max(barH, v > 0 ? 2 : 0));
+      rect.setAttribute("rx", 4);
+      rect.setAttribute("fill", "var(--series-1)");
+      rect.style.cursor = "pointer";
+      rect.addEventListener("mousemove", function (ev) {
+        showTooltip(ev.clientX, ev.clientY, formatMoney(v), r.date + " · " + r.orderCount + " order" + (r.orderCount === 1 ? "" : "s"));
+      });
+      rect.addEventListener("mouseleave", hideTooltip);
+      svg.appendChild(rect);
+
+      if (i === 0 || i === n - 1 || i === Math.floor((n - 1) / 2)) {
+        var text = document.createElementNS(svg.namespaceURI, "text");
+        text.setAttribute("x", x + barW / 2); text.setAttribute("y", H - 4);
+        text.setAttribute("text-anchor", "middle");
+        text.textContent = r.date.slice(5);
+        svg.appendChild(text);
+      }
+    });
+
+    container.appendChild(svg);
+  }
+
+  // ---------------- horizontal bar list ----------------
+  function renderHBarList(containerId, rows, nameKey, valueKey, subKey, extraFormatter) {
+    var container = document.getElementById(containerId);
+    container.innerHTML = "";
+    if (!rows.length) {
+      var empty = document.createElement("div");
+      empty.className = "empty";
+      empty.textContent = "No data yet.";
+      container.appendChild(empty);
+      return;
+    }
+    var maxVal = Math.max.apply(null, rows.map(function (r) { return Number(r[valueKey]); }));
+    rows.forEach(function (r) {
+      var row = document.createElement("div");
+      row.className = "hbar-row";
+
+      var nameEl = document.createElement("div");
+      nameEl.className = "name";
+      nameEl.textContent = r[nameKey];
+      if (subKey && r[subKey]) {
+        var sub = document.createElement("span");
+        sub.className = "sub";
+        sub.textContent = r[subKey];
+        nameEl.appendChild(sub);
+      }
+
+      var track = document.createElement("div");
+      track.className = "hbar-track";
+      var fill = document.createElement("div");
+      fill.className = "hbar-fill";
+      var pct = maxVal > 0 ? (Number(r[valueKey]) / maxVal) * 100 : 0;
+      fill.style.width = Math.max(pct, 2) + "%";
+      track.appendChild(fill);
+      track.style.cursor = "pointer";
+      track.addEventListener("mousemove", function (ev) {
+        var tip = extraFormatter ? extraFormatter(r) : String(r[valueKey]);
+        showTooltip(ev.clientX, ev.clientY, tip, r[nameKey]);
+      });
+      track.addEventListener("mouseleave", hideTooltip);
+
+      var countEl = document.createElement("div");
+      countEl.className = "count";
+      countEl.textContent = formatCompact(r[valueKey]);
+
+      row.appendChild(nameEl);
+      row.appendChild(track);
+      row.appendChild(countEl);
+      container.appendChild(row);
+    });
+  }
+
+  // ---------------- tables ----------------
+  function renderTermsTable(containerId, rows, zeroFlavor) {
+    var container = document.getElementById(containerId);
+    container.innerHTML = "";
+    if (!rows.length) {
+      var empty = document.createElement("div");
+      empty.className = "empty";
+      empty.textContent = zeroFlavor ? "No zero-result searches in this data -- good sign." : "No searches logged yet.";
+      container.appendChild(empty);
+      return;
+    }
+    var table = document.createElement("table");
+    var thead = document.createElement("thead");
+    thead.innerHTML = "<tr><th>Term</th><th style=\"text-align:right\">Hits</th></tr>";
+    var tbody = document.createElement("tbody");
+    rows.forEach(function (r) {
+      var tr = document.createElement("tr");
+      var td1 = document.createElement("td");
+      td1.className = "term";
+      td1.textContent = r.term && r.term.length ? r.term : "(blank query)";
+      var td2 = document.createElement("td");
+      td2.style.textAlign = "right";
+      td2.textContent = r.hits;
+      tr.appendChild(td1); tr.appendChild(td2);
+      tbody.appendChild(tr);
+    });
+    table.appendChild(thead); table.appendChild(tbody);
+    container.appendChild(table);
+  }
+
+  // ---------------- loaders ----------------
+  async function loadTimeSeries() {
+    var sv = await api("/api/admin/analytics/search-volume?days=" + currentDays);
+    renderLineChart("searchVolumeChart", sv, "count");
+    var rev = await api("/api/admin/analytics/revenue?days=" + currentDays);
+    renderBarChart("revenueChart", rev);
+  }
+
+  async function loadTopTerms() {
+    var rows = await api("/api/admin/analytics/search-terms/top?searchType=" + termsType + "&limit=10");
+    renderTermsTable("topTermsTable", rows, false);
+  }
+
+  async function loadZeroResults() {
+    var rows = await api("/api/admin/analytics/search-terms/zero-result?searchType=" + zeroType + "&limit=10");
+    renderTermsTable("zeroResultTable", rows, true);
+  }
+
+  async function loadDemandCategories() {
+    var cats = await api("/api/admin/analytics/categories");
+    var select = document.getElementById("demandCategory");
+    select.innerHTML = "";
+    cats.forEach(function (c) {
+      var opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      select.appendChild(opt);
+    });
+  }
+
+  async function runDemandForecast() {
+    var category = document.getElementById("demandCategory").value;
+    var resultEl = document.getElementById("demandResult");
+    if (!category) return;
+    resultEl.textContent = "Loading…";
+    try {
+      var pred = await api("/api/admin/analytics/demand/" + encodeURIComponent(category) + "/predict");
+      resultEl.innerHTML = "";
+      var value = document.createElement("div");
+      value.style.fontSize = "26px";
+      value.style.fontWeight = "600";
+      value.textContent = Math.round(pred.predictedNextDayCount) + " predicted searches, next day";
+      var basis = document.createElement("div");
+      basis.style.fontSize = "12px";
+      basis.style.color = "var(--text-muted)";
+      basis.style.marginTop = "6px";
+      basis.textContent = pred.basis;
+      resultEl.appendChild(value);
+      resultEl.appendChild(basis);
+    } catch (e) {
+      resultEl.textContent = "Forecast unavailable right now -- the model-service may be down.";
+    }
+  }
+
+  document.getElementById("demandForecastBtn").addEventListener("click", runDemandForecast);
+
+  async function loadAll() {
+    var summary = await api("/api/admin/analytics/summary");
+    renderTiles(summary);
+
+    await loadTimeSeries();
+
+    var cats = await api("/api/admin/analytics/categories/top?limit=8");
+    renderHBarList("topCategories", cats, "term", "hits", null, function (r) { return r.hits + " searches"; });
+
+    var products = await api("/api/admin/analytics/products/top?limit=8");
+    renderHBarList("topProducts", products, "productName", "totalQuantity", "shopName", function (r) {
+      return r.totalQuantity + " sold · " + formatMoney(r.totalRevenue);
+    });
+
+    await loadTopTerms();
+    await loadZeroResults();
+    await loadDemandCategories();
+  }
+
+  window.addEventListener("resize", function () {
+    if (authToken) loadAll();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+{
+  "total_tests": 22,
+  "passed": 22,
+  "success_rate": 1.0,
+  "tests": [
+    {
+      "test": "1. Admin dashboard real metrics",
+      "passed": true,
+      "detail": "Retrieved 30 stores, 5 floors, 304 products, source: DATABASE_TRUTH."
+    },
+    {
+      "test": "2. Admin security controls & customer rejection",
+      "passed": true,
+      "detail": "Unauthenticated: HTTP 403, Customer: HTTP 403 (Forbidden)."
+    },
+    {
+      "test": "3. Five-floor digital twin structure overview",
+      "passed": true,
+      "detail": "Verified all 5 canonical levels: Lower Ground (LG) (6 stores), Ground Floor (G) (6 stores), First Floor (1F) (6 stores), Second Floor (2F) (6 stores), Third Floor (3F - Food & Cinema) (6 stores)."
+    },
+    {
+      "test": "4. Store metadata administration",
+      "passed": true,
+      "detail": "Updated store description to: 'Premier fashion retail flagship \u00b7 Updated 1795495806' without modifying navigation node coordinates."
+    },
+    {
+      "test": "5. Safe store status activation / deactivation",
+      "passed": true,
+      "detail": "Successfully toggled active=false and active=true; graph foreign keys and navigation routes preserved."
+    },
+    {
+      "test": "6. Retailer onboarding and store assignment",
+      "passed": true,
+      "detail": "Created retailer account manager_h_and_m_1795495806@mallmind.local assigned to shop #3 ('Miniso')."
+    },
+    {
+      "test": "7. Retailer suspension & login enforcement",
+      "passed": true,
+      "detail": "Suspended retailer login rejected; reactivated retailer login restored."
+    },
+    {
+      "test": "8. Cross-store retailer inventory isolation",
+      "passed": true,
+      "detail": "Zara Retailer adjusting Smart Bazaar item rejected with HTTP 403 (ShopOwnershipException)."
+    },
+    {
+      "test": "9. Authorized retailer stock adjustment",
+      "passed": true,
+      "detail": "Successfully updated Product #64 to stock 25 with reason RESTOCK."
+    },
+    {
+      "test": "10. Negative stock rejection",
+      "passed": true,
+      "detail": "Negative stock (-10) rejected by server with HTTP 400 Bad Request."
+    },
+    {
+      "test": "11. Concurrent inventory updates & stock consistency",
+      "passed": true,
+      "detail": "4 concurrent adjustments resolved cleanly; final stock: 21."
+    },
+    {
+      "test": "12. Low-stock and out-of-stock warning detection",
+      "passed": true,
+      "detail": "Identified 50 items requiring warehouse attention across mall stores."
+    },
+    {
+      "test": "13. Inventory adjustment ledger persistence",
+      "passed": true,
+      "detail": "Latest adjustment: Zara TRF Jacket (Green) (25 -> 20, reason: CYCLE_COUNT)."
+    },
+    {
+      "test": "14. Mall-wide order oversight",
+      "passed": true,
+      "detail": "Admin retrieved 16 mall-wide orders across all stores."
+    },
+    {
+      "test": "15. Retailer order tenant isolation",
+      "passed": true,
+      "detail": "Retailer queue strictly filtered: contains only orders with owned shop items [7]; pure foreign orders excluded."
+    },
+    {
+      "test": "16. Admin order intervention with operational notes",
+      "passed": true,
+      "detail": "Order #MM-1795457468450-216 status updated to READY_FOR_PICKUP by administrator."
+    },
+    {
+      "test": "17. Admin order cancellation, sandbox refund & inventory return",
+      "passed": true,
+      "detail": "Stock decremented (25 -> 24) and restored on cancellation (24 -> 25)."
+    },
+    {
+      "test": "18. System audit logging completeness",
+      "passed": true,
+      "detail": "Logged actions verified: FACILITY_CREATED, FACILITY_DELETED, ORDER_STATUS_UPDATED, RETAILER_CREATED, RETAILER_STATUS_CHANGED, STOCK_ADJUSTED, STORE_METADATA_UPDATED, STORE_STATUS_CHANGED."
+    },
+    {
+      "test": "19. Audit log immutability and credential protection",
+      "passed": true,
+      "detail": "Passwords excluded from audit details; mutation endpoints rejected (POST: 405, DELETE: 404)."
+    },
+    {
+      "test": "20. Digital twin topological graph integrity",
+      "passed": true,
+      "detail": "Graph validation: 67 nodes, 74 edges, disconnected: 0."
+    },
+    {
+      "test": "21. Phase 4 AI & multilingual RAG regression gate",
+      "passed": true,
+      "detail": "Query answered with brand-constraint preserved: 'No Nike running shoes are available under \u20b92000 at Nexus Ahmedabad One (pri...'."
+    },
+    {
+      "test": "22. Phase 5 e-commerce & checkout regression gate",
+      "passed": true,
+      "detail": "End-to-end order #MM-1795495811783-133 placed and verified in sandbox."
+    }
+  ]
+}

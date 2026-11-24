@@ -1,0 +1,29 @@
+{
+  "tax_audit": {
+    "hardcoded_18_percent": true,
+    "product_schema_tax_configurable": false,
+    "order_records_preserve_tax": true,
+    "refund_cancellation_preserves_tax_snapshot": true
+  },
+  "concurrency_audit": {
+    "one_order_succeeded": true,
+    "one_order_rejected": true,
+    "final_stock": 0,
+    "no_negative_stock": true,
+    "oversell_prevented": true
+  },
+  "authorisation_audit": {
+    "unauthenticated_blocked": true,
+    "customer_role_blocked": true,
+    "cross_store_product_mutation_blocked": true,
+    "cross_store_db_write_prevented": true,
+    "cross_store_order_mutation_blocked": true,
+    "client_role_spoofing_prevented": true
+  },
+  "payment_and_fulfilment_audit": {
+    "failed_payment_stock_protected": true,
+    "single_cancellation_restored_stock": true,
+    "double_cancellation_prevented": true,
+    "stock_restored_exactly_once": true
+  }
+}

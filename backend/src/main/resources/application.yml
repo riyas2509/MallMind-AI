@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: mallmind-backend
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:mallmind}
+    username: ${DB_USERNAME:mallmind}
+    password: ${DB_PASSWORD:mallmind_dev_password}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # validate in prod; create/update convenient while schema is still moving in Phase 2/3.
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    show-sql: ${JPA_SHOW_SQL:false}
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+    open-in-view: false
+
+  sql:
+    init:
+      mode: ${SQL_INIT_MODE:never} # set to 'always' to run data/seed/seed.sql once against an empty DB
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: ${SERVER_PORT:8080}
+
+mallmind:
+  jwt:
+    secret: ${JWT_SECRET:dev-only-change-this-secret-change-this-secret-32bytes-minimum}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:120}
+  model-service:
+    base-url: ${MODEL_SERVICE_BASE_URL:http://localhost:8001}
+
+logging:
+  level:
+    com.mallmind: ${LOG_LEVEL:INFO}

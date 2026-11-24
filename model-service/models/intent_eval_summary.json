@@ -1,0 +1,393 @@
+{
+  "labels": [
+    "FACILITY_SEARCH",
+    "FIND_PRODUCT",
+    "FIND_STORE",
+    "MALL_INFORMATION",
+    "NAVIGATION",
+    "PRODUCT_COMPARISON",
+    "PRODUCT_REFINEMENT",
+    "UNKNOWN"
+  ],
+  "example_level_split": {
+    "n_train": 1246,
+    "n_val": 267,
+    "n_test": 267,
+    "split_methodology": "Stratified random split (70% train, 15% val, 15% test). Template overlap permitted.",
+    "leakage_status": "LEAKAGE_PRESENT (Shared templates inflate scores)",
+    "textcnn_metrics": {
+      "accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "macro_f1": 1.0,
+      "weighted_precision": 1.0,
+      "weighted_recall": 1.0,
+      "weighted_f1": 1.0,
+      "per_intent_metrics": {
+        "FACILITY_SEARCH": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 34
+        },
+        "FIND_PRODUCT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 40
+        },
+        "FIND_STORE": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 51
+        },
+        "MALL_INFORMATION": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 36
+        },
+        "NAVIGATION": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 41
+        },
+        "PRODUCT_COMPARISON": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 21
+        },
+        "PRODUCT_REFINEMENT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 29
+        },
+        "UNKNOWN": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 15
+        }
+      },
+      "language_metrics": {
+        "en": {
+          "count": 165,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        "gu": {
+          "count": 47,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        "hi": {
+          "count": 55,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          34,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          40,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          51,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          36,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          41,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          21,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          29,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          15
+        ]
+      ],
+      "confidence_distribution": {
+        "mean": 0.998,
+        "std": 0.004,
+        "min": 0.962,
+        "median": 0.999,
+        "p95": 1.0,
+        "max": 1.0,
+        "below_0_35_count": 0,
+        "below_0_50_count": 0
+      },
+      "mean_latency_ms": 0.25
+    },
+    "baselines": {
+      "rule_based_matcher": {
+        "accuracy": 0.318,
+        "macro_f1": 0.345
+      },
+      "multinomial_naive_bayes": {
+        "accuracy": 0.981,
+        "macro_f1": 0.978
+      },
+      "logistic_regression": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0
+      }
+    }
+  },
+  "template_level_split": {
+    "n_train": 1224,
+    "n_val": 216,
+    "n_test": 340,
+    "split_methodology": "Strict template holdout (22 templates held out). Honest generalization test.",
+    "leakage_status": "LEAKAGE_FREE (Zero template overlap, 0 duplicate strings)",
+    "exact_duplicate_strings": 0,
+    "textcnn_metrics": {
+      "accuracy": 0.444,
+      "macro_precision": 0.485,
+      "macro_recall": 0.445,
+      "macro_f1": 0.432,
+      "weighted_precision": 0.493,
+      "weighted_recall": 0.444,
+      "weighted_f1": 0.432,
+      "per_intent_metrics": {
+        "FACILITY_SEARCH": {
+          "precision": 1.0,
+          "recall": 0.271,
+          "f1": 0.426,
+          "support": 48
+        },
+        "FIND_PRODUCT": {
+          "precision": 0.246,
+          "recall": 0.333,
+          "f1": 0.283,
+          "support": 48
+        },
+        "FIND_STORE": {
+          "precision": 0.134,
+          "recall": 0.172,
+          "f1": 0.151,
+          "support": 64
+        },
+        "MALL_INFORMATION": {
+          "precision": 0.696,
+          "recall": 1.0,
+          "f1": 0.821,
+          "support": 48
+        },
+        "NAVIGATION": {
+          "precision": 0.5,
+          "recall": 0.375,
+          "f1": 0.429,
+          "support": 48
+        },
+        "PRODUCT_COMPARISON": {
+          "precision": 0.302,
+          "recall": 0.406,
+          "f1": 0.347,
+          "support": 32
+        },
+        "PRODUCT_REFINEMENT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 32
+        },
+        "UNKNOWN": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 20
+        }
+      },
+      "language_metrics": {
+        "en": {
+          "count": 144,
+          "accuracy": 0.431,
+          "macro_f1": 0.451
+        },
+        "gu": {
+          "count": 106,
+          "accuracy": 0.387,
+          "macro_f1": 0.321
+        },
+        "hi": {
+          "count": 90,
+          "accuracy": 0.533,
+          "macro_f1": 0.384
+        }
+      },
+      "confusion_matrix": [
+        [
+          13,
+          16,
+          19,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          16,
+          24,
+          0,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          11,
+          11,
+          16,
+          14,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          48,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          22,
+          0,
+          18,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          11,
+          6,
+          0,
+          2,
+          13,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          32,
+          0
+        ],
+        [
+          0,
+          10,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "confidence_distribution": {
+        "mean": 0.628,
+        "std": 0.234,
+        "min": 0.222,
+        "median": 0.605,
+        "p95": 0.991,
+        "max": 1.0,
+        "below_0_35_count": 42,
+        "below_0_50_count": 126
+      },
+      "mean_latency_ms": 0.27
+    },
+    "baselines": {
+      "rule_based_matcher": {
+        "accuracy": 0.297,
+        "macro_f1": 0.372
+      },
+      "multinomial_naive_bayes": {
+        "accuracy": 0.344,
+        "macro_f1": 0.321
+      },
+      "logistic_regression": {
+        "accuracy": 0.397,
+        "macro_f1": 0.38
+      }
+    }
+  }
+}

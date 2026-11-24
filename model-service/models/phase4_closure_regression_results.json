@@ -1,0 +1,117 @@
+{
+  "total_tests": 22,
+  "passed": 22,
+  "success_rate": 1.0,
+  "tests": [
+    {
+      "scenario": "Brand Case 1: Nike running shoes under \u20b92,000",
+      "passed": true,
+      "detail": "Correctly labelled alternative: Bata Footwear"
+    },
+    {
+      "scenario": "Brand Case 2: Bata shoes under \u20b92,000",
+      "passed": true,
+      "detail": "Top match: Bata Sneakers (Beige) (\u20b9519.0)"
+    },
+    {
+      "scenario": "Brand Case 3: Any-brand running shoes under \u20b92,000",
+      "passed": true,
+      "detail": "Power Running Shoes (Green) (\u20b9796.0)"
+    },
+    {
+      "scenario": "Brand Case 4: Nike shoes without a budget",
+      "passed": true,
+      "detail": "Air Jordan Training Shoes (White) (\u20b99449.0)"
+    },
+    {
+      "scenario": "Brand Case 5: Nike running shoes with no matching inventory",
+      "passed": true,
+      "detail": "Action: NO_MATCH"
+    },
+    {
+      "scenario": "Brand Case 6: Gujarati explicit brand query",
+      "passed": true,
+      "detail": "Gujarati alternative labelled with \u0ab5\u0abf\u0a95\u0ab2\u0acd\u0aaa"
+    },
+    {
+      "scenario": "Brand Case 7: Hindi explicit brand query",
+      "passed": true,
+      "detail": "Hindi alternative labelled with \u0935\u093f\u0915\u0932\u094d\u092a"
+    },
+    {
+      "scenario": "Scenario 1: Gujarati audio query & TTS",
+      "passed": true,
+      "detail": "Lang: Gujarati, Audio: 665,402B"
+    },
+    {
+      "scenario": "Scenario 2: Hindi audio query & TTS",
+      "passed": true,
+      "detail": "Lang: Hindi, Audio: 913,398B"
+    },
+    {
+      "scenario": "Scenario 3: English audio query & TTS",
+      "passed": true,
+      "detail": "Lang: English, Audio: 798,766B"
+    },
+    {
+      "scenario": "Scenario 4: Romanized Gujarati query",
+      "passed": true,
+      "detail": "Dest: Bata Footwear"
+    },
+    {
+      "scenario": "Scenario 5: Romanized Hindi query",
+      "passed": true,
+      "detail": "Dest: Cinepolis 9-Screen Multiplex"
+    },
+    {
+      "scenario": "Scenario 6: Code-mixed query with budget constraint",
+      "passed": true,
+      "detail": "Action: SHOW_ALTERNATIVES"
+    },
+    {
+      "scenario": "Scenario 7: Store navigation across floors",
+      "passed": true,
+      "detail": "Steps: 5, Transitions: 3, Dist: 99.1m"
+    },
+    {
+      "scenario": "Scenario 8: Facility navigation",
+      "passed": true,
+      "detail": "Facility recognized"
+    },
+    {
+      "scenario": "Scenario 9: Product search through voice/text",
+      "passed": true,
+      "detail": "Routed to Smart Bazaar"
+    },
+    {
+      "scenario": "Scenario 10: Unknown store query",
+      "passed": true,
+      "detail": "Action: INFO"
+    },
+    {
+      "scenario": "Scenario 11: Ambiguous destination",
+      "passed": true,
+      "detail": "Identified footwear category options"
+    },
+    {
+      "scenario": "Scenario 12: Low-confidence transcription fallback",
+      "passed": true,
+      "detail": "Action: CLARIFY"
+    },
+    {
+      "scenario": "Scenario 13: Service resilience & graceful degradation",
+      "passed": true,
+      "detail": "Java backend fallback verified"
+    },
+    {
+      "scenario": "Scenario 14: RAG retrieval failure / out-of-domain",
+      "passed": true,
+      "detail": "Action: CLARIFY"
+    },
+    {
+      "scenario": "Scenario 15: TTS failure fallback",
+      "passed": true,
+      "detail": "Text returned cleanly without audio"
+    }
+  ]
+}

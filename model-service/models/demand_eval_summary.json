@@ -1,0 +1,54 @@
+{
+  "data_sufficiency_status": "INSUFFICIENT_REAL_HISTORY",
+  "data_notes": "Real PostgreSQL database contains only 18 sandbox orders (< 24 hours). Forecasting is demonstrated on a 240-day simulated search-interaction time series as an experimental prototype. Not for automated ordering or real-world store operations.",
+  "split_methodology": "Chronological time-based split (first 80% dates train, final 20% dates test)",
+  "n_train_rows": 2976,
+  "n_test_rows": 752,
+  "evaluation_metrics": {
+    "random_forest": {
+      "mae": 2.920806104264744,
+      "rmse": 3.974063663286786,
+      "wape": 0.1398386827788303
+    },
+    "gradient_boosting": {
+      "mae": 2.77160409697068,
+      "rmse": 3.7754379139915226,
+      "wape": 0.13269537664238565
+    },
+    "ridge_regression": {
+      "mae": 2.9918992597206158,
+      "rmse": 4.081989050500314,
+      "wape": 0.1432423915012353
+    },
+    "moving_average_baseline": {
+      "mae": 3.5235562310030395,
+      "rmse": 4.921137735637291,
+      "wape": 0.1686963956015971
+    }
+  },
+  "feature_importances_rf": {
+    "rolling_mean_7": 0.7786,
+    "cat_Apparel": 0.0832,
+    "lag_7": 0.054,
+    "day_of_week": 0.0228,
+    "is_weekend": 0.0187,
+    "day_index": 0.016,
+    "rolling_std_7": 0.0105,
+    "lag_1": 0.0071,
+    "cat_Gifts & Novelty": 0.0014,
+    "cat_Footwear": 0.0013,
+    "cat_Pharmacy & Health": 0.0009,
+    "cat_Electronics": 0.0008,
+    "cat_Beauty & Cosmetics": 0.0007,
+    "cat_Home Decor": 0.0007,
+    "cat_Confectionery": 0.0006,
+    "cat_Sportswear": 0.0006,
+    "cat_Bags & Accessories": 0.0005,
+    "cat_Mobile & Gadgets": 0.0005,
+    "cat_Toys & Games": 0.0004,
+    "cat_Jewelry": 0.0003,
+    "cat_Opticals": 0.0003,
+    "cat_Watches & Accessories": 0.0002,
+    "cat_Books & Stationery": 0.0001
+  }
+}

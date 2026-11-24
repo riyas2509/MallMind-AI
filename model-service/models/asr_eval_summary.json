@@ -1,0 +1,137 @@
+{
+  "model": "faster-whisper-tiny (CPU int8)",
+  "total_evaluated_samples": 26,
+  "overall_wer": 0.661,
+  "overall_cer": 0.274,
+  "clean_audio_wer": 0.634,
+  "noisy_audio_wer": 0.687,
+  "language_identification_accuracy": 1.0,
+  "average_latency_ms": 1296.0,
+  "p95_latency_ms": 1863.5,
+  "per_language_metrics": {
+    "en": {
+      "count": 10,
+      "wer": 0.086,
+      "cer": 0.054,
+      "avg_latency_ms": 1335.2
+    },
+    "gu": {
+      "count": 8,
+      "wer": 0.938,
+      "cer": 0.387,
+      "avg_latency_ms": 1359.3
+    },
+    "hi": {
+      "count": 8,
+      "wer": 1.101,
+      "cer": 0.435,
+      "avg_latency_ms": 1183.7
+    }
+  },
+  "sample_evaluations": [
+    {
+      "id": 1,
+      "reference": "Where is Zara store in this mall?",
+      "hypothesis": "Where is our store in this mall?",
+      "target_lang": "en",
+      "detected_lang": "en",
+      "lang_probability": 0.988422691822052,
+      "lid_correct": true,
+      "is_noisy": false,
+      "wer": 0.143,
+      "cer": 0.111,
+      "latency_ms": 1914.7
+    },
+    {
+      "id": 2,
+      "reference": "Take me to Cinepolis multiplex on the third floor.",
+      "hypothesis": "Take me to Singapore as multiplex on the third floor.",
+      "target_lang": "en",
+      "detected_lang": "en",
+      "lang_probability": 0.9729273915290833,
+      "lid_correct": true,
+      "is_noisy": true,
+      "wer": 0.222,
+      "cer": 0.143,
+      "latency_ms": 1267.6
+    },
+    {
+      "id": 3,
+      "reference": "I am looking for running shoes under two thousand rupees.",
+      "hypothesis": "I am looking for running shoes under 2,000 rupees.",
+      "target_lang": "en",
+      "detected_lang": "en",
+      "lang_probability": 0.9765411019325256,
+      "lid_correct": true,
+      "is_noisy": false,
+      "wer": 0.2,
+      "cer": 0.229,
+      "latency_ms": 1138.7
+    },
+    {
+      "id": 4,
+      "reference": "Show me the nearest washroom on ground floor.",
+      "hypothesis": "Show me the nearest washroom on ground floor.",
+      "target_lang": "en",
+      "detected_lang": "en",
+      "lang_probability": 0.995872437953949,
+      "lid_correct": true,
+      "is_noisy": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "latency_ms": 1150.9
+    },
+    {
+      "id": 5,
+      "reference": "Where can I buy fresh groceries and vegetables?",
+      "hypothesis": "Where can I buy fresh groceries and vegetables?",
+      "target_lang": "en",
+      "detected_lang": "en",
+      "lang_probability": 0.9865178465843201,
+      "lid_correct": true,
+      "is_noisy": false,
+      "wer": 0.0,
+      "cer": 0.0,
+      "latency_ms": 1124.1
+    },
+    {
+      "id": 6,
+      "reference": "Is there a Starbucks coffee shop near central escalator?",
+      "hypothesis": "Is there a Starbucks coffee shop near Central Escalator?",
+      "target_lang": "en",
+      "detected_lang": "en",
+      "lang_probability": 0.9968204498291016,
+      "lid_correct": true,
+      "is_noisy": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "latency_ms": 1709.8
+    },
+    {
+      "id": 7,
+      "reference": "Where is the customer helpdesk located in Alpha One Mall?",
+      "hypothesis": "Where is the customer help desk located in Alpha 1 Mall?",
+      "target_lang": "en",
+      "detected_lang": "en",
+      "lang_probability": 0.995263934135437,
+      "lid_correct": true,
+      "is_noisy": false,
+      "wer": 0.3,
+      "cer": 0.062,
+      "latency_ms": 1320.7
+    },
+    {
+      "id": 8,
+      "reference": "Take me to Reliance Digital on the first floor.",
+      "hypothesis": "Take me to Reliance Digital on the first floor.",
+      "target_lang": "en",
+      "detected_lang": "en",
+      "lang_probability": 0.9954352974891663,
+      "lid_correct": true,
+      "is_noisy": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "latency_ms": 1262.5
+    }
+  ]
+}

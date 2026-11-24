@@ -1,0 +1,1781 @@
+text,intent,template_id
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+क्या इस मॉल में Smart Bazaar की दुकान है?,FIND_STORE,T_FS_HI_3
+₹2000 ની અંદરના સારા sandals ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+Compare groceries between Pizza Hut and McDonald's.,PRODUCT_COMPARISON,T_PC_EN_1
+I want to visit Lifestyle.,FIND_STORE,T_FS_EN_5
+Sephora અને Calvin Klein ના lipstick વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+મને Home Centre કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+Mane hoodies kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Mujhe acche perfume kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+Starbucks जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+₹50000 के बजट में hoodies फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+Lenskart और KFC के vitamins में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+H&M स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+Mare saara blazers kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+Filter sunglasses below 50000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+Home Centre जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+Shu aa mall ma Home Centre chhe?,FIND_STORE,T_FS_GUR_3
+અહીંથી Lifestyle કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+I need to find an cash machine.,FACILITY_SEARCH,T_FAC_EN_2
+मुझे पार्किंग जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+मुझे ₹10000 से कम के formal shoes दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+मुझे ₹1500 से कम के first aid kit दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+मुझे McDonald's तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+શું આ મોલમાં Forever 21 છે?,FIND_STORE,T_FS_GU_3
+Start navigation to Bata Footwear.,NAVIGATION,T_NAV_EN_5
+Filter coffee below 2000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+Puma store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+मुझे The Body Shop किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+hoodies के लिए Cinépolis सस्ता है या Reliance Digital?,PRODUCT_COMPARISON,T_PC_HI_2
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+મને Shoppers Stop સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+Where is The Body Shop?,FIND_STORE,T_FS_EN_1
+Mane sauthi najiknu restroom batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+શું આ મોલમાં Miniso છે?,FIND_STORE,T_FS_GU_3
+मुझे Home Centre तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+Is Forever 21 open right now?,FIND_STORE,T_FS_EN_6
+₹500 ni andar na smartphones jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+Mane Sephora kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+Which floor has a glass elevator?,FACILITY_SEARCH,T_FAC_EN_3
+Mane Apollo Pharmacy sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+Mujhe cricket score batao.,UNKNOWN,T_UNK_7
+મારે સારા blazers ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+મારે સારા television ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+सबसे नज़दीकी लिफ्ट कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+Cinépolis store kahan par hai?,FIND_STORE,T_FS_HIR_1
+Bata Footwear સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+Do you have coffee available here?,FIND_PRODUCT,T_FP_EN_4
+KFC પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+Mane ₹1500 thi ochi kimatna vitamins batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+મારે સારા t-shirts ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+આ મોલમાં burgers કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+KFC ane H&M na shirts ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+અહીંથી The Body Shop કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+मुझे अच्छे t-shirts खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+Mane ₹1500 thi ochi kimatna first aid kit batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+Which is cheaper: Tommy Hilfiger or Shoppers Stop for coffee?,PRODUCT_COMPARISON,T_PC_EN_2
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+શું આ મોલમાં Home Centre છે?,FIND_STORE,T_FS_GU_3
+Mane Lenskart sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+Looking for affordable sunglasses within ₹500.,PRODUCT_REFINEMENT,T_PR_EN_4
+Mane sauthi najiknu parking batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+Croma ane Forever 21 na vitamins ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+running shoes માટે Reliance Digital સસ્તું છે કે Zara?,PRODUCT_COMPARISON,T_PC_GU_2
+મને Zara કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+Home Centre jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+Mane ₹2000 thi ochi kimatna blazers batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+Mujhe H&M tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+Guide me to 1F.,NAVIGATION,T_NAV_EN_4
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+Mane Pizza Hut kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+Is Reliance Digital open right now?,FIND_STORE,T_FS_EN_6
+What is the difference in price for television at Home Centre vs Lenskart?,PRODUCT_COMPARISON,T_PC_EN_3
+Mujhe Calvin Klein kis floor par milega?,FIND_STORE,T_FS_HIR_2
+I need to find an food court.,FACILITY_SEARCH,T_FAC_EN_2
+Sabse nazdeeki ATM kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+Kya is mall mein Miniso hai?,FIND_STORE,T_FS_HIR_3
+Pizza Hut स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+અમદાવાદમાં આજનું હવામાન કેવું છે?,UNKNOWN,T_UNK_6
+Find Marks & Spencer store for me.,FIND_STORE,T_FS_EN_2
+Where can I buy television?,FIND_PRODUCT,T_FP_EN_1
+Which is cheaper: The Body Shop or Bata Footwear for sandals?,PRODUCT_COMPARISON,T_PC_EN_2
+KFC जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+નજીકમાં એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+Mane ₹1000 thi ochi kimatna blazers batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+Shu aa mall ma Lenskart chhe?,FIND_STORE,T_FS_GUR_3
+મને toys ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+running shoes માટે KFC સસ્તું છે કે McDonald's?,PRODUCT_COMPARISON,T_PC_GU_2
+Mujhe McDonald's kis floor par milega?,FIND_STORE,T_FS_HIR_2
+Guide me to Ground Floor.,NAVIGATION,T_NAV_EN_4
+Mane sauthi najiknu glass elevator batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+Kya is mall mein Reliance Digital hai?,FIND_STORE,T_FS_HIR_3
+Under Armour स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+I need to find an ATM.,FACILITY_SEARCH,T_FAC_EN_2
+મને Levi's સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+Mujhe acche toys kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+Sephora ane Subway na t-shirts ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+મને સૌથી નજીકનું ફૂડ કોર્ટ બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+Give me walking directions to Forever 21.,NAVIGATION,T_NAV_EN_2
+Reliance Digital jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+અમદાવાદમાં આજનું હવામાન કેવું છે?,UNKNOWN,T_UNK_6
+Is The Body Shop open right now?,FIND_STORE,T_FS_EN_6
+shirts માટે Cinépolis સસ્તું છે કે Hamleys?,PRODUCT_COMPARISON,T_PC_GU_2
+Mane Sephora sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+Do you have running shoes available here?,FIND_PRODUCT,T_FP_EN_4
+Aahin thi Smart Bazaar kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+Subway store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Sabse nazdeeki washroom kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+Mujhe Forever 21 tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+Is Shoppers Stop open right now?,FIND_STORE,T_FS_EN_6
+shirts kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+Show me stores selling hoodies.,FIND_PRODUCT,T_FP_EN_2
+मुझे ₹10000 से कम के shirts दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+मुझे ₹500 से कम के board games दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+Home Centre jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+Cinépolis સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+અહીંથી Bata Footwear કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+Tell me a funny joke.,UNKNOWN,T_UNK_2
+Give me walking directions to Sephora.,NAVIGATION,T_NAV_EN_2
+આ મોલમાં shirts કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+Mujhe Reliance Digital kis floor par milega?,FIND_STORE,T_FS_HIR_2
+મને Bata Footwear કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+Which floor is Bata Footwear on?,FIND_STORE,T_FS_EN_3
+Do you have dresses available here?,FIND_PRODUCT,T_FP_EN_4
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Shu aa mall ma Pizza Hut chhe?,FIND_STORE,T_FS_GUR_3
+કંઈક રમુજી કહો.,UNKNOWN,T_UNK_5
+I need to find jeans.,FIND_PRODUCT,T_FP_EN_3
+आज की ताज़ा ख़बर क्या है?,UNKNOWN,T_UNK_8
+यहाँ से McDonald's कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+Which floor has a food court?,FACILITY_SEARCH,T_FAC_EN_3
+Where is Bata Footwear?,FIND_STORE,T_FS_EN_1
+Forever 21 जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+અમદાવાદમાં આજનું હવામાન કેવું છે?,UNKNOWN,T_UNK_6
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+મારે Sportswear ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+Mane burgers kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+Marks & Spencer store kahan par hai?,FIND_STORE,T_FS_HIR_1
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+Bata Footwear स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+क्या इस मॉल में Subway की दुकान है?,FIND_STORE,T_FS_HI_3
+Mane ₹2000 thi ochi kimatna hoodies batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+यहाँ से Tommy Hilfiger कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+Take me to H&M.,NAVIGATION,T_NAV_EN_1
+क्या इस मॉल में KFC की दुकान है?,FIND_STORE,T_FS_HI_3
+Give me walking directions to McDonald's.,NAVIGATION,T_NAV_EN_2
+Under Armour પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+Najikma escalator kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+Forever 21 और McDonald's के running shoes में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+jeans kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+Mane sneakers kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+Home Centre સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Mane Hamleys sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+यहाँ से Subway कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+The Body Shop ane Tommy Hilfiger na first aid kit ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+मुझे Levi's किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+blablabla nothing here,UNKNOWN,T_UNK_10
+Croma સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+How do I get to Croma from here?,NAVIGATION,T_NAV_EN_3
+આ મોલમાં toys કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+નજીકમાં એટીએમ ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+आज की ताज़ा ख़बर क्या है?,UNKNOWN,T_UNK_8
+मुझे अच्छे sneakers खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+Looking for good blazers.,FIND_PRODUCT,T_FP_EN_5
+Kya is mall mein Bata Footwear hai?,FIND_STORE,T_FS_HIR_3
+Yahan se Forever 21 kaise jaun?,NAVIGATION,T_NAV_HIR_3
+H&M jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+Yahan se Hamleys kaise jaun?,NAVIGATION,T_NAV_HIR_3
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+I want to visit Calvin Klein.,FIND_STORE,T_FS_EN_5
+I want to visit Forever 21.,FIND_STORE,T_FS_EN_5
+मुझे ₹10000 से कम के toys दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+Lifestyle pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Show me dresses under ₹3000.,PRODUCT_REFINEMENT,T_PR_EN_1
+Skechers स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+Mare saara first aid kit kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+મને Hamleys કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+McDonald's સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+Start navigation to Forever 21.,NAVIGATION,T_NAV_EN_5
+Mane Shoppers Stop kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+Mujhe cricket score batao.,UNKNOWN,T_UNK_7
+Mare saara vitamins kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+How do I get to Tommy Hilfiger from here?,NAVIGATION,T_NAV_EN_3
+Take me to Under Armour.,NAVIGATION,T_NAV_EN_1
+Hamleys પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+Opticals की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+Aa mall ma smartphones kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+નજીકમાં લિફ્ટ ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+Start navigation to Taco Bell.,NAVIGATION,T_NAV_EN_5
+यहाँ से Pizza Hut कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+મને Sephora સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+Looking for good sandals.,FIND_PRODUCT,T_FP_EN_5
+Do you have a Lenskart in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+Hamleys स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+મને Levi's સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+Is Hamleys open right now?,FIND_STORE,T_FS_EN_6
+मुझे ₹2000 से कम के sneakers दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+Mujhe cricket score batao.,UNKNOWN,T_UNK_7
+Mujhe food court jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+Bata Footwear और Starbucks के blazers में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+यहाँ से Sephora कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+Under Armour અને Smart Bazaar ના perfume વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+Only show items under ₹1500.,PRODUCT_REFINEMENT,T_PR_EN_3
+Skechers સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+laptops किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+Mujhe cricket score batao.,UNKNOWN,T_UNK_7
+Guide me to Floor 1.,NAVIGATION,T_NAV_EN_4
+How do I get to Hamleys from here?,NAVIGATION,T_NAV_EN_3
+Tell me a funny joke.,UNKNOWN,T_UNK_2
+Aa mall ma toys kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+क्या इस मॉल में Apollo Pharmacy की दुकान है?,FIND_STORE,T_FS_HI_3
+Shu aa mall ma Croma chhe?,FIND_STORE,T_FS_GUR_3
+Who is the prime minister of India?,UNKNOWN,T_UNK_4
+Give me walking directions to Sephora.,NAVIGATION,T_NAV_EN_2
+formal shoes માટે Starbucks સસ્તું છે કે Lenskart?,PRODUCT_COMPARISON,T_PC_GU_2
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+Taco Bell પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+Compare hoodies between KFC and Taco Bell.,PRODUCT_COMPARISON,T_PC_EN_1
+Puma સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+Mujhe laptops kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Find Starbucks store for me.,FIND_STORE,T_FS_EN_2
+मुझे हेल्पडेस्क जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+મારે સારા sunglasses ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+નજીકમાં શૌચાલય ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+Looking for good laptops.,FIND_PRODUCT,T_FP_EN_5
+मुझे अच्छे toys खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+નજીકમાં શૌચાલય ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+Shoppers Stop और Calvin Klein के lipstick में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+Take me to Tommy Hilfiger.,NAVIGATION,T_NAV_EN_1
+Tell me a funny joke.,UNKNOWN,T_UNK_2
+Mane sauthi najiknu parking batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+Najikma washroom kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+મને hoodies ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+Which floor is Home Centre on?,FIND_STORE,T_FS_EN_3
+Find Lenskart store for me.,FIND_STORE,T_FS_EN_2
+Start navigation to Lifestyle.,NAVIGATION,T_NAV_EN_5
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+I need to find an cash machine.,FACILITY_SEARCH,T_FAC_EN_2
+Show me stores selling toys.,FIND_PRODUCT,T_FP_EN_2
+Yahan se Croma kaise jaun?,NAVIGATION,T_NAV_HIR_3
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+I want to visit Croma.,FIND_STORE,T_FS_EN_5
+Pizza Hut પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+અમદાવાદમાં આજનું હવામાન કેવું છે?,UNKNOWN,T_UNK_6
+मुझे first aid kit कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+I need to find sneakers.,FIND_PRODUCT,T_FP_EN_3
+Sabse nazdeeki glass elevator kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+Yahan se Apollo Pharmacy kaise jaun?,NAVIGATION,T_NAV_HIR_3
+મને Smart Bazaar કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+What is the difference in price for television at Calvin Klein vs Lifestyle?,PRODUCT_COMPARISON,T_PC_EN_3
+Show me stores selling first aid kit.,FIND_PRODUCT,T_FP_EN_2
+H&M સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+Kya is mall mein Lifestyle hai?,FIND_STORE,T_FS_HIR_3
+મને સૌથી નજીકનું વોશરૂમ બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+₹1500 ke under ke lipstick search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+Filter perfume below 50000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+Under Armour jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+How to book flight tickets to Mumbai?,UNKNOWN,T_UNK_3
+શું આ મોલમાં Croma છે?,FIND_STORE,T_FS_GU_3
+₹2000 ke under ke board games search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+આ મોલમાં laptops કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+Croma અને Puma ના running shoes વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+₹2000 ની અંદરના સારા vitamins ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+Find Levi's store for me.,FIND_STORE,T_FS_EN_2
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+Guide me to Ground Floor.,NAVIGATION,T_NAV_EN_4
+मुझे Taco Bell किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+Mujhe Hamleys tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+Where can I buy sandals?,FIND_PRODUCT,T_FP_EN_1
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+Aa mall ma t-shirts kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+Kya is mall mein Under Armour hai?,FIND_STORE,T_FS_HIR_3
+મને ₹3000થી ઓછી કિંમતના board games બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+Mujhe glass elevator jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+Mujhe headphones kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+Take me to McDonald's.,NAVIGATION,T_NAV_EN_1
+₹1500 ની અંદરના સારા television ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+Hamleys ane Subway na dresses ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+Only show items under ₹3000.,PRODUCT_REFINEMENT,T_PR_EN_3
+Which floor has a glass elevator?,FACILITY_SEARCH,T_FAC_EN_3
+blablabla nothing here,UNKNOWN,T_UNK_10
+I need to find formal shoes.,FIND_PRODUCT,T_FP_EN_3
+₹3000 के बजट में board games फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+મારે Apparel ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Najikma escalator kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+Mujhe acche groceries kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+Shoppers Stop store kahan par hai?,FIND_STORE,T_FS_HIR_1
+What is the weather outside in Ahmedabad?,UNKNOWN,T_UNK_1
+What is the difference in price for running shoes at Forever 21 vs Taco Bell?,PRODUCT_COMPARISON,T_PC_EN_3
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Show me stores selling lipstick.,FIND_PRODUCT,T_FP_EN_2
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+How do I get to Sephora from here?,NAVIGATION,T_NAV_EN_3
+Mujhe shirts kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+આ મોલમાં formal shoes કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+Mujhe acche headphones kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+મને સૌથી નજીકનું હેલ્પડેસ્ક બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+Mujhe acche dresses kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+H&M અને Subway ના perfume વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+मुझे ₹50000 से कम के coffee दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+Find H&M store for me.,FIND_STORE,T_FS_EN_2
+Compare shirts between Apollo Pharmacy and Miniso.,PRODUCT_COMPARISON,T_PC_EN_1
+Sabse nazdeeki parking kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+Mane KFC sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+Show me lipstick under ₹3000.,PRODUCT_REFINEMENT,T_PR_EN_1
+અહીંથી Shoppers Stop કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+Show me stores selling groceries.,FIND_PRODUCT,T_FP_EN_2
+મને ₹10000થી ઓછી કિંમતના sunglasses બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+Under Armour jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+मुझे अच्छे hoodies खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+Where can I buy sneakers?,FIND_PRODUCT,T_FP_EN_1
+Mujhe acche lipstick kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+How to book flight tickets to Mumbai?,UNKNOWN,T_UNK_3
+Hamleys और Calvin Klein के groceries में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+Multiplex & Entertainment की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+કંઈક રમુજી કહો.,UNKNOWN,T_UNK_5
+Which is cheaper: Zara or McDonald's for formal shoes?,PRODUCT_COMPARISON,T_PC_EN_2
+Compare perfume between Cinépolis and Hamleys.,PRODUCT_COMPARISON,T_PC_EN_1
+Hypermarket & Groceries की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Start navigation to Croma.,NAVIGATION,T_NAV_EN_5
+Zara जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+Under Armour aur The Body Shop ke first aid kit mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+મને ₹500થી ઓછી કિંમતના sandals બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+asdfghjkl qwerty 12345,UNKNOWN,T_UNK_9
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+blazers kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+Mujhe ₹1000 se kam ke first aid kit dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+Is Levi's open right now?,FIND_STORE,T_FS_EN_6
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+મારે Dining & Food Court ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+નજીકમાં શૌચાલય ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+How to book flight tickets to Mumbai?,UNKNOWN,T_UNK_3
+Pizza Hut store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Do you have a Reliance Digital in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+Croma jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+Mujhe Home Centre kis floor par milega?,FIND_STORE,T_FS_HIR_2
+क्या इस मॉल में Under Armour की दुकान है?,FIND_STORE,T_FS_HI_3
+Mujhe lipstick kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+How to book flight tickets to Mumbai?,UNKNOWN,T_UNK_3
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+₹5000 ke under ke smartphones search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+Where is Puma?,FIND_STORE,T_FS_EN_1
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+Miniso pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+I need to find vitamins.,FIND_PRODUCT,T_FP_EN_3
+Mujhe Levi's tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+Only show items under ₹2000.,PRODUCT_REFINEMENT,T_PR_EN_3
+Do you have toys available here?,FIND_PRODUCT,T_FP_EN_4
+કંઈક રમુજી કહો.,UNKNOWN,T_UNK_5
+Looking for affordable smartphones within ₹500.,PRODUCT_REFINEMENT,T_PR_EN_4
+મને સૌથી નજીકનું સીડી બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+Shu aa mall ma Shoppers Stop chhe?,FIND_STORE,T_FS_GUR_3
+मुझे first aid kit कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+How to book flight tickets to Mumbai?,UNKNOWN,T_UNK_3
+सबसे नज़दीकी एलीवेटर कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+I need to find an customer helpdesk.,FACILITY_SEARCH,T_FAC_EN_2
+Mujhe ATM jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+What is the weather outside in Ahmedabad?,UNKNOWN,T_UNK_1
+Find H&M store for me.,FIND_STORE,T_FS_EN_2
+Do you have a Subway in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+Find The Body Shop store for me.,FIND_STORE,T_FS_EN_2
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+Toys & Games की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+मुझे अच्छे shirts खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+headphones માટે Hamleys સસ્તું છે કે Smart Bazaar?,PRODUCT_COMPARISON,T_PC_GU_2
+smartphones માટે Levi's સસ્તું છે કે Lifestyle?,PRODUCT_COMPARISON,T_PC_GU_2
+Which floor has a restroom?,FACILITY_SEARCH,T_FAC_EN_3
+મને સૌથી નજીકનું એલિવેટર બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+Mujhe acche first aid kit kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+₹500 ની અંદરના સારા sneakers ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+Do you have a Bata Footwear in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+Mare saara hoodies kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+Cinépolis અને Apollo Pharmacy ના jeans વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+Beauty & Cosmetics की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+આ મોલમાં sunglasses કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+मुझे Under Armour किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+I want to visit Apollo Pharmacy.,FIND_STORE,T_FS_EN_5
+Croma store kahan par hai?,FIND_STORE,T_FS_HIR_1
+Do you have a Reliance Digital in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+मुझे Marks & Spencer तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+Apparel की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+Mane Skechers sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+Mujhe Under Armour kis floor par milega?,FIND_STORE,T_FS_HIR_2
+lipstick के लिए Smart Bazaar सस्ता है या Reliance Digital?,PRODUCT_COMPARISON,T_PC_HI_2
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+How do I get to Home Centre from here?,NAVIGATION,T_NAV_EN_3
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+Sephora और Calvin Klein के toys में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+मुझे अच्छे groceries खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+અહીંથી Reliance Digital કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+I need to find board games.,FIND_PRODUCT,T_FP_EN_3
+Shu aa mall ma Marks & Spencer chhe?,FIND_STORE,T_FS_GUR_3
+first aid kit किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+Kya is mall mein Bata Footwear hai?,FIND_STORE,T_FS_HIR_3
+The Body Shop store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Sabse nazdeeki washroom kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+Under Armour जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+Mujhe formal shoes kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+Pizza Hut store kahan par hai?,FIND_STORE,T_FS_HIR_1
+Compare running shoes between KFC and Home Centre.,PRODUCT_COMPARISON,T_PC_EN_1
+Looking for a Dining & Food Court shop.,FIND_STORE,T_FS_EN_7
+Where is the nearest restroom?,FACILITY_SEARCH,T_FAC_EN_1
+Aa mall ma shirts kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+मुझे ₹1000 से कम के lipstick दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+Miniso जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+Guide me to Lower Ground.,NAVIGATION,T_NAV_EN_4
+₹2000 ke under ke coffee search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+મારે Home Decor ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+मुझे वॉशरूम जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+Cinépolis और Bata Footwear के television में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Show me sneakers under ₹500.,PRODUCT_REFINEMENT,T_PR_EN_1
+मुझे Sephora किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+Do you have lipstick available here?,FIND_PRODUCT,T_FP_EN_4
+Which is cheaper: Shoppers Stop or Forever 21 for toys?,PRODUCT_COMPARISON,T_PC_EN_2
+Smart Bazaar pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Mujhe ₹1500 se kam ke blazers dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+How do I get to Marks & Spencer from here?,NAVIGATION,T_NAV_EN_3
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+Show me stores selling perfume.,FIND_PRODUCT,T_FP_EN_2
+What is the difference in price for formal shoes at Croma vs Hamleys?,PRODUCT_COMPARISON,T_PC_EN_3
+અહીંથી Puma કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+How to book flight tickets to Mumbai?,UNKNOWN,T_UNK_3
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+Kya is mall mein McDonald's hai?,FIND_STORE,T_FS_HIR_3
+Filter lipstick below 1000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+Looking for a Dining & Food Court shop.,FIND_STORE,T_FS_EN_7
+मुझे running shoes कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+Who is the prime minister of India?,UNKNOWN,T_UNK_4
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+Mujhe ATM jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+Tell me a funny joke.,UNKNOWN,T_UNK_2
+Mane sauthi najiknu washroom batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+Do you have a Subway in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+Mane ₹10000 thi ochi kimatna sunglasses batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+₹3000 ke under ke television search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+यहाँ से Marks & Spencer कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+coffee किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+Mujhe ₹500 se kam ke formal shoes dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+Where is Smart Bazaar?,FIND_STORE,T_FS_EN_1
+Zara store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Skechers ane Home Centre na vitamins ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+Do you have first aid kit available here?,FIND_PRODUCT,T_FP_EN_4
+Lenskart pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+Give me walking directions to KFC.,NAVIGATION,T_NAV_EN_2
+Sephora aur Cinépolis ke hoodies mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+Start navigation to Reliance Digital.,NAVIGATION,T_NAV_EN_5
+Sabse nazdeeki washroom kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+मुझे पार्किंग जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+सबसे नज़दीकी एलीवेटर कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+મારે Multiplex & Entertainment ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+Mujhe cash machine jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+Cinépolis jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+सबसे नज़दीकी वॉशरूम कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+Mujhe ₹2000 se kam ke television dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+Sabse nazdeeki restroom kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+Aa mall ma board games kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+Looking for good sneakers.,FIND_PRODUCT,T_FP_EN_5
+आज की ताज़ा ख़बर क्या है?,UNKNOWN,T_UNK_8
+Take me to Smart Bazaar.,NAVIGATION,T_NAV_EN_1
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+Starbucks जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+Who is the prime minister of India?,UNKNOWN,T_UNK_4
+Mane Tommy Hilfiger kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+Do you have running shoes available here?,FIND_PRODUCT,T_FP_EN_4
+Starbucks store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+Show me stores selling toys.,FIND_PRODUCT,T_FP_EN_2
+asdfghjkl qwerty 12345,UNKNOWN,T_UNK_9
+How do I get to Sephora from here?,NAVIGATION,T_NAV_EN_3
+નજીકમાં શૌચાલય ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+आज की ताज़ा ख़बर क्या है?,UNKNOWN,T_UNK_8
+Mane laptops kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+groceries માટે Reliance Digital સસ્તું છે કે Starbucks?,PRODUCT_COMPARISON,T_PC_GU_2
+मुझे अच्छे laptops खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+Give me walking directions to Tommy Hilfiger.,NAVIGATION,T_NAV_EN_2
+આ મોલમાં coffee કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+Zara और Forever 21 के laptops में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+₹500 ni andar na sneakers jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+Mane Shoppers Stop sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+How do I get to Pizza Hut from here?,NAVIGATION,T_NAV_EN_3
+Where is Bata Footwear?,FIND_STORE,T_FS_EN_1
+Miniso સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+I need to find an escalator.,FACILITY_SEARCH,T_FAC_EN_2
+I want to visit Croma.,FIND_STORE,T_FS_EN_5
+Who is the prime minister of India?,UNKNOWN,T_UNK_4
+Reliance Digital aur Lifestyle ke television mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Which is cheaper: Lifestyle or Lenskart for shirts?,PRODUCT_COMPARISON,T_PC_EN_2
+₹1000 ની અંદરના સારા vitamins ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+Shu aa mall ma Hamleys chhe?,FIND_STORE,T_FS_GUR_3
+મારે સારા vitamins ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+મારે Opticals ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+Guide me to 1F.,NAVIGATION,T_NAV_EN_4
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+Filter sneakers below 1000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+Mane ₹50000 thi ochi kimatna smartphones batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+Looking for a Dining & Food Court shop.,FIND_STORE,T_FS_EN_7
+કંઈક રમુજી કહો.,UNKNOWN,T_UNK_5
+Mare saara blazers kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+Where is the nearest food court?,FACILITY_SEARCH,T_FAC_EN_1
+Mujhe coffee kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+मुझे Skechers तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+મારે સારા dresses ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+Where is Reliance Digital?,FIND_STORE,T_FS_EN_1
+Filter television below 1000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+headphones किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+मुझे एलीवेटर जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+Where is the nearest glass elevator?,FACILITY_SEARCH,T_FAC_EN_1
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+What is the weather outside in Ahmedabad?,UNKNOWN,T_UNK_1
+Smart Bazaar સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+Cinépolis store kahan par hai?,FIND_STORE,T_FS_HIR_1
+મને Lifestyle સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+Looking for affordable blazers within ₹50000.,PRODUCT_REFINEMENT,T_PR_EN_4
+Shu aa mall ma McDonald's chhe?,FIND_STORE,T_FS_GUR_3
+Which floor has a cash machine?,FACILITY_SEARCH,T_FAC_EN_3
+Croma aur Zara ke coffee mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+અહીંથી Zara કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+सबसे नज़दीकी पार्किंग कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+Find Puma store for me.,FIND_STORE,T_FS_EN_2
+asdfghjkl qwerty 12345,UNKNOWN,T_UNK_9
+sunglasses किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+perfume किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+₹500 ની અંદરના સારા sneakers ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+I want to visit Subway.,FIND_STORE,T_FS_EN_5
+Sabse nazdeeki restroom kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+Yahan se Apollo Pharmacy kaise jaun?,NAVIGATION,T_NAV_HIR_3
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+મને The Body Shop સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+મને ₹500થી ઓછી કિંમતના dresses બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+Marks & Spencer स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+Aahin thi Puma kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+headphones kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+Give me walking directions to Tommy Hilfiger.,NAVIGATION,T_NAV_EN_2
+Where is Smart Bazaar?,FIND_STORE,T_FS_EN_1
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Looking for good sunglasses.,FIND_PRODUCT,T_FP_EN_5
+₹500 ની અંદરના સારા coffee ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+Show me smartphones under ₹10000.,PRODUCT_REFINEMENT,T_PR_EN_1
+Pizza Hut स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+Mane sauthi najiknu cash machine batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+Guide me to G.,NAVIGATION,T_NAV_EN_4
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+What is the difference in price for running shoes at Levi's vs Calvin Klein?,PRODUCT_COMPARISON,T_PC_EN_3
+Compare sneakers between Forever 21 and Hamleys.,PRODUCT_COMPARISON,T_PC_EN_1
+Najikma food court kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+Start navigation to Puma.,NAVIGATION,T_NAV_EN_5
+Show me shirts under ₹5000.,PRODUCT_REFINEMENT,T_PR_EN_1
+Mare saara t-shirts kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+आज की ताज़ा ख़बर क्या है?,UNKNOWN,T_UNK_8
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+મને sneakers ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+Which floor has a parking?,FACILITY_SEARCH,T_FAC_EN_3
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+નજીકમાં પાર્કિંગ ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+Mane vitamins kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+What is the difference in price for vitamins at Pizza Hut vs Bata Footwear?,PRODUCT_COMPARISON,T_PC_EN_3
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+નજીકમાં સીડી ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+Yahan se Smart Bazaar kaise jaun?,NAVIGATION,T_NAV_HIR_3
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+₹500 ni andar na television jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+Shoppers Stop और Cinépolis के sneakers में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+મને સૌથી નજીકનું પાર્કિંગ બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+₹10000 के बजट में shirts फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+मुझे अच्छे smartphones खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+I need to find an food court.,FACILITY_SEARCH,T_FAC_EN_2
+मुझे अच्छे running shoes खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+Miniso jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+મને KFC સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Shu aa mall ma The Body Shop chhe?,FIND_STORE,T_FS_GUR_3
+Mane McDonald's kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+मुझे burgers कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+Where is the nearest parking?,FACILITY_SEARCH,T_FAC_EN_1
+Looking for a Toys & Games shop.,FIND_STORE,T_FS_EN_7
+Mujhe ₹1500 se kam ke sneakers dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+Looking for affordable sunglasses within ₹1500.,PRODUCT_REFINEMENT,T_PR_EN_4
+Which floor has a customer helpdesk?,FACILITY_SEARCH,T_FAC_EN_3
+Aahin thi Croma kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+Which is cheaper: Forever 21 or Lifestyle for sunglasses?,PRODUCT_COMPARISON,T_PC_EN_2
+I need to find vitamins.,FIND_PRODUCT,T_FP_EN_3
+Where is Home Centre?,FIND_STORE,T_FS_EN_1
+Aahin thi Miniso kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+Reliance Digital ane Home Centre na television ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+सबसे नज़दीकी शौचालय कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+Multiplex & Entertainment की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+Aa mall ma dresses kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+मुझे sunglasses कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+मुझे Starbucks किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+₹1500 ની અંદરના સારા formal shoes ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+Which floor is Under Armour on?,FIND_STORE,T_FS_EN_3
+Starbucks પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+₹3000 ni andar na first aid kit jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+यहाँ से Lifestyle कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+મને સૌથી નજીકનું વોશરૂમ બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+મને lipstick ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+क्या इस मॉल में H&M की दुकान है?,FIND_STORE,T_FS_HI_3
+Starbucks जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+Where is Shoppers Stop?,FIND_STORE,T_FS_EN_1
+मुझे ₹2000 से कम के lipstick दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+Calvin Klein jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+મારે સારા television ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+सबसे नज़दीकी एलीवेटर कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+मुझे Skechers तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+Compare sandals between Under Armour and Home Centre.,PRODUCT_COMPARISON,T_PC_EN_1
+blablabla nothing here,UNKNOWN,T_UNK_10
+Sephora અને Zara ના coffee વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Levi's store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Do you have shirts available here?,FIND_PRODUCT,T_FP_EN_4
+Mujhe food court jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+What is the weather outside in Ahmedabad?,UNKNOWN,T_UNK_1
+Do you have a Cinépolis in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+Which floor has a food court?,FACILITY_SEARCH,T_FAC_EN_3
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+Aahin thi Taco Bell kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+મારે Dining & Food Court ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+I need to find lipstick.,FIND_PRODUCT,T_FP_EN_3
+Which floor is Croma on?,FIND_STORE,T_FS_EN_3
+Guide me to 3F.,NAVIGATION,T_NAV_EN_4
+અહીંથી Sephora કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+Shu aa mall ma Puma chhe?,FIND_STORE,T_FS_GUR_3
+Mujhe Skechers kis floor par milega?,FIND_STORE,T_FS_HIR_2
+Under Armour પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+Mujhe t-shirts kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+Start navigation to Lenskart.,NAVIGATION,T_NAV_EN_5
+Start navigation to Puma.,NAVIGATION,T_NAV_EN_5
+Only show items under ₹1000.,PRODUCT_REFINEMENT,T_PR_EN_3
+Calvin Klein સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+मुझे हेल्पडेस्क जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+મારે સારા sneakers ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+Mare saara blazers kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+₹5000 ની અંદરના સારા coffee ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+t-shirts kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+Kya is mall mein Subway hai?,FIND_STORE,T_FS_HIR_3
+Where can I buy television?,FIND_PRODUCT,T_FP_EN_1
+Zara store kahan par hai?,FIND_STORE,T_FS_HIR_1
+I want to visit Apollo Pharmacy.,FIND_STORE,T_FS_EN_5
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+મને Apollo Pharmacy કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+Mane sauthi najiknu escalator batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+Yahan se KFC kaise jaun?,NAVIGATION,T_NAV_HIR_3
+Cinépolis સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+vitamins kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+Do you have a Bata Footwear in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+How to book flight tickets to Mumbai?,UNKNOWN,T_UNK_3
+Najikma glass elevator kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+Forever 21 aur Bata Footwear ke toys mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+શું આ મોલમાં Miniso છે?,FIND_STORE,T_FS_GU_3
+smartphones के लिए The Body Shop सस्ता है या H&M?,PRODUCT_COMPARISON,T_PC_HI_2
+मुझे KFC किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Under Armour અને Tommy Hilfiger ના sneakers વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+Aahin thi Levi's kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+Mujhe KFC kis floor par milega?,FIND_STORE,T_FS_HIR_2
+यहाँ से Shoppers Stop कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+નજીકમાં ફૂડ કોર્ટ ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+Looking for good jeans.,FIND_PRODUCT,T_FP_EN_5
+અહીંથી Bata Footwear કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+Croma store kahan par hai?,FIND_STORE,T_FS_HIR_1
+Mujhe KFC kis floor par milega?,FIND_STORE,T_FS_HIR_2
+Where is the nearest food court?,FACILITY_SEARCH,T_FAC_EN_1
+Show me stores selling shirts.,FIND_PRODUCT,T_FP_EN_2
+આ મોલમાં groceries કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+Show me sandals under ₹2000.,PRODUCT_REFINEMENT,T_PR_EN_1
+Starbucks પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+Mujhe Forever 21 tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+Smart Bazaar aur KFC ke board games mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+Where can I buy dresses?,FIND_PRODUCT,T_FP_EN_1
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+Show me headphones under ₹1500.,PRODUCT_REFINEMENT,T_PR_EN_1
+jeans માટે Reliance Digital સસ્તું છે કે Subway?,PRODUCT_COMPARISON,T_PC_GU_2
+Cinépolis પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+H&M स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+Croma ane McDonald's na perfume ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+मुझे dresses कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+Looking for affordable lipstick within ₹1000.,PRODUCT_REFINEMENT,T_PR_EN_4
+Guide me to G.,NAVIGATION,T_NAV_EN_4
+મારે Opticals ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+क्या इस मॉल में Reliance Digital की दुकान है?,FIND_STORE,T_FS_HI_3
+Take me to Taco Bell.,NAVIGATION,T_NAV_EN_1
+Mane formal shoes kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+I want to visit Lenskart.,FIND_STORE,T_FS_EN_5
+Tell me a funny joke.,UNKNOWN,T_UNK_2
+Show me sandals under ₹1500.,PRODUCT_REFINEMENT,T_PR_EN_1
+Mane sauthi najiknu customer helpdesk batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+I want to visit McDonald's.,FIND_STORE,T_FS_EN_5
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+Give me walking directions to Under Armour.,NAVIGATION,T_NAV_EN_2
+मुझे Pizza Hut तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+Smart Bazaar जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+Looking for a Opticals shop.,FIND_STORE,T_FS_EN_7
+मुझे शौचालय जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+t-shirts के लिए Home Centre सस्ता है या H&M?,PRODUCT_COMPARISON,T_PC_HI_2
+મારે Home Decor ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+₹3000 ની અંદરના સારા laptops ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+मुझे ₹3000 से कम के toys दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+Give me walking directions to Under Armour.,NAVIGATION,T_NAV_EN_2
+Which floor is Pizza Hut on?,FIND_STORE,T_FS_EN_3
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+₹1000 के बजट में burgers फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+Which floor is Lifestyle on?,FIND_STORE,T_FS_EN_3
+blazers માટે Lifestyle સસ્તું છે કે Tommy Hilfiger?,PRODUCT_COMPARISON,T_PC_GU_2
+I need to find an ATM.,FACILITY_SEARCH,T_FAC_EN_2
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+McDonald's और Shoppers Stop के coffee में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+Mujhe acche first aid kit kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+मुझे ₹1500 से कम के burgers दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+Show me stores selling perfume.,FIND_PRODUCT,T_FP_EN_2
+Tommy Hilfiger પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+blablabla nothing here,UNKNOWN,T_UNK_10
+મને Tommy Hilfiger સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+I need to find smartphones.,FIND_PRODUCT,T_FP_EN_3
+Looking for affordable shirts within ₹3000.,PRODUCT_REFINEMENT,T_PR_EN_4
+નજીકમાં શૌચાલય ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+McDonald's store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Mare saara jeans kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+Where is Under Armour?,FIND_STORE,T_FS_EN_1
+asdfghjkl qwerty 12345,UNKNOWN,T_UNK_9
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+What is the weather outside in Ahmedabad?,UNKNOWN,T_UNK_1
+Hamleys jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+Is Subway open right now?,FIND_STORE,T_FS_EN_6
+Only show items under ₹500.,PRODUCT_REFINEMENT,T_PR_EN_3
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+formal shoes किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+Where is Forever 21?,FIND_STORE,T_FS_EN_1
+What is the difference in price for first aid kit at Starbucks vs Reliance Digital?,PRODUCT_COMPARISON,T_PC_EN_3
+Which is cheaper: Forever 21 or Bata Footwear for toys?,PRODUCT_COMPARISON,T_PC_EN_2
+Mujhe cash machine jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+Looking for a Apparel shop.,FIND_STORE,T_FS_EN_7
+₹50000 ની અંદરના સારા coffee ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+Mujhe cricket score batao.,UNKNOWN,T_UNK_7
+first aid kit kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+मुझे एलीवेटर जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+Take me to Tommy Hilfiger.,NAVIGATION,T_NAV_EN_1
+મારે Hypermarket & Groceries ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+KFC aur Zara ke smartphones mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+મારે Hypermarket & Groceries ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+Give me walking directions to Shoppers Stop.,NAVIGATION,T_NAV_EN_2
+मुझे Lenskart किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+Under Armour store kahan par hai?,FIND_STORE,T_FS_HIR_1
+₹2000 के बजट में shirts फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+મારે સારા laptops ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+Only show items under ₹1500.,PRODUCT_REFINEMENT,T_PR_EN_3
+Filter dresses below 3000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+Looking for good dresses.,FIND_PRODUCT,T_FP_EN_5
+Compare coffee between McDonald's and Under Armour.,PRODUCT_COMPARISON,T_PC_EN_1
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+मुझे Under Armour किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+Mujhe Pizza Hut kis floor par milega?,FIND_STORE,T_FS_HIR_2
+Hamleys સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+What is the difference in price for sunglasses at Hamleys vs Zara?,PRODUCT_COMPARISON,T_PC_EN_3
+Find H&M store for me.,FIND_STORE,T_FS_EN_2
+Looking for affordable coffee within ₹50000.,PRODUCT_REFINEMENT,T_PR_EN_4
+Smart Bazaar aur Skechers ke shirts mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+મારે સારા blazers ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+Where is the nearest glass elevator?,FACILITY_SEARCH,T_FAC_EN_1
+Looking for good dresses.,FIND_PRODUCT,T_FP_EN_5
+Hamleys aur KFC ke smartphones mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+Do you have a H&M in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+Kya is mall mein Shoppers Stop hai?,FIND_STORE,T_FS_HIR_3
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+Compare hoodies between Lifestyle and Subway.,PRODUCT_COMPARISON,T_PC_EN_1
+सबसे नज़दीकी हेल्पडेस्क कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+મને ₹500થી ઓછી કિંમતના coffee બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+Looking for affordable sandals within ₹5000.,PRODUCT_REFINEMENT,T_PR_EN_4
+મારે Opticals ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+मुझे Levi's किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+Is Taco Bell open right now?,FIND_STORE,T_FS_EN_6
+Mujhe Calvin Klein kis floor par milega?,FIND_STORE,T_FS_HIR_2
+Tell me a funny joke.,UNKNOWN,T_UNK_2
+Mujhe acche hoodies kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+મને laptops ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+Looking for good perfume.,FIND_PRODUCT,T_FP_EN_5
+मुझे वॉशरूम जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+મને coffee ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+Tell me a funny joke.,UNKNOWN,T_UNK_2
+Mujhe ₹3000 se kam ke burgers dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+₹3000 ke under ke blazers search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+H&M પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+Looking for a Pharmacy & Wellness shop.,FIND_STORE,T_FS_EN_7
+શું આ મોલમાં Taco Bell છે?,FIND_STORE,T_FS_GU_3
+Filter coffee below 500 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+Tell me a funny joke.,UNKNOWN,T_UNK_2
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+મને ₹2000થી ઓછી કિંમતના sunglasses બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+₹10000 ની અંદરના સારા sunglasses ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+શું આ મોલમાં Forever 21 છે?,FIND_STORE,T_FS_GU_3
+Mujhe Apollo Pharmacy tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+Looking for a Toys & Games shop.,FIND_STORE,T_FS_EN_7
+क्या इस मॉल में Reliance Digital की दुकान है?,FIND_STORE,T_FS_HI_3
+Mujhe cricket score batao.,UNKNOWN,T_UNK_7
+Where is the nearest parking?,FACILITY_SEARCH,T_FAC_EN_1
+Mane ₹500 thi ochi kimatna groceries batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+અમદાવાદમાં આજનું હવામાન કેવું છે?,UNKNOWN,T_UNK_6
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+Mane H&M sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+Mane sauthi najiknu parking batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+Mujhe cricket score batao.,UNKNOWN,T_UNK_7
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+મારે સારા smartphones ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+सबसे नज़दीकी वॉशरूम कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Bata Footwear स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+toys के लिए Shoppers Stop सस्ता है या Subway?,PRODUCT_COMPARISON,T_PC_HI_2
+Take me to Skechers.,NAVIGATION,T_NAV_EN_1
+blablabla nothing here,UNKNOWN,T_UNK_10
+Mujhe ₹3000 se kam ke television dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+I need to find an cash machine.,FACILITY_SEARCH,T_FAC_EN_2
+અમદાવાદમાં આજનું હવામાન કેવું છે?,UNKNOWN,T_UNK_6
+board games kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+અહીંથી Home Centre કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+Reliance Digital jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+મને Skechers સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+Start navigation to Marks & Spencer.,NAVIGATION,T_NAV_EN_5
+Taco Bell aur Starbucks ke groceries mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+मुझे अच्छे burgers खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+Najikma food court kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+Start navigation to Marks & Spencer.,NAVIGATION,T_NAV_EN_5
+How do I get to Croma from here?,NAVIGATION,T_NAV_EN_3
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+KFC pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Mujhe Zara tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+Compare board games between Croma and Pizza Hut.,PRODUCT_COMPARISON,T_PC_EN_1
+મને ₹5000થી ઓછી કિંમતના running shoes બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+क्या इस मॉल में Pizza Hut की दुकान है?,FIND_STORE,T_FS_HI_3
+Mare saara board games kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+Yahan se Cinépolis kaise jaun?,NAVIGATION,T_NAV_HIR_3
+I need to find sunglasses.,FIND_PRODUCT,T_FP_EN_3
+Mane Zara sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+મને સૌથી નજીકનું ફૂડ કોર્ટ બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+Where can I buy sandals?,FIND_PRODUCT,T_FP_EN_1
+Which floor has a food court?,FACILITY_SEARCH,T_FAC_EN_3
+यहाँ से Smart Bazaar कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+Mane groceries kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+Start navigation to Smart Bazaar.,NAVIGATION,T_NAV_EN_5
+મને ₹2000થી ઓછી કિંમતના headphones બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+Which is cheaper: KFC or Miniso for blazers?,PRODUCT_COMPARISON,T_PC_EN_2
+₹5000 के बजट में sneakers फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+મને Marks & Spencer સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+કંઈક રમુજી કહો.,UNKNOWN,T_UNK_5
+Mane headphones kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+₹500 ni andar na lipstick jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+Mane Taco Bell sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+क्या इस मॉल में Tommy Hilfiger की दुकान है?,FIND_STORE,T_FS_HI_3
+Which floor is McDonald's on?,FIND_STORE,T_FS_EN_3
+Yahan se Apollo Pharmacy kaise jaun?,NAVIGATION,T_NAV_HIR_3
+Show me dresses under ₹5000.,PRODUCT_REFINEMENT,T_PR_EN_1
+I want to visit Smart Bazaar.,FIND_STORE,T_FS_EN_5
+Where is KFC?,FIND_STORE,T_FS_EN_1
+Shu aa mall ma Home Centre chhe?,FIND_STORE,T_FS_GUR_3
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+क्या इस मॉल में Lifestyle की दुकान है?,FIND_STORE,T_FS_HI_3
+Mujhe acche board games kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+Mujhe blazers kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+મને ₹1500થી ઓછી કિંમતના burgers બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+શું આ મોલમાં Taco Bell છે?,FIND_STORE,T_FS_GU_3
+Najikma customer helpdesk kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+Mujhe Cinépolis tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+यहाँ से Lifestyle कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+મને first aid kit ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+Mane Apollo Pharmacy kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+મને ₹1500થી ઓછી કિંમતના television બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+મને television ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+Mane Forever 21 kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+Miniso અને Tommy Hilfiger ના vitamins વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+Where is Taco Bell?,FIND_STORE,T_FS_EN_1
+Looking for affordable blazers within ₹3000.,PRODUCT_REFINEMENT,T_PR_EN_4
+Which floor is McDonald's on?,FIND_STORE,T_FS_EN_3
+burgers માટે Apollo Pharmacy સસ્તું છે કે Shoppers Stop?,PRODUCT_COMPARISON,T_PC_GU_2
+Compare blazers between Subway and Zara.,PRODUCT_COMPARISON,T_PC_EN_1
+Looking for good first aid kit.,FIND_PRODUCT,T_FP_EN_5
+Sportswear की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+Do you have sandals available here?,FIND_PRODUCT,T_FP_EN_4
+Filter board games below 1000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+Is Home Centre open right now?,FIND_STORE,T_FS_EN_6
+Mane Apollo Pharmacy kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+Miniso और Bata Footwear के television में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+₹2000 ni andar na headphones jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+Apparel की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+How do I get to Forever 21 from here?,NAVIGATION,T_NAV_EN_3
+Mane Puma sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+Mane McDonald's sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+અહીંથી Marks & Spencer કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+Start navigation to Levi's.,NAVIGATION,T_NAV_EN_5
+Where can I buy coffee?,FIND_PRODUCT,T_FP_EN_1
+₹3000 ni andar na running shoes jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+Sabse nazdeeki glass elevator kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+Mujhe acche coffee kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+मुझे एटीएम जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+Under Armour ane Hamleys na board games ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+Filter burgers below 50000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+मुझे Reliance Digital तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+Start navigation to Pizza Hut.,NAVIGATION,T_NAV_EN_5
+Which floor is Apollo Pharmacy on?,FIND_STORE,T_FS_EN_3
+मुझे sunglasses कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+Cinépolis ane Smart Bazaar na first aid kit ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+How to book flight tickets to Mumbai?,UNKNOWN,T_UNK_3
+perfume के लिए Reliance Digital सस्ता है या Skechers?,PRODUCT_COMPARISON,T_PC_HI_2
+Aahin thi Lenskart kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+I need to find an glass elevator.,FACILITY_SEARCH,T_FAC_EN_2
+Tommy Hilfiger સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+lipstick kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+मुझे अच्छे board games खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+यहाँ से Zara कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+Do you have a Forever 21 in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+I need to find smartphones.,FIND_PRODUCT,T_FP_EN_3
+Mujhe cash machine jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+Kya is mall mein Calvin Klein hai?,FIND_STORE,T_FS_HIR_3
+Give me walking directions to Under Armour.,NAVIGATION,T_NAV_EN_2
+મને ₹1500થી ઓછી કિંમતના sneakers બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+Mane toys kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+Mujhe ₹500 se kam ke blazers dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Which is cheaper: Cinépolis or Starbucks for running shoes?,PRODUCT_COMPARISON,T_PC_EN_2
+Looking for good television.,FIND_PRODUCT,T_FP_EN_5
+આ મોલમાં blazers કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+groceries માટે Calvin Klein સસ્તું છે કે Marks & Spencer?,PRODUCT_COMPARISON,T_PC_GU_2
+मुझे अच्छे jeans खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+How do I get to Marks & Spencer from here?,NAVIGATION,T_NAV_EN_3
+Shu aa mall ma Starbucks chhe?,FIND_STORE,T_FS_GUR_3
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+Find Lifestyle store for me.,FIND_STORE,T_FS_EN_2
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+Only show items under ₹50000.,PRODUCT_REFINEMENT,T_PR_EN_3
+मुझे शौचालय जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+Filter hoodies below 2000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+Give me walking directions to Home Centre.,NAVIGATION,T_NAV_EN_2
+Do you have board games available here?,FIND_PRODUCT,T_FP_EN_4
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+અહીંથી Zara કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+મને H&M કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+Is Lenskart open right now?,FIND_STORE,T_FS_EN_6
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+અહીંથી Calvin Klein કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+perfume kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+શું આ મોલમાં Puma છે?,FIND_STORE,T_FS_GU_3
+Where is the nearest washroom?,FACILITY_SEARCH,T_FAC_EN_1
+asdfghjkl qwerty 12345,UNKNOWN,T_UNK_9
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+Lenskart પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+Looking for a Dining & Food Court shop.,FIND_STORE,T_FS_EN_7
+Croma pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+lipstick kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+કંઈક રમુજી કહો.,UNKNOWN,T_UNK_5
+Looking for a Home Decor shop.,FIND_STORE,T_FS_EN_7
+Subway jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+क्या इस मॉल में Puma की दुकान है?,FIND_STORE,T_FS_HI_3
+What is the weather outside in Ahmedabad?,UNKNOWN,T_UNK_1
+मुझे ₹5000 से कम के laptops दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+Taco Bell pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+નજીકમાં લિફ્ટ ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+Mujhe escalator jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+यहाँ से Shoppers Stop कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+Najikma glass elevator kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+Mujhe ₹500 se kam ke sandals dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+I need to find an customer helpdesk.,FACILITY_SEARCH,T_FAC_EN_2
+Mane running shoes kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+Which floor is McDonald's on?,FIND_STORE,T_FS_EN_3
+The Body Shop store kahan par hai?,FIND_STORE,T_FS_HIR_1
+Aa mall ma lipstick kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+Calvin Klein जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+Take me to Under Armour.,NAVIGATION,T_NAV_EN_1
+₹500 ની અંદરના સારા burgers ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+Filter first aid kit below 2000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+મારે સારા laptops ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+Which floor is Puma on?,FIND_STORE,T_FS_EN_3
+Looking for good television.,FIND_PRODUCT,T_FP_EN_5
+Najikma restroom kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+How do I get to Croma from here?,NAVIGATION,T_NAV_EN_3
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+Take me to Forever 21.,NAVIGATION,T_NAV_EN_1
+Aahin thi Apollo Pharmacy kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+Aahin thi Puma kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+Mujhe H&M tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+Taco Bell स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+Take me to H&M.,NAVIGATION,T_NAV_EN_1
+Which is cheaper: Subway or KFC for burgers?,PRODUCT_COMPARISON,T_PC_EN_2
+શું આ મોલમાં Subway છે?,FIND_STORE,T_FS_GU_3
+મને groceries ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+क्या इस मॉल में Home Centre की दुकान है?,FIND_STORE,T_FS_HI_3
+आज की ताज़ा ख़बर क्या है?,UNKNOWN,T_UNK_8
+सबसे नज़दीकी एलीवेटर कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+Tommy Hilfiger અને The Body Shop ના board games વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+Mujhe Starbucks tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+Sabse nazdeeki customer helpdesk kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+मुझे lipstick कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+groceries के लिए The Body Shop सस्ता है या Miniso?,PRODUCT_COMPARISON,T_PC_HI_2
+₹2000 के बजट में sandals फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+નજીકમાં શૌચાલય ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+dresses માટે H&M સસ્તું છે કે Under Armour?,PRODUCT_COMPARISON,T_PC_GU_2
+Croma aur Reliance Digital ke sunglasses mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Najikma washroom kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+Sabse nazdeeki parking kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+Mujhe acche smartphones kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+Where is Cinépolis?,FIND_STORE,T_FS_EN_1
+Hypermarket & Groceries की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+Aahin thi Tommy Hilfiger kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+What is the difference in price for laptops at Marks & Spencer vs Shoppers Stop?,PRODUCT_COMPARISON,T_PC_EN_3
+Is Lifestyle open right now?,FIND_STORE,T_FS_EN_6
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+Aa mall ma smartphones kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+Tommy Hilfiger स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+Show me stores selling running shoes.,FIND_PRODUCT,T_FP_EN_2
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+What is the difference in price for running shoes at Levi's vs Forever 21?,PRODUCT_COMPARISON,T_PC_EN_3
+What is the difference in price for laptops at Taco Bell vs Apollo Pharmacy?,PRODUCT_COMPARISON,T_PC_EN_3
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+Home Centre pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Only show items under ₹1000.,PRODUCT_REFINEMENT,T_PR_EN_3
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+Mujhe Lifestyle kis floor par milega?,FIND_STORE,T_FS_HIR_2
+મને સૌથી નજીકનું પાર્કિંગ બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+What is the weather outside in Ahmedabad?,UNKNOWN,T_UNK_1
+Where can I buy formal shoes?,FIND_PRODUCT,T_FP_EN_1
+Toys & Games की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+Shoppers Stop जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+KFC સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+सबसे नज़दीकी लिफ्ट कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+सबसे नज़दीकी सीढ़ियां कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+Starbucks aur KFC ke groceries mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+₹1000 ke under ke toys search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+board games किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+Looking for affordable board games within ₹5000.,PRODUCT_REFINEMENT,T_PR_EN_4
+Guide me to Floor 1.,NAVIGATION,T_NAV_EN_4
+Find Smart Bazaar store for me.,FIND_STORE,T_FS_EN_2
+मुझे ₹50000 से कम के toys दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+Mujhe restroom jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+Mujhe Taco Bell kis floor par milega?,FIND_STORE,T_FS_HIR_2
+What is the difference in price for dresses at Puma vs Sephora?,PRODUCT_COMPARISON,T_PC_EN_3
+Sephora pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Looking for affordable blazers within ₹3000.,PRODUCT_REFINEMENT,T_PR_EN_4
+₹500 के बजट में dresses फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+₹2000 ni andar na shirts jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+Mujhe washroom jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+Show me stores selling television.,FIND_PRODUCT,T_FP_EN_2
+Reliance Digital और Sephora के board games में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+Mujhe cricket score batao.,UNKNOWN,T_UNK_7
+Only show items under ₹5000.,PRODUCT_REFINEMENT,T_PR_EN_3
+Mare saara coffee kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+Where can I buy television?,FIND_PRODUCT,T_FP_EN_1
+મને ₹1000થી ઓછી કિંમતના headphones બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+મને સૌથી નજીકનું એલિવેટર બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+Which is cheaper: Skechers or KFC for lipstick?,PRODUCT_COMPARISON,T_PC_EN_2
+Mujhe acche groceries kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+Show me stores selling burgers.,FIND_PRODUCT,T_FP_EN_2
+Looking for a Sportswear shop.,FIND_STORE,T_FS_EN_7
+કંઈક રમુજી કહો.,UNKNOWN,T_UNK_5
+Mane groceries kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+₹500 ni andar na burgers jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+Where can I buy laptops?,FIND_PRODUCT,T_FP_EN_1
+Give me walking directions to Reliance Digital.,NAVIGATION,T_NAV_EN_2
+Mujhe Levi's tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+Mane sunglasses kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+I need to find lipstick.,FIND_PRODUCT,T_FP_EN_3
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Where is the nearest ATM?,FACILITY_SEARCH,T_FAC_EN_1
+Bata Footwear store kahan par hai?,FIND_STORE,T_FS_HIR_1
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+Mujhe Smart Bazaar kis floor par milega?,FIND_STORE,T_FS_HIR_2
+Which floor has a cash machine?,FACILITY_SEARCH,T_FAC_EN_3
+Marks & Spencer और McDonald's के blazers में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+મારે Apparel ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+मुझे first aid kit कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+Looking for a Footwear shop.,FIND_STORE,T_FS_EN_7
+અમદાવાદમાં આજનું હવામાન કેવું છે?,UNKNOWN,T_UNK_6
+Smart Bazaar store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Kya is mall mein Forever 21 hai?,FIND_STORE,T_FS_HIR_3
+Sephora store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Mujhe cricket score batao.,UNKNOWN,T_UNK_7
+Looking for a Sportswear shop.,FIND_STORE,T_FS_EN_7
+Mane Subway sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+Aahin thi Bata Footwear kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+I want to visit Sephora.,FIND_STORE,T_FS_EN_5
+Looking for good shirts.,FIND_PRODUCT,T_FP_EN_5
+Sabse nazdeeki escalator kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+આ મોલમાં sneakers કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+Where can I buy headphones?,FIND_PRODUCT,T_FP_EN_1
+Kya is mall mein KFC hai?,FIND_STORE,T_FS_HIR_3
+Mujhe cricket score batao.,UNKNOWN,T_UNK_7
+मुझे अच्छे lipstick खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+television किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+मुझे formal shoes कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+Mane ₹2000 thi ochi kimatna dresses batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+Levi's store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Mujhe ₹2000 se kam ke perfume dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+Which floor has a food court?,FACILITY_SEARCH,T_FAC_EN_3
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+Which floor is Shoppers Stop on?,FIND_STORE,T_FS_EN_3
+Aahin thi Puma kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+Mane Lifestyle sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+McDonald's પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+groceries માટે Taco Bell સસ્તું છે કે Pizza Hut?,PRODUCT_COMPARISON,T_PC_GU_2
+मुझे Under Armour तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+Which floor is Levi's on?,FIND_STORE,T_FS_EN_3
+Which floor has a ATM?,FACILITY_SEARCH,T_FAC_EN_3
+મને Subway કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+Calvin Klein અને Forever 21 ના smartphones વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Who is the prime minister of India?,UNKNOWN,T_UNK_4
+મને ₹1000થી ઓછી કિંમતના headphones બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+sneakers kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+Aa mall ma first aid kit kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+Mujhe coffee kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+यहाँ से Pizza Hut कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+અહીંથી McDonald's કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+How do I get to Tommy Hilfiger from here?,NAVIGATION,T_NAV_EN_3
+મારે સારા blazers ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+મને sunglasses ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+यहाँ से Levi's कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+Where can I buy sunglasses?,FIND_PRODUCT,T_FP_EN_1
+Aahin thi Home Centre kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+burgers के लिए Pizza Hut सस्ता है या Under Armour?,PRODUCT_COMPARISON,T_PC_HI_2
+શું આ મોલમાં Marks & Spencer છે?,FIND_STORE,T_FS_GU_3
+Apollo Pharmacy store kahan par hai?,FIND_STORE,T_FS_HIR_1
+Shoppers Stop pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Show me jeans under ₹1000.,PRODUCT_REFINEMENT,T_PR_EN_1
+Sephora aur Croma ke sandals mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+I need to find an parking.,FACILITY_SEARCH,T_FAC_EN_2
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+सबसे नज़दीकी एटीएम कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+Mane sauthi najiknu cash machine batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+Guide me to Floor 3.,NAVIGATION,T_NAV_EN_4
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+Sabse nazdeeki food court kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+Where is the nearest cash machine?,FACILITY_SEARCH,T_FAC_EN_1
+आज की ताज़ा ख़बर क्या है?,UNKNOWN,T_UNK_8
+મને groceries ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+sandals किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+Looking for affordable television within ₹500.,PRODUCT_REFINEMENT,T_PR_EN_4
+અમદાવાદમાં આજનું હવામાન કેવું છે?,UNKNOWN,T_UNK_6
+मुझे Levi's तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+Mujhe Levi's kis floor par milega?,FIND_STORE,T_FS_HIR_2
+I need to find an ATM.,FACILITY_SEARCH,T_FAC_EN_2
+I need to find an cash machine.,FACILITY_SEARCH,T_FAC_EN_2
+Mujhe Smart Bazaar tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+મારે Hypermarket & Groceries ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+Mane H&M kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+मुझे Lifestyle तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+What is the weather outside in Ahmedabad?,UNKNOWN,T_UNK_1
+Skechers ane Starbucks na laptops ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+Where is the nearest restroom?,FACILITY_SEARCH,T_FAC_EN_1
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+Mare saara board games kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+Shu aa mall ma The Body Shop chhe?,FIND_STORE,T_FS_GUR_3
+Mujhe toys kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+₹1500 के बजट में lipstick फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+Where can I buy t-shirts?,FIND_PRODUCT,T_FP_EN_1
+Show me shirts under ₹2000.,PRODUCT_REFINEMENT,T_PR_EN_1
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+Mare saara headphones kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+આ મોલમાં blazers કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+Aa mall ma jeans kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+Mane Bata Footwear kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+मुझे Tommy Hilfiger किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+toys किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+Show me smartphones under ₹10000.,PRODUCT_REFINEMENT,T_PR_EN_1
+hoodies માટે The Body Shop સસ્તું છે કે Zara?,PRODUCT_COMPARISON,T_PC_GU_2
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Kya is mall mein Puma hai?,FIND_STORE,T_FS_HIR_3
+Which floor is Calvin Klein on?,FIND_STORE,T_FS_EN_3
+₹1000 ke under ke first aid kit search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+Compare smartphones between Hamleys and KFC.,PRODUCT_COMPARISON,T_PC_EN_1
+મને sunglasses ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+मुझे Home Centre तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+Where can I buy groceries?,FIND_PRODUCT,T_FP_EN_1
+આ મોલમાં board games કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+How do I get to Home Centre from here?,NAVIGATION,T_NAV_EN_3
+Smart Bazaar ane Sephora na first aid kit ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+Which is cheaper: Subway or Apollo Pharmacy for sunglasses?,PRODUCT_COMPARISON,T_PC_EN_2
+Which floor is Miniso on?,FIND_STORE,T_FS_EN_3
+Mujhe Hamleys kis floor par milega?,FIND_STORE,T_FS_HIR_2
+Mare saara sneakers kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+અહીંથી Marks & Spencer કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3
+How to book flight tickets to Mumbai?,UNKNOWN,T_UNK_3
+shirts किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+Who is the prime minister of India?,UNKNOWN,T_UNK_4
+Filter running shoes below 500 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+આ મોલમાં first aid kit કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+Mane t-shirts kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+Mare saara headphones kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+Mujhe acche formal shoes kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+Mane ₹10000 thi ochi kimatna blazers batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+Filter toys below 1500 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+મને McDonald's સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+Miniso स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+Find Puma store for me.,FIND_STORE,T_FS_EN_2
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+Pizza Hut અને Calvin Klein ના lipstick વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+મને shirts ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+Yahan se Zara kaise jaun?,NAVIGATION,T_NAV_HIR_3
+Mane Under Armour kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+आज की ताज़ा ख़बर क्या है?,UNKNOWN,T_UNK_8
+કંઈક રમુજી કહો.,UNKNOWN,T_UNK_5
+Which is cheaper: Lifestyle or Reliance Digital for laptops?,PRODUCT_COMPARISON,T_PC_EN_2
+Shu aa mall ma McDonald's chhe?,FIND_STORE,T_FS_GUR_3
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+મને Taco Bell કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+Is Levi's open right now?,FIND_STORE,T_FS_EN_6
+Looking for a Opticals shop.,FIND_STORE,T_FS_EN_7
+₹5000 के बजट में sunglasses फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+मुझे Lenskart किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+I need to find formal shoes.,FIND_PRODUCT,T_FP_EN_3
+Home Decor की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+मुझे KFC किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+₹5000 ke under ke television search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+मुझे Taco Bell तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+Where is the nearest restroom?,FACILITY_SEARCH,T_FAC_EN_1
+મને સૌથી નજીકનું ફૂડ કોર્ટ બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+Shu aa mall ma Bata Footwear chhe?,FIND_STORE,T_FS_GUR_3
+sandals के लिए KFC सस्ता है या Under Armour?,PRODUCT_COMPARISON,T_PC_HI_2
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Only show items under ₹1000.,PRODUCT_REFINEMENT,T_PR_EN_3
+Yahan se McDonald's kaise jaun?,NAVIGATION,T_NAV_HIR_3
+Looking for a Opticals shop.,FIND_STORE,T_FS_EN_7
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+Bata Footwear jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+H&M અને Bata Footwear ના jeans વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+मुझे फूड कोर्ट जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+Mujhe laptops kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+What is the weather outside in Ahmedabad?,UNKNOWN,T_UNK_1
+₹3000 ni andar na board games jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+Who is the prime minister of India?,UNKNOWN,T_UNK_4
+Mane sauthi najiknu glass elevator batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+₹500 ni andar na perfume jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+Where is The Body Shop?,FIND_STORE,T_FS_EN_1
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+Which is cheaper: Taco Bell or Calvin Klein for first aid kit?,PRODUCT_COMPARISON,T_PC_EN_2
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+मुझे Subway किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+मुझे groceries कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+શું આ મોલમાં Lenskart છે?,FIND_STORE,T_FS_GU_3
+What is the mall address and contact number?,MALL_INFORMATION,T_MI_EN_4
+मुझे sandals कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+Mujhe escalator jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+Home Centre અને Smart Bazaar ના laptops વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+first aid kit किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+Croma जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+Aa mall ma blazers kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+blablabla nothing here,UNKNOWN,T_UNK_10
+Mane sauthi najiknu food court batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+મને ₹5000થી ઓછી કિંમતના laptops બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+Mujhe ₹5000 se kam ke board games dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+મને perfume ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+Looking for affordable groceries within ₹3000.,PRODUCT_REFINEMENT,T_PR_EN_4
+laptops kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+Show me stores selling blazers.,FIND_PRODUCT,T_FP_EN_2
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+Miniso ane Zara na board games ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+નજીકમાં શૌચાલય ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+મને blazers ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+Guide me to 1F.,NAVIGATION,T_NAV_EN_4
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+Compare board games between Puma and The Body Shop.,PRODUCT_COMPARISON,T_PC_EN_1
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+₹3000 के बजट में hoodies फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+Do you have board games available here?,FIND_PRODUCT,T_FP_EN_4
+sneakers kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+Show me smartphones under ₹1500.,PRODUCT_REFINEMENT,T_PR_EN_1
+Do you have formal shoes available here?,FIND_PRODUCT,T_FP_EN_4
+Mane ₹2000 thi ochi kimatna lipstick batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+₹2000 ni andar na running shoes jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+Yahan se Hamleys kaise jaun?,NAVIGATION,T_NAV_HIR_3
+blazers के लिए Calvin Klein सस्ता है या Reliance Digital?,PRODUCT_COMPARISON,T_PC_HI_2
+मुझे अच्छे board games खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+Mujhe hoodies kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+Mujhe Forever 21 tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+मुझे ₹500 से कम के dresses दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+Start navigation to Pizza Hut.,NAVIGATION,T_NAV_EN_5
+Do you have running shoes available here?,FIND_PRODUCT,T_FP_EN_4
+Give me walking directions to Skechers.,NAVIGATION,T_NAV_EN_2
+Cinépolis પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+Do you have lipstick available here?,FIND_PRODUCT,T_FP_EN_4
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+Mare saara running shoes kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+Guide me to Floor 2.,NAVIGATION,T_NAV_EN_4
+How do I get to Skechers from here?,NAVIGATION,T_NAV_EN_3
+Mane formal shoes kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+board games के लिए Bata Footwear सस्ता है या Tommy Hilfiger?,PRODUCT_COMPARISON,T_PC_HI_2
+Mujhe acche shirts kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+burgers किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+television किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+Only show items under ₹5000.,PRODUCT_REFINEMENT,T_PR_EN_3
+मुझे jeans कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+મને Marks & Spencer કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+Only show items under ₹1500.,PRODUCT_REFINEMENT,T_PR_EN_3
+Show me hoodies under ₹2000.,PRODUCT_REFINEMENT,T_PR_EN_1
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+Mujhe customer helpdesk jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+મને Taco Bell સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+Najikma parking kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+Mujhe ₹2000 se kam ke sneakers dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+The Body Shop store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Who is the prime minister of India?,UNKNOWN,T_UNK_4
+Who is the prime minister of India?,UNKNOWN,T_UNK_4
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+sandals માટે Apollo Pharmacy સસ્તું છે કે KFC?,PRODUCT_COMPARISON,T_PC_GU_2
+Mane ₹5000 thi ochi kimatna television batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+burgers के लिए Taco Bell सस्ता है या Subway?,PRODUCT_COMPARISON,T_PC_HI_2
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+₹3000 के बजट में vitamins फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+What is the difference in price for television at Hamleys vs Levi's?,PRODUCT_COMPARISON,T_PC_EN_3
+Mujhe ₹500 se kam ke board games dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+asdfghjkl qwerty 12345,UNKNOWN,T_UNK_9
+Mujhe ₹10000 se kam ke sneakers dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+मुझे Subway तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+અમદાવાદમાં આજનું હવામાન કેવું છે?,UNKNOWN,T_UNK_6
+मुझे एटीएम जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+મને સૌથી નજીકનું સીડી બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+Give me walking directions to Shoppers Stop.,NAVIGATION,T_NAV_EN_2
+Guide me to G.,NAVIGATION,T_NAV_EN_4
+अल्फा वन मॉल कब बंद होता है?,MALL_INFORMATION,T_MI_HI_2
+Mujhe washroom jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+મને Tommy Hilfiger સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+₹1000 ની અંદરના સારા hoodies ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+નજીકમાં સીડી ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+Mujhe lipstick kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+Sephora जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+Mujhe dresses kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+Croma pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+મને ₹500થી ઓછી કિંમતના blazers બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+Puma store kahan par hai?,FIND_STORE,T_FS_HIR_1
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+મારે Home Decor ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+What is the difference in price for sneakers at Lifestyle vs Starbucks?,PRODUCT_COMPARISON,T_PC_EN_3
+મને Cinépolis કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+KFC jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+आज की ताज़ा ख़बर क्या है?,UNKNOWN,T_UNK_8
+television के लिए Home Centre सस्ता है या Apollo Pharmacy?,PRODUCT_COMPARISON,T_PC_HI_2
+Where is the nearest glass elevator?,FACILITY_SEARCH,T_FAC_EN_1
+શું આ મોલમાં McDonald's છે?,FIND_STORE,T_FS_GU_3
+Mane sauthi najiknu customer helpdesk batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+Mujhe acche smartphones kharidne hain.,FIND_PRODUCT,T_FP_HIR_2
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+shirts के लिए Hamleys सस्ता है या Under Armour?,PRODUCT_COMPARISON,T_PC_HI_2
+Who is the prime minister of India?,UNKNOWN,T_UNK_4
+Kya is mall mein Puma hai?,FIND_STORE,T_FS_HIR_3
+Looking for affordable headphones within ₹50000.,PRODUCT_REFINEMENT,T_PR_EN_4
+મને ₹3000થી ઓછી કિંમતના headphones બતાવો.,PRODUCT_REFINEMENT,T_PR_GU_1
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+मुझे लिफ्ट जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+asdfghjkl qwerty 12345,UNKNOWN,T_UNK_9
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+આ મોલમાં jeans કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+H&M aur Bata Footwear ke smartphones mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+Which floor has a ATM?,FACILITY_SEARCH,T_FAC_EN_3
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+Starbucks pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+₹5000 ni andar na t-shirts jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+Do you have lipstick available here?,FIND_PRODUCT,T_FP_EN_4
+Do you have a Puma in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+Home Centre जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+Guide me to Floor 3.,NAVIGATION,T_NAV_EN_4
+Is Calvin Klein open right now?,FIND_STORE,T_FS_EN_6
+Where is the nearest food court?,FACILITY_SEARCH,T_FAC_EN_1
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+Mujhe Starbucks tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+मुझे अच्छे shirts खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+આ મોલમાં vitamins કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+Mane Zara sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+Only show items under ₹1500.,PRODUCT_REFINEMENT,T_PR_EN_3
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+Only show items under ₹500.,PRODUCT_REFINEMENT,T_PR_EN_3
+Aa mall ma formal shoes kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+Where can I buy jeans?,FIND_PRODUCT,T_FP_EN_1
+Taco Bell અને Hamleys ના board games વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+શું આ મોલમાં Skechers છે?,FIND_STORE,T_FS_GU_3
+मुझे लिफ्ट जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+મને The Body Shop કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+Cinépolis store kahan par hai?,FIND_STORE,T_FS_HIR_1
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+क्या इस मॉल में H&M की दुकान है?,FIND_STORE,T_FS_HI_3
+₹500 ni andar na perfume jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+Smart Bazaar store kahan par hai?,FIND_STORE,T_FS_HIR_1
+શું આ મોલમાં McDonald's છે?,FIND_STORE,T_FS_GU_3
+Compare hoodies between Subway and Apollo Pharmacy.,PRODUCT_COMPARISON,T_PC_EN_1
+Only show items under ₹2000.,PRODUCT_REFINEMENT,T_PR_EN_3
+Looking for affordable sunglasses within ₹2000.,PRODUCT_REFINEMENT,T_PR_EN_4
+Which is cheaper: Zara or McDonald's for first aid kit?,PRODUCT_COMPARISON,T_PC_EN_2
+What is the weather outside in Ahmedabad?,UNKNOWN,T_UNK_1
+Show me stores selling t-shirts.,FIND_PRODUCT,T_FP_EN_2
+Mane Under Armour kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+મારે સારા blazers ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+asdfghjkl qwerty 12345,UNKNOWN,T_UNK_9
+Tell me a funny joke.,UNKNOWN,T_UNK_2
+Mane ₹10000 thi ochi kimatna laptops batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+Do you have formal shoes available here?,FIND_PRODUCT,T_FP_EN_4
+મારે સારા sunglasses ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+Aa mall ma hoodies kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+आज की ताज़ा ख़बर क्या है?,UNKNOWN,T_UNK_8
+Pharmacy & Wellness की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+Take me to Tommy Hilfiger.,NAVIGATION,T_NAV_EN_1
+Find Lenskart store for me.,FIND_STORE,T_FS_EN_2
+Sabse nazdeeki ATM kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+smartphones किस दुकान पर उपलब्ध है?,FIND_PRODUCT,T_FP_HI_3
+₹50000 ni andar na coffee jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+Sabse nazdeeki restroom kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+Smart Bazaar स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+Find Under Armour store for me.,FIND_STORE,T_FS_EN_2
+मुझे वॉशरूम जाना है।,FACILITY_SEARCH,T_FAC_HI_2
+Lenskart સ્ટોર ક્યાં આવેલો છે?,FIND_STORE,T_FS_GU_1
+Shoppers Stop pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Find Cinépolis store for me.,FIND_STORE,T_FS_EN_2
+Taco Bell जाने का रास्ता दिखाइए।,NAVIGATION,T_NAV_HI_2
+₹1500 ke under ke perfume search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+Hypermarket & Groceries की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+Take me to Marks & Spencer.,NAVIGATION,T_NAV_EN_1
+Shoppers Stop store kahan par hai?,FIND_STORE,T_FS_HIR_1
+Looking for good groceries.,FIND_PRODUCT,T_FP_EN_5
+Mane formal shoes kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+Nexus Ahmedabad One ka timing kya hai?,MALL_INFORMATION,T_MI_HIR_2
+What is the difference in price for sunglasses at Forever 21 vs Puma?,PRODUCT_COMPARISON,T_PC_EN_3
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+Mujhe Pizza Hut tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+Miniso ane Smart Bazaar na blazers ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+I need to find sandals.,FIND_PRODUCT,T_FP_EN_3
+Mane ₹1000 thi ochi kimatna burgers batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+મને Pizza Hut કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+Sephora pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Compare laptops between Under Armour and Calvin Klein.,PRODUCT_COMPARISON,T_PC_EN_1
+Mane ₹5000 thi ochi kimatna t-shirts batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+Which floor has a customer helpdesk?,FACILITY_SEARCH,T_FAC_EN_3
+Looking for good sneakers.,FIND_PRODUCT,T_FP_EN_5
+मॉल खुलने और बंद होने का समय क्या है?,MALL_INFORMATION,T_MI_HI_1
+I need to find laptops.,FIND_PRODUCT,T_FP_EN_3
+dresses માટે Shoppers Stop સસ્તું છે કે Pizza Hut?,PRODUCT_COMPARISON,T_PC_GU_2
+Under Armour store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Kya is mall mein Croma hai?,FIND_STORE,T_FS_HIR_3
+Do you have a KFC in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+मुझे Under Armour किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+Home Decor की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+Aa mall ma sunglasses kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+सबसे नज़दीकी एटीएम कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+यहाँ से Puma कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+અમદાવાદમાં આજનું હવામાન કેવું છે?,UNKNOWN,T_UNK_6
+blablabla nothing here,UNKNOWN,T_UNK_10
+₹10000 ni andar na dresses jova chhe.,PRODUCT_REFINEMENT,T_PR_GUR_2
+मुझे अच्छे jeans खरीदने हैं।,FIND_PRODUCT,T_FP_HI_2
+KFC store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+મને Apollo Pharmacy કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+મને H&M કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+Yahan se The Body Shop kaise jaun?,NAVIGATION,T_NAV_HIR_3
+₹3000 ke under ke hoodies search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+What is the difference in price for board games at Forever 21 vs Croma?,PRODUCT_COMPARISON,T_PC_EN_3
+Where is the nearest washroom?,FACILITY_SEARCH,T_FAC_EN_1
+Mujhe first aid kit kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+I want to visit Croma.,FIND_STORE,T_FS_EN_5
+મને સૌથી નજીકનું પાર્કિંગ બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+Bata Footwear jaane ka raasta dikhaiye.,NAVIGATION,T_NAV_HIR_2
+Shu aa mall ma Puma chhe?,FIND_STORE,T_FS_GUR_3
+કંઈક રમુજી કહો.,UNKNOWN,T_UNK_5
+asdfghjkl qwerty 12345,UNKNOWN,T_UNK_9
+Pizza Hut pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+Mujhe ₹2000 se kam ke first aid kit dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+Sabse nazdeeki ATM kahan hai?,FACILITY_SEARCH,T_FAC_HIR_1
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Which floor is Taco Bell on?,FIND_STORE,T_FS_EN_3
+Where is the nearest cash machine?,FACILITY_SEARCH,T_FAC_EN_1
+₹10000 ke under ke shirts search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+Mane Lifestyle sudhi lai jao.,NAVIGATION,T_NAV_GUR_1
+Mane sauthi najiknu parking batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+I need to find an food court.,FACILITY_SEARCH,T_FAC_EN_2
+Do you have a Tommy Hilfiger in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+Croma અને Hamleys ના toys વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+Tommy Hilfiger aur Zara ke sneakers mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+Where is the grand entrance located in Vastrapur?,MALL_INFORMATION,T_MI_EN_5
+क्या इस मॉल में Lifestyle की दुकान है?,FIND_STORE,T_FS_HI_3
+Home Decor की दुकान किधर है?,FIND_STORE,T_FS_HI_4
+Where can I buy sandals?,FIND_PRODUCT,T_FP_EN_1
+Mane Puma kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+Cinépolis स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+₹2000 ke under ke television search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+Tell me a funny joke.,UNKNOWN,T_UNK_2
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+Mane sandals kyaanthi malse?,FIND_PRODUCT,T_FP_GUR_1
+Mane sauthi najiknu washroom batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+Starbucks ane Forever 21 na formal shoes ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+₹1000 के बजट में first aid kit फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+મને Home Centre સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+આ મોલમાં board games કઈ દુકાને મળશે?,FIND_PRODUCT,T_FP_GU_3
+I need to find groceries.,FIND_PRODUCT,T_FP_EN_3
+Take me to Reliance Digital.,NAVIGATION,T_NAV_EN_1
+Is Under Armour open right now?,FIND_STORE,T_FS_EN_6
+Aahin thi Under Armour kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+Show me stores selling board games.,FIND_PRODUCT,T_FP_EN_2
+₹3000 ની અંદરના સારા sneakers ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+Mall open hone aur close hone ka time kya hai?,MALL_INFORMATION,T_MI_HIR_1
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+मुझे Bata Footwear तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+Where is Marks & Spencer?,FIND_STORE,T_FS_EN_1
+Aa mall ma burgers kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+Najikma customer helpdesk kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+Looking for good groceries.,FIND_PRODUCT,T_FP_EN_5
+શું આ મોલમાં Subway છે?,FIND_STORE,T_FS_GU_3
+Mujhe Lifestyle kis floor par milega?,FIND_STORE,T_FS_HIR_2
+₹5000 के बजट में hoodies फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+Calvin Klein स्टोर कहाँ पर है?,FIND_STORE,T_FS_HI_1
+Yahan se Croma kaise jaun?,NAVIGATION,T_NAV_HIR_3
+Start navigation to Bata Footwear.,NAVIGATION,T_NAV_EN_5
+lipstick के लिए Cinépolis सस्ता है या Zara?,PRODUCT_COMPARISON,T_PC_HI_2
+smartphones kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+Is Hamleys open right now?,FIND_STORE,T_FS_EN_6
+Kya is mall mein Smart Bazaar hai?,FIND_STORE,T_FS_HIR_3
+coffee kis shop par milta hai?,FIND_PRODUCT,T_FP_HIR_3
+Which floor has a cash machine?,FACILITY_SEARCH,T_FAC_EN_3
+Show me stores selling television.,FIND_PRODUCT,T_FP_EN_2
+Najikma ATM kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+व्हीलचेयर के लिए लिफ्ट किधर है?,FACILITY_SEARCH,T_FAC_HI_3
+blablabla nothing here,UNKNOWN,T_UNK_10
+मुझे Under Armour किस फ्लोर पर मिलेगा?,FIND_STORE,T_FS_HI_2
+Lenskart ane Home Centre na vitamins ma shu farak chhe?,PRODUCT_COMPARISON,T_PC_GUR_1
+मुझे headphones कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+Looking for a Apparel shop.,FIND_STORE,T_FS_EN_7
+કંઈક રમુજી કહો.,UNKNOWN,T_UNK_5
+₹3000 ની અંદરના સારા groceries ફિલ્ટર કરો.,PRODUCT_REFINEMENT,T_PR_GU_2
+Mujhe cash machine jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+blablabla nothing here,UNKNOWN,T_UNK_10
+KFC અને Calvin Klein ના coffee વચ્ચે શું તફાવત છે?,PRODUCT_COMPARISON,T_PC_GU_1
+₹3000 ke under ke t-shirts search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+Mujhe jeans kahan milenge?,FIND_PRODUCT,T_FP_HIR_1
+નજીકમાં લિફ્ટ ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_1
+I need to find laptops.,FIND_PRODUCT,T_FP_EN_3
+सबसे नज़दीकी एटीएम कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+મને Zara કયા માળે મળશે?,FIND_STORE,T_FS_GU_2
+I need to find an cash machine.,FACILITY_SEARCH,T_FAC_EN_2
+सबसे नज़दीकी एलीवेटर कहाँ है?,FACILITY_SEARCH,T_FAC_HI_1
+Do you have a Shoppers Stop in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+मुझे ₹5000 से कम के sunglasses दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+asdfghjkl qwerty 12345,UNKNOWN,T_UNK_9
+क्या इस मॉल में Home Centre की दुकान है?,FIND_STORE,T_FS_HI_3
+₹500 के बजट में toys फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+blablabla nothing here,UNKNOWN,T_UNK_10
+Mane Reliance Digital kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+Mujhe McDonald's tak le chaliye.,NAVIGATION,T_NAV_HIR_1
+Show me dresses under ₹2000.,PRODUCT_REFINEMENT,T_PR_EN_1
+મારે સારા first aid kit ખરીદવા છે.,FIND_PRODUCT,T_FP_GU_2
+Which floor has a restroom?,FACILITY_SEARCH,T_FAC_EN_3
+What are the mall operating hours?,MALL_INFORMATION,T_MI_EN_1
+Nexus Ahmedabad One no timing shu chhe?,MALL_INFORMATION,T_MI_GUR_2
+Which is cheaper: Miniso or Zara for sunglasses?,PRODUCT_COMPARISON,T_PC_EN_2
+Give me walking directions to Taco Bell.,NAVIGATION,T_NAV_EN_2
+Guide me to 2F.,NAVIGATION,T_NAV_EN_4
+I want to visit Sephora.,FIND_STORE,T_FS_EN_5
+મને સૌથી નજીકનું શૌચાલય બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+Cinépolis aur Bata Footwear ke sunglasses mein kya difference hai?,PRODUCT_COMPARISON,T_PC_HIR_1
+Mare saara dresses kharidva chhe.,FIND_PRODUCT,T_FP_GUR_2
+મને Under Armour સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+આ મોલ કેટલા વાગ્યા સુધી ખુલ્લો રહે છે?,MALL_INFORMATION,T_MI_GU_1
+Aahin thi KFC kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+Is there an accessible elevator nearby?,FACILITY_SEARCH,T_FAC_EN_4
+Mane KFC kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+Only show items under ₹500.,PRODUCT_REFINEMENT,T_PR_EN_3
+When does Alpha One Mall close today?,MALL_INFORMATION,T_MI_EN_2
+How to book flight tickets to Mumbai?,UNKNOWN,T_UNK_3
+Is parking free at Nexus Ahmedabad One?,MALL_INFORMATION,T_MI_EN_3
+Aa mall ma burgers kai dukane malse?,FIND_PRODUCT,T_FP_GUR_3
+મારે Pharmacy & Wellness ની દુકાન શોધવી છે.,FIND_STORE,T_FS_GU_4
+The Body Shop store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+Compare formal shoes between Calvin Klein and Miniso.,PRODUCT_COMPARISON,T_PC_EN_1
+मुझे sunglasses कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+મને સૌથી નજીકનું લિફ્ટ બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+Apollo Pharmacy store kyaan aavelo chhe?,FIND_STORE,T_FS_GUR_1
+મોલ માં પાર્કિંગ ચાર્જ કેટલો છે?,MALL_INFORMATION,T_MI_GU_3
+Najikma cash machine kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+I want to visit McDonald's.,FIND_STORE,T_FS_EN_5
+Aahin thi KFC kevi rite javay?,NAVIGATION,T_NAV_GUR_3
+Do you have a Levi's in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+Najikma parking kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+₹2000 के बजट में blazers फिल्टर कीजिए।,PRODUCT_REFINEMENT,T_PR_HI_2
+Croma પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+Filter lipstick below 500 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+Reliance Digital और Sephora के lipstick में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+Mujhe ₹2000 se kam ke laptops dikhaiye.,PRODUCT_REFINEMENT,T_PR_HIR_1
+Yahan se Levi's kaise jaun?,NAVIGATION,T_NAV_HIR_3
+Mane Lenskart kaya floor par malse?,FIND_STORE,T_FS_GUR_2
+Aa mall ketla vaagya sudhi khullo rahe chhe?,MALL_INFORMATION,T_MI_GUR_1
+Mujhe ATM jaana hai.,FACILITY_SEARCH,T_FAC_HIR_2
+નેક્સસ અમદાવાદ વન નો સમય શું છે?,MALL_INFORMATION,T_MI_GU_2
+मुझे Croma तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+क्या मॉल में फ्री वाईफाई या पार्किंग है?,MALL_INFORMATION,T_MI_HI_3
+મને સૌથી નજીકનું પાર્કિંગ બતાવો.,FACILITY_SEARCH,T_FAC_GU_2
+₹500 ke under ke first aid kit search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+मुझे board games कहाँ मिलेंगे?,FIND_PRODUCT,T_FP_HI_1
+Do you have a KFC in Nexus Ahmedabad One?,FIND_STORE,T_FS_EN_4
+H&M પહોંચવાનો રસ્તો બતાવો.,NAVIGATION,T_NAV_GU_2
+How do I get to Taco Bell from here?,NAVIGATION,T_NAV_EN_3
+Mane sauthi najiknu ATM batavo.,FACILITY_SEARCH,T_FAC_GUR_2
+I want to visit Lenskart.,FIND_STORE,T_FS_EN_5
+Najikma cash machine kyaan chhe?,FACILITY_SEARCH,T_FAC_GUR_1
+मुझे ₹50000 से कम के first aid kit दिखाइए।,PRODUCT_REFINEMENT,T_PR_HI_1
+Is Croma open right now?,FIND_STORE,T_FS_EN_6
+Levi's और Reliance Digital के burgers में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+Show me groceries under ₹1000.,PRODUCT_REFINEMENT,T_PR_EN_1
+Looking for affordable smartphones within ₹5000.,PRODUCT_REFINEMENT,T_PR_EN_4
+વ્હીલચેર માટે એલિવેટર ક્યાં છે?,FACILITY_SEARCH,T_FAC_GU_3
+Pizza Hut और Subway के perfume में क्या अंतर है?,PRODUCT_COMPARISON,T_PC_HI_1
+Filter blazers below 1000 rupees.,PRODUCT_REFINEMENT,T_PR_EN_2
+Yahan se Levi's kaise jaun?,NAVIGATION,T_NAV_HIR_3
+Take me to Lifestyle.,NAVIGATION,T_NAV_EN_1
+મને sunglasses ક્યાંથી મળશે?,FIND_PRODUCT,T_FP_GU_1
+Shoppers Stop pahochvano rasto batavo.,NAVIGATION,T_NAV_GUR_2
+मुझे Levi's तक ले चलिए।,NAVIGATION,T_NAV_HI_1
+મને The Body Shop સુધી લઈ જાઓ.,NAVIGATION,T_NAV_GU_1
+Take me to The Body Shop.,NAVIGATION,T_NAV_EN_1
+smartphones के लिए Zara सस्ता है या Smart Bazaar?,PRODUCT_COMPARISON,T_PC_HI_2
+₹10000 ke under ke board games search karo.,PRODUCT_REFINEMENT,T_PR_HIR_2
+Find Home Centre store for me.,FIND_STORE,T_FS_EN_2
+यहाँ से Hamleys कैसे जाऊं?,NAVIGATION,T_NAV_HI_3
+Mane ₹1000 thi ochi kimatna hoodies batavo.,PRODUCT_REFINEMENT,T_PR_GUR_1
+અહીંથી Miniso કેવી રીતે જવાય?,NAVIGATION,T_NAV_GU_3

@@ -1,0 +1,121 @@
+{
+  "benchmark": "MallMind AI Multilingual RAG Retrieval (TF-IDF + Subword/Character N-Grams)",
+  "total_queries_evaluated": 156,
+  "precision_at_1": 0.724,
+  "precision_at_3": 0.891,
+  "mean_reciprocal_rank": 0.803,
+  "average_retrieval_latency_ms": 11.33,
+  "p95_retrieval_latency_ms": 19.8,
+  "metrics_by_language": {
+    "gu": {
+      "query_count": 52,
+      "precision_at_1": 0.673,
+      "precision_at_3": 0.923,
+      "mrr": 0.795
+    },
+    "hi": {
+      "query_count": 52,
+      "precision_at_1": 0.731,
+      "precision_at_3": 0.865,
+      "mrr": 0.798
+    },
+    "en": {
+      "query_count": 52,
+      "precision_at_1": 0.769,
+      "precision_at_3": 0.885,
+      "mrr": 0.817
+    }
+  },
+  "sample_detailed_logs": [
+    {
+      "query": "મને ઝારા સ્ટોર ક્યાં મળશે?",
+      "target": "Zara",
+      "lang": "gu",
+      "retrieved_top1": "zara",
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 20.14
+    },
+    {
+      "query": "બાટા શૂઝ કયા માળે આવેલું છે?",
+      "target": "Bata Footwear",
+      "lang": "gu",
+      "retrieved_top1": "bata footwear",
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 9.67
+    },
+    {
+      "query": "સ્માર્ટ બજાર ગ્રોસરી ક્યાં છે?",
+      "target": "Smart Bazaar (Hypermarket)",
+      "lang": "gu",
+      "retrieved_top1": "smart bazaar (hypermarket)",
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 10.57
+    },
+    {
+      "query": "રિલાયન્સ ડિજિટલ કયા ફ્લોર પર છે?",
+      "target": "Reliance Digital",
+      "lang": "gu",
+      "retrieved_top1": "reliance digital",
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 11.3
+    },
+    {
+      "query": "સિનેપોલિસ મલ્ટિપ્લેક્સ ક્યાં આવેલું છે?",
+      "target": "Cinepolis 9-Screen Multiplex",
+      "lang": "gu",
+      "retrieved_top1": "mall operating hours",
+      "hit_rank": 3,
+      "reciprocal_rank": 0.333,
+      "latency_ms": 9.69
+    },
+    {
+      "query": "એચએન્ડએમ કપડાંની દુકાન ક્યાં છે?",
+      "target": "H&M",
+      "lang": "gu",
+      "retrieved_top1": "mall address & location",
+      "hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "latency_ms": 10.8
+    },
+    {
+      "query": "મેકડોનાલ્ડ્સ બર્ગર ક્યાં મળશે?",
+      "target": "McDonalds & McCafe",
+      "lang": "gu",
+      "retrieved_top1": "mcdonalds & mccafe",
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 9.86
+    },
+    {
+      "query": "કેએફસી ચિકન કયા માળે છે?",
+      "target": "KFC Express",
+      "lang": "gu",
+      "retrieved_top1": "kfc express",
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 10.03
+    },
+    {
+      "query": "સ્ટારબક્સ કોફી શોપ ક્યાં આવેલી છે?",
+      "target": "Starbucks Coffee",
+      "lang": "gu",
+      "retrieved_top1": "starbucks coffee",
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 10.8
+    },
+    {
+      "query": "સેફોરા બ્યુટી ક્યાં છે?",
+      "target": "Sephora Beauty",
+      "lang": "gu",
+      "retrieved_top1": "mall address & location",
+      "hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "latency_ms": 11.31
+    }
+  ]
+}

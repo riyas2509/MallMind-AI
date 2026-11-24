@@ -1,0 +1,30 @@
+{
+  "k": 5,
+  "n_queries": 30,
+  "total_catalog_products": 304,
+  "model": {
+    "precision@k": 1.0,
+    "recall@k": 0.7754618141714915,
+    "map@k": 1.0,
+    "ndcg@k": 1.0,
+    "catalog_coverage": 0.3355263157894737,
+    "intra_list_diversity": 0.19499999999999998,
+    "mean_latency_ms": 10.092143322496364,
+    "p95_latency_ms": 15.082614996936172
+  },
+  "baseline_category_filter": {
+    "precision@k": 1.0,
+    "recall@k": 0.7754618141714915,
+    "map@k": 1.0,
+    "ndcg@k": 1.0,
+    "catalog_coverage": 0.32894736842105265,
+    "intra_list_diversity": 0.18666666666666665
+  },
+  "cold_start": {
+    "returned_count": 5,
+    "all_available_and_in_stock": true,
+    "categories_represented": 4,
+    "sample_explanation": "Top recommendation in Electronics (similarity score: 0.36)",
+    "latency_ms": 8.063700050115585
+  }
+}

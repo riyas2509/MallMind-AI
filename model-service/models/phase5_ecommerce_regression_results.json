@@ -1,0 +1,117 @@
+{
+  "total_tests": 22,
+  "passed": 22,
+  "success_rate": 1.0,
+  "tests": [
+    {
+      "scenario": "1. Product discovery",
+      "passed": true,
+      "detail": "Retrieved 304 products with authoritative retailer and floor metadata."
+    },
+    {
+      "scenario": "2. Search and filters",
+      "passed": true,
+      "detail": "Retrieved 18 footwear items sorted ascending: \u20b9519.0 to \u20b97779.0."
+    },
+    {
+      "scenario": "3. Brand-constrained search",
+      "passed": true,
+      "detail": "Retrieved 10 products, 100% locked to brand 'Nike' / Nike Store."
+    },
+    {
+      "scenario": "4. Budget-constrained search",
+      "passed": true,
+      "detail": "Retrieved 2 footwear items strictly <= \u20b91,000 (Max price: \u20b9796.0)."
+    },
+    {
+      "scenario": "5. Cart creation",
+      "passed": true,
+      "detail": "Initialized fresh empty cart for authenticated user with authoritative zero subtotal."
+    },
+    {
+      "scenario": "6. Cart persistence",
+      "passed": true,
+      "detail": "Added 2x 'SmartChoice Basmati Rice 5kg (Grey)', subtotal: \u20b9944.0."
+    },
+    {
+      "scenario": "7. Quantity changes",
+      "passed": true,
+      "detail": "Updated quantity to 3. Authoritative line total: \u20b91416.0."
+    },
+    {
+      "scenario": "8. Invalid quantity rejection",
+      "passed": true,
+      "detail": "Server rejected negative quantity and zero-add with HTTP 400 Bad Request."
+    },
+    {
+      "scenario": "9. Stock validation",
+      "passed": true,
+      "detail": "Prevented over-ordering with authoritative error: Not enough stock for 'SmartChoice Basmati Rice 5kg (Grey)'. Available: 28, requested total: 1000002"
+    },
+    {
+      "scenario": "10. Checkout validation",
+      "passed": true,
+      "detail": "Rejected checkout on empty cart with HTTP 400 ('Cannot check out an empty cart')."
+    },
+    {
+      "scenario": "11. Address management",
+      "passed": true,
+      "detail": "Persisted delivery address 'Nexus Ahmedabad One, Food Court (3F) Table 14' with \u20b950 in-mall delivery fee."
+    },
+    {
+      "scenario": "12. Payment success in sandbox",
+      "passed": true,
+      "detail": "Verified sandbox payment status PAID_SANDBOX with ref 'SIM-TXN-1795458171942-6852'."
+    },
+    {
+      "scenario": "13. Payment failure",
+      "passed": true,
+      "detail": "Simulated decline rejected with HTTP 400. Verified stock was NOT deducted."
+    },
+    {
+      "scenario": "14. Duplicate checkout prevention",
+      "passed": true,
+      "detail": "Cart auto-cleared upon order creation; subsequent duplicate checkout rejected."
+    },
+    {
+      "scenario": "15. Order persistence",
+      "passed": true,
+      "detail": "Retrieved order #MM-1795458171942-837 with snapshotted line items and price integrity."
+    },
+    {
+      "scenario": "16. Order history",
+      "passed": true,
+      "detail": "Retrieved order history for customer, containing 1 order(s)."
+    },
+    {
+      "scenario": "17. Order access isolation",
+      "passed": true,
+      "detail": "Customer 2 blocked from accessing Customer 1's order (HTTP 404 OrderNotFound)."
+    },
+    {
+      "scenario": "18. Inventory updates & cancellation",
+      "passed": true,
+      "detail": "Stock decremented (25 -> 24) and restored on cancel (24 -> 25)."
+    },
+    {
+      "scenario": "19. Voice-to-cart workflow",
+      "passed": true,
+      "detail": "Action: ADD_TO_CART. Product identified and added to cart."
+    },
+    {
+      "scenario": "20. Voice-to-product navigation",
+      "passed": true,
+      "detail": "Routed to Smart Bazaar (Hypermarket) on Lower Ground (Floor -1, Node 6)."
+    },
+    {
+      "scenario": "21. User confirmation before purchase",
+      "passed": true,
+      "detail": "Enforced confirmation guard: 'For your security, placing an order requires explicit confirmation on the checkout page. Please review your items and confirm your sandbox payment.'"
+    },
+    {
+      "scenario": "22. Full shopping journey & retailer ops",
+      "passed": true,
+      "detail": "End-to-end journey completed: Discovery -> Cart -> Checkout -> Retailer Ready -> Completed."
+    }
+  ]
+}

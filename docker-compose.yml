@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: mallmind-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mallmind
+      POSTGRES_USER: mallmind
+      POSTGRES_PASSWORD: mallmind_dev_password
+    ports:
+      # Host 5433 -> container 5432. Mapped off the default port because a
+      # native PostgreSQL 16 Windows service is already bound to 5432 on
+      # this machine (confirmed via `Get-Service postgresql-x64-16`).
+      - "5433:5432"
+    volumes:
+      - mallmind-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mallmind -d mallmind"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mallmind-pgdata:

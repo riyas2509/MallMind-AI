@@ -1,0 +1,32 @@
+[
+  {
+    "language": "en",
+    "script": "Latin",
+    "wav_bytes": 321900,
+    "duration_s": 7.3,
+    "framerate": 22050,
+    "channels": 1,
+    "is_audible": true,
+    "intelligibility_assessment": "Native clear English pronunciation."
+  },
+  {
+    "language": "gu",
+    "script": "Gujarati Unicode",
+    "wav_bytes": 643542,
+    "duration_s": 14.59,
+    "framerate": 22050,
+    "channels": 1,
+    "is_audible": true,
+    "intelligibility_assessment": "Intelligible via English acoustic model (phonetic phonetic mapping retains phonetic syllables, though phonetically accented compared to native regional TTS)."
+  },
+  {
+    "language": "hi",
+    "script": "Devanagari Unicode",
+    "wav_bytes": 422874,
+    "duration_s": 9.59,
+    "framerate": 22050,
+    "channels": 1,
+    "is_audible": true,
+    "intelligibility_assessment": "Intelligible via English acoustic model (phonetic phonetic mapping retains phonetic syllables, though phonetically accented compared to native regional TTS)."
+  }
+]

@@ -1,0 +1,26 @@
+shop_id,category_name,name,brand,color,description,price,discount_price,specifications,image_url,available,stock_quantity
+1,Hypermarket & Groceries,SmartChoice Basmati Rice 5kg (Grey),SmartChoice,Grey,SmartChoice Basmati Rice 5kg (Grey) from SmartChoice. Demo catalogue entry.,549,472,,,true,34
+1,Hypermarket & Groceries,SmartChoice Green Tea (Beige),SmartChoice,Beige,SmartChoice Green Tea (Beige) from SmartChoice. Demo catalogue entry.,109,85,,,true,1
+1,Hypermarket & Groceries,DailyGold Pure Olive Oil,DailyGold,,DailyGold Pure Olive Oil from DailyGold. Demo catalogue entry.,909,762,,,true,0
+1,Hypermarket & Groceries,SmartChoice Rolled Oats (Beige),SmartChoice,Beige,SmartChoice Rolled Oats (Beige) from SmartChoice. Demo catalogue entry.,739,578,,,true,6
+1,Hypermarket & Groceries,SmartChoice California Almonds (White),SmartChoice,White,SmartChoice California Almonds (White) from SmartChoice. Demo catalogue entry.,779,,,,true,2
+1,Hypermarket & Groceries,DailyGold California Almonds,DailyGold,,DailyGold California Almonds from DailyGold. Demo catalogue entry.,299,,,,true,35
+1,Hypermarket & Groceries,FreshHarvest Rolled Oats (Green),FreshHarvest,Green,FreshHarvest Rolled Oats (Green) from FreshHarvest. Demo catalogue entry.,1229,935,,,true,49
+1,Hypermarket & Groceries,FreshHarvest Basmati Rice 5kg (Red),FreshHarvest,Red,FreshHarvest Basmati Rice 5kg (Red) from FreshHarvest. Demo catalogue entry.,1819,1440,,,true,23
+1,Hypermarket & Groceries,SmartChoice Organic Honey (Green),SmartChoice,Green,SmartChoice Organic Honey (Green) from SmartChoice. Demo catalogue entry.,479,,,,true,43
+1,Hypermarket & Groceries,DailyGold Basmati Rice 5kg (Blue),DailyGold,Blue,DailyGold Basmati Rice 5kg (Blue) from DailyGold. Demo catalogue entry.,1139,,,,true,24
+1,Hypermarket & Groceries,FreshHarvest Rolled Oats,FreshHarvest,,FreshHarvest Rolled Oats from FreshHarvest. Demo catalogue entry.,499,,,,true,49
+2,Beauty & Cosmetics,The Body Shop Face Cream (Green),The Body Shop,Green,The Body Shop Face Cream (Green) from The Body Shop. Demo catalogue entry.,1939,1516,,,false,0
+2,Beauty & Cosmetics,Tea Tree Perfume (Red),Tea Tree,Red,Tea Tree Perfume (Red) from Tea Tree. Demo catalogue entry.,2979,,,,true,41
+2,Beauty & Cosmetics,British Rose Lipstick (Grey),British Rose,Grey,British Rose Lipstick (Grey) from British Rose. Demo catalogue entry.,869,725,,,true,37
+2,Beauty & Cosmetics,British Rose Face Wash (Beige),British Rose,Beige,British Rose Face Wash (Beige) from British Rose. Demo catalogue entry.,1779,1600,,,true,5
+2,Beauty & Cosmetics,The Body Shop Face Cream (Blue),The Body Shop,Blue,The Body Shop Face Cream (Blue) from The Body Shop. Demo catalogue entry.,2869,2445,,,true,24
+2,Beauty & Cosmetics,British Rose Face Wash (Navy),British Rose,Navy,British Rose Face Wash (Navy) from British Rose. Demo catalogue entry.,2469,2057,,,false,0
+2,Beauty & Cosmetics,Tea Tree Hair Serum (White),Tea Tree,White,Tea Tree Hair Serum (White) from Tea Tree. Demo catalogue entry.,2499,,,,true,21
+2,Beauty & Cosmetics,The Body Shop Perfume (Beige),The Body Shop,Beige,The Body Shop Perfume (Beige) from The Body Shop. Demo catalogue entry.,949,,,,false,0
+2,Beauty & Cosmetics,Tea Tree Perfume,Tea Tree,,Tea Tree Perfume from Tea Tree. Demo catalogue entry.,1029,,,,true,40
+3,Bags & Accessories,Marvel x Miniso Laptop Sleeve (Red),Marvel x Miniso,Red,Marvel x Miniso Laptop Sleeve (Red) from Marvel x Miniso. Demo catalogue entry.,509,,,,true,49
+3,Bags & Accessories,Marvel x Miniso Backpack (Green),Marvel x Miniso,Green,Marvel x Miniso Backpack (Green) from Marvel x Miniso. Demo catalogue entry.,1199,1066,,,true,19
+3,Bags & Accessories,Miniso Backpack (Red),Miniso,Red,Miniso Backpack (Red) from Miniso. Demo catalogue entry.,1999,,,,true,46
+3,Bags & Accessories,Sanrio Travel Bag (White),Sanrio,White,Sanrio Travel Bag (White) from Sanrio. Demo catalogue entry.,1759,,,,true,42
+3,Bags & Accessories,Sanrio Laptop Sleeve (Blue),Sanrio,Blue,Sanrio Laptop Sleeve (Blue) from Sanrio. Demo catalogue entry.,739,,,,true,13
