@@ -1,194 +1,544 @@
-# MallMind AI — Multilingual Smart Mall Digital Twin & Retail Operations Platform
+# MallMind AI 🏬
+### Multilingual AI-Powered Mall Navigation & Smart Shopping Platform
 
-**Target Venue:** Nexus Ahmedabad One (Alpha One Mall), Vastrapur, Ahmedabad, Gujarat, India  
-**Academic Category:** B.Tech / Final Year Engineering Capstone Project  
-**Tech Stack:** React 19 + TypeScript | Java 21 + Spring Boot | Python 3.11 + FastAPI + PyTorch | PostgreSQL 16  
-**Quality Assurance Verdict:** Ready with Documented Limitations (121 / 124 Tests Passed, 97.6% Reliability, 0 Critical Defects)
+<p align="center">
+  An intelligent mall companion that connects indoor navigation, multilingual voice assistance, product discovery, e-commerce, and retail operations in one integrated platform.
+</p>
+
+<p align="center">
+  <strong>Target Mall:</strong> Nexus Ahmedabad One (Alpha One Mall)<br/>
+  Vastrapur, Ahmedabad, Gujarat, India
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Project-Academic%20Capstone-blue" alt="Academic Capstone"/>
+  <img src="https://img.shields.io/badge/Frontend-React%2019-61DAFB?logo=react&logoColor=black" alt="React"/>
+  <img src="https://img.shields.io/badge/Backend-Java%2021-orange?logo=openjdk&logoColor=white" alt="Java"/>
+  <img src="https://img.shields.io/badge/AI-Python%20%7C%20PyTorch-yellow?logo=pytorch&logoColor=black" alt="Python and PyTorch"/>
+  <img src="https://img.shields.io/badge/Database-PostgreSQL%2016-4169E1?logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+  <img src="https://img.shields.io/badge/QA-121%2F124%20Passed-success" alt="QA"/>
+</p>
 
 ---
 
-## 1. Project Overview
+## 📌 Overview
 
-**MallMind AI** is a comprehensive, enterprise-grade, multilingual indoor navigation, smart shopping, and mall management ecosystem specifically customized for **Nexus Ahmedabad One** (formerly Alpha One Mall) in Vastrapur, Ahmedabad.
+**MallMind AI** is a multilingual mall navigation and smart-shopping platform designed around Nexus Ahmedabad One in Ahmedabad, India.
 
-The platform bridges the gap between physical retail mall discovery and digital convenience through:
-- **Interactive 5-Floor Digital Twin:** Interactive 2D schematic indoor wayfinding with topological graph routing (Dijkstra's shortest path across escalators, elevators, corridors, and 120+ retail spaces).
-- **Multilingual Voice & Chat Concierge:** Real-time speech recognition (faster-whisper) supporting Gujarati, Hindi, and English; TextCNN deep learning intent classification; and RAG-driven responses.
-- **E-Commerce & Smart Shopping Journey:** Complete product discovery across 152+ in-mall items, dynamic cart management, tax calculation (18% GST), click-and-collect or delivery checkout, and sandbox payments.
-- **Retailer Management & Operations:** Store-specific product catalog management, ResNet18 AI-assisted visual category assignment, inventory adjustment ledgers, and order fulfillment tracking.
-- **Mall Administrative Intelligence:** Mall-wide footfall analytics, Random Forest footfall and demand forecasting, store lease management, and tamper-evident administrative audit logging.
+Traditional mall experiences often require visitors to navigate separate directories, store information systems, product catalogues, and customer-service channels. MallMind AI brings these experiences together through an integrated digital platform.
+
+It combines a five-floor schematic mall digital twin, graph-based indoor navigation, multilingual voice interaction, AI-powered product discovery, e-commerce workflows, and dedicated retailer and administrator portals.
+
+The project demonstrates how Artificial Intelligence, Machine Learning, Deep Learning, Data Science, Software Engineering, Database Management, and E-Commerce can work together in a single application.
+
+## ✨ Key Features
+
+### 1. Interactive Mall Digital Twin
+
+- Five-floor mall representation.
+- Interactive floor maps and store directory.
+- Store and facility discovery.
+- Floor-based navigation.
+- Graph-based route calculation using Dijkstra's algorithm.
+- Elevator and escalator transitions.
+- Accessible routing using elevator paths.
+- Estimated physical-distance display.
+
+### 2. Multilingual AI Voice Concierge
+
+Interact with the mall through natural language in:
+
+- Gujarati
+- Hindi
+- English
+
+The voice assistant supports:
+
+- Store discovery.
+- Product discovery.
+- Facility search.
+- Indoor navigation requests.
+- Product comparison.
+- Product refinement.
+- Mall-related information queries.
+
+**AI pipeline:**
+
+Microphone Input → Speech Recognition → Intent Classification → Retrieval and Context Processing → Backend Tool Execution → Response Generation → Text-to-Speech
+
+The speech-processing and language-understanding components combine Faster-Whisper, a TextCNN intent classifier, retrieval-augmented generation (RAG), and backend service integration.
+
+### 3. Smart Shopping & E-Commerce
+
+- Product catalogue and store-based discovery.
+- Search and filtering by brand, category, price, and availability.
+- Product recommendations.
+- Product details.
+- Shopping cart management.
+- Server-side price and stock validation.
+- Checkout and order creation.
+- Store pickup and supported mall fulfilment workflows.
+- Order history and cancellation.
+- Sandbox payment processing.
+
+### 4. Retailer Portal
+
+Retailers can manage their assigned store operations through a dedicated interface.
+
+- Store-specific product management.
+- Product catalogue administration.
+- Inventory adjustments.
+- Low-stock and out-of-stock alerts.
+- Inventory adjustment history.
+- Order management.
+- AI-assisted product image category suggestions.
+
+### 5. Administrator Dashboard
+
+The administrator interface provides mall-wide operational visibility and management.
+
+- Mall overview and dashboard analytics.
+- Floor and facility management.
+- Store management.
+- Retailer onboarding and account management.
+- Product and inventory oversight.
+- Mall-wide order management.
+- Audit-log viewing.
+- Demand forecasting demonstrations.
+
+### 6. Data Science & Deep Learning
+
+MallMind AI incorporates four principal Data Science and Deep Learning components:
+
+| Model | Approach | Application |
+|---|---|---|
+| Product Recommendation | TF-IDF, feature representations and cosine similarity | Product discovery |
+| Demand Forecasting | Machine Learning regression models | Experimental category-demand estimates |
+| Intent Classification | Subword-based TextCNN | Multilingual query understanding |
+| Product Image Classification | ImageNet-pretrained ResNet18 transfer learning | Retailer-assisted product categorisation |
+
+Model evaluation includes baseline comparisons, held-out testing, classification metrics, error analysis, and documented dataset limitations.
 
 ---
 
-## 2. System Architecture
+## 🏗️ System Architecture
 
-MallMind AI operates on a modern 4-tier decoupled architecture:
+MallMind AI follows a four-tier architecture with separate frontend, backend, AI, and database services.
 
+```mermaid
+flowchart TB
+    U["Customers / Retailers / Administrators"]
+
+    subgraph FRONTEND["Frontend — React 19 + TypeScript + Vite"]
+        UI["Mall UI / Digital Twin / Voice Concierge"]
+        SHOP["Shopping / Retailer Portal / Admin Dashboard"]
+    end
+
+    subgraph BACKEND["Backend — Java 21 + Spring Boot"]
+        API["REST API Layer"]
+        AUTH["Authentication & RBAC"]
+        NAV["Navigation Graph & Dijkstra"]
+        ECOM["E-Commerce & Inventory"]
+        OPS["Mall Operations"]
+    end
+
+    subgraph AI["AI Service — Python + FastAPI"]
+        ASR["Faster-Whisper ASR"]
+        NLU["TextCNN Intent Classification"]
+        RAG["RAG & Retrieval"]
+        REC["Product Recommendation"]
+        FORECAST["Demand Forecasting"]
+        VISION["ResNet18 Image Classification"]
+    end
+
+    DB[("PostgreSQL 16")]
+
+    U --> FRONTEND
+    FRONTEND --> API
+    API --> AUTH
+    API --> NAV
+    API --> ECOM
+    API --> OPS
+    API <--> AI
+    API <--> DB
+    AI <--> DB
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│                   React 19 + Vite Frontend SPA                         │
-│                    (Runs on Port 5173 / Localhost)                     │
-│  - Digital Twin (2D SVG/Canvas)       - Multilingual Voice UI (ASR)    │
-│  - Customer E-Commerce Storefront     - Retailer Inventory Portal      │
-│  - Administrative Operations Console  - Dijkstra Route Visualizer      │
-└───────────────────┬─────────────────────────────────┬──────────────────┘
-                    │ /api/*                          │ /ai/* (via Vite Proxy)
-                    ▼                                 ▼
-┌──────────────────────────────────────┐  ┌──────────────────────────────┐
-│     Java 21 + Spring Boot 3.2+       │  │ Python 3.11+ FastAPI Service │
-│            (Port 8085)               │  │         (Port 8001)          │
-│ - JWT RBAC Security & Auth Filter    │  │ - Faster-Whisper ASR (En/Hi/Gu│
-│ - Transactional E-Commerce Engine    │  │ - TextCNN Intent Classifier  │
-│ - Inventory Ledger & Concurrency     │  │ - ResNet18 Visual Classifier │
-│ - Graph Pathfinding & Floor Routing  │  │ - Random Forest Demand Model │
-│ - Immutable System Audit Logging     │  │ - TF-IDF Item Recommender    │
-└───────────────────┬──────────────────┘  └──────────────────────────────┘
-                    │ JDBC (Port 5433)
-                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│                      PostgreSQL 16 Relational Store                    │
-│                        (Docker Container :5433)                        │
-│  - Users, Roles & Stores              - Nodes, Edges & Floor Plans     │
-│  - Products, Orders & Order Items     - Inventory Adjustment Ledger    │
-│  - Audit Logs & Security Trails       - Demand Historical Timeseries   │
-└────────────────────────────────────────────────────────────────────────┘
-```
+
+### Technology Stack
+
+| Layer | Technologies |
+|---|---|
+| Frontend | React 19, TypeScript, Vite |
+| Backend | Java 21, Spring Boot, Spring Security |
+| AI & ML | Python 3.11+, FastAPI, PyTorch, Scikit-learn |
+| Speech Recognition | Faster-Whisper |
+| Deep Learning | TextCNN, ResNet18 |
+| Retrieval & Recommendation | RAG, TF-IDF, Cosine Similarity |
+| Database | PostgreSQL 16 |
+| ORM & Persistence | Spring Data JPA, Hibernate |
+| Authentication | JWT, BCrypt, Role-Based Access Control |
+| Containerisation | Docker, Docker Compose |
+| Visualisation | Interactive SVG-based mall maps |
 
 ---
 
-## 3. Technology Stack
+## 🧭 Indoor Navigation
 
-| Layer | Component | Version | Purpose |
-| :--- | :--- | :--- | :--- |
-| **Frontend** | React | `19.3.1` | Modern Single Page Application UI |
-| | Vite | `8.3.6` | Next-generation frontend build tooling and dev server |
-| | TypeScript | `~7.0.2` | Type-safe enterprise JavaScript codebase |
-| | React Router DOM | `7.18.5` | Client-side declarative application routing |
-| | Lucide React | `1.78.0` | Comprehensive accessible UI icon library |
-| **Backend** | OpenJDK | `21 (LTS)` | High-performance Java runtime environment |
-| | Spring Boot | `4.1.2` (starter-parent) | Microservice framework for REST APIs and DI |
-| | Spring Security | 6.x | Stateless JWT authentication & role-based access control |
-| | Spring Data JPA | Hibernate 6 | Relational Object-Relational Mapping & Transactions |
-| | JJWT | `0.12.6` | HMAC-SHA256 stateless JSON Web Token security |
-| **AI / ML** | Python | `3.11+` | Machine learning runtime engine |
-| | FastAPI & Uvicorn | `0.115.5` / `0.32.1` | High-throughput asynchronous REST inference server |
-| | PyTorch & Torchvision | `2.15.0+cpu` | TextCNN intent model & ResNet18 visual encoder |
-| | Scikit-Learn | `1.5.2` | Random Forest demand model & TF-IDF recommender |
-| | Faster-Whisper | `1.1.1` | Local CTranslate2-based Whisper ASR inference |
-| **Database** | PostgreSQL | `16-alpine` | Containerized ACID relational database |
-| | Docker | Compose v2 | Local container orchestration |
+MallMind AI represents the mall as a graph containing navigation nodes and connections.
 
----
+The navigation engine uses **Dijkstra's shortest-path algorithm** to calculate routes between locations.
 
-## 4. Key Features by User Persona
+The graph represents:
 
-### 4.1 Mall Shoppers & Customers
-- **Floor-by-Floor Digital Twin:** Explore 5 floors (Lower Ground to Fourth Floor) with schematic layout, category filtering, and direct store selection.
-- **Topological Navigation:** Select starting point and destination; calculates shortest path with turn-by-turn routing and inter-floor traversal (escalators/elevators).
-- **Voice Concierge:** Press mic and speak in Gujarati ("મને શૂઝ લેવા છે"), Hindi ("मुझे रनિંગ જૂતે ખરીદને હૈ"), or English ("Find Nike running shoes").
-- **Product Search & Discovery:** Hard brand constraints, category filtering, budget thresholds, and alternative suggestions without silent substitution.
-- **Unified E-Commerce Cart:** Add products across stores, review 18% GST tax breakdown, select fulfillment (Store Pickup or Home Delivery), and simulate payments.
+- Store locations.
+- Corridors and junctions.
+- Floor transitions.
+- Elevators.
+- Escalators.
+- Navigation facilities.
 
-### 4.2 Retail Store Managers
-- **Store-Centric Authentication:** Log in with store-assigned credentials (`retailer@mallmind.local`).
-- **Catalog Management:** View active inventory, edit price/stock, and create new product listings.
-- **AI-Assisted Image Classification:** Upload product photo to receive real-time category predictions from ResNet18.
-- **Inventory Ledger:** Real-time stock adjustment tracking and transaction logs.
-- **Order Processing:** Review incoming customer orders and progress fulfillment statuses (PENDING -> PROCESSING -> COMPLETED).
+The reported validation graph contains:
 
-### 4.3 Mall Operations & Administration
-- **Executive Dashboard:** Overview of total stores (120+), live products (152+), active customer orders, and mall revenue.
-- **Footfall & Demand Forecasting:** AI-driven footfall projections generated by Random Forest regressor with weather, holiday, and day-of-week variables.
-- **Store Management:** Update tenant leases, assign store locations, and manage floor directory data.
-- **Immutable Audit Trail:** Append-only administrative activity logging recording actor, timestamp, client IP, action type, and before/after state.
+- 67 navigation nodes.
+- 74 graph edges.
+- 5 represented floors.
+- 1 connected component.
+
+The displayed physical distance is an estimate derived from a schematic coordinate scale. It is not a surveyed architectural measurement.
 
 ---
 
-## 5. Quickstart Guide (1-Click Launch)
+## 🤖 AI & Machine Learning Implementation
+
+### Product Recommendation
+
+A hybrid content-based recommendation approach uses product text and catalogue attributes to rank relevant products.
+
+The system considers:
+- Product category.
+- Brand.
+- Product descriptions.
+- Price constraints.
+- Availability.
+- User-selected preferences.
+
+Hard constraints prevent silent brand substitution and exclude unavailable products from eligible recommendations.
+
+**Evaluation qualification:** The original MAP@5 evaluation used relevance labels derived from the same filtering constraints as candidate selection. Consequently, its reported MAP@5 of 1.000 does not establish independent ranking quality.
+
+### Demand Forecasting
+
+The forecasting component demonstrates category-level demand estimation using machine-learning regression.
+
+Its evaluation uses a simulated 240-day interaction series across 15 categories.
+
+The reported Gradient Boosting Decision Tree result was:
+
+- WAPE: 13.27%.
+- MAE: 2.77 units.
+
+The underlying mall database does not contain sufficient real historical commercial demand data to validate real-world forecasting. Forecasts are therefore explicitly presented as experimental demonstrations.
+
+### Multilingual Intent Classification
+
+The intent-classification system uses a subword-based TextCNN to process multilingual and morphologically varied queries.
+
+Reported strict template-disjoint evaluation:
+
+- Test examples: 340.
+- Accuracy: 44.41%.
+- Macro-F1: 43.20%.
+
+The model improves over the previous word-level TextCNN, but its generalisation remains limited. Low-confidence predictions trigger clarification or fallback handling.
+
+### Product Image Classification
+
+The image-classification component uses transfer learning with ImageNet-pretrained ResNet18.
+
+Reported benchmark results:
+
+- Test images: 720.
+- Categories: Apparel, Bags, Footwear.
+- Accuracy: 99.17%.
+- Macro-F1: 99.16%.
+
+The model exhibits a significant domain gap on real-world retail photographs. It is an experimental classification assistant, not a validated commercial retail vision system. Manual category selection remains available as a fallback.
+
+---
+
+## 🔐 Security & Data Integrity
+
+Security and access-control mechanisms include:
+
+- JWT-based authentication.
+- Role-Based Access Control.
+- BCrypt password hashing.
+- Customer and retailer data isolation.
+- Store-level retailer access restrictions.
+- Server-side checkout validation.
+- Database foreign-key constraints.
+- Transactional order processing.
+- Inventory adjustment ledgers.
+- Application-level audit-log protection.
+
+The audit-log implementation is application-level and API-enforced; it is not database-level immutable storage.
+
+Concurrent checkout under high contention has a documented lost-update risk because row-level locking or optimistic versioning has not been fully implemented and verified.
+
+---
+
+## 🧪 Testing & Quality Assurance
+
+MallMind AI underwent a comprehensive quality-assurance process covering customer journeys, retailer operations, administration, security, database integrity, AI reliability, navigation, performance, and accessibility.
+
+### Phase 8 QA Results
+
+<p align="center">
+  <strong>121 / 124</strong><br/>
+  <strong>97.6% Reported Test Pass Rate</strong>
+</p>
+
+| Metric | Result |
+|---|---:|
+| Total evaluated scenarios | 124 |
+| Passed | 121 |
+| Failed | 3 |
+| Overall pass rate | 97.6% |
+| P0 defects | 0 reported |
+| P1 defects | 0 reported |
+| Documented P2 issues | 2 |
+| Documented P3 optimisations | 3 |
+
+The three failed assertions concerned conversational refinement on non-templated voice queries. The system prompted users for clarification rather than producing runtime failures.
+
+**Final QA Verdict:** Ready with documented limitations.
+
+---
+
+## ⚙️ Installation & Setup
 
 ### Prerequisites
-- **Windows 10 / 11** (tested on Windows 11 64-bit)
-- **Docker Desktop** installed and running
-- **Java 21 JDK** installed (`java -version`)
-- **Python 3.11+** installed (`python --version`)
-- **Node.js 20+** installed (`node -v`)
 
-### Automated Startup
-1. Ensure Docker Desktop is active.
-2. Double-click **`run-mallmind.bat`** in the project root directory.
-3. The script will automatically:
-   - Start the PostgreSQL Docker container on port `5433`.
-   - Start the Python FastAPI AI Model Service on port `8001`.
-   - Start the Java Spring Boot Backend on port `8085`.
-   - Start the Vite React Frontend on port `5173`.
-   - Open `http://localhost:5173` in your default browser.
+Install the following:
 
-### Shutdown
-- Double-click **`stop-mallmind.bat`** to gracefully terminate all running services on ports `8001`, `8085`, and `5173`.
+- Java 21 JDK.
+- Python 3.11 or later.
+- Node.js.
+- Docker Desktop.
+- Git.
 
----
+PostgreSQL 16 is run through Docker Compose in the supplied project setup.
 
-## 6. Default Demonstration Credentials
+### Clone the Repository
 
-| Role | Email | Password | Access Scope |
-| :--- | :--- | :--- | :--- |
-| **System Administrator** | `admin@mallmind.local` | `<LOCAL_DEMO_PASSWORD>` | Mall operations, demand forecast, store manager, audit logs |
-| **Store Retailer (Zara)** | `retailer@mallmind.local` | `<LOCAL_DEMO_PASSWORD>` | Store catalogue, inventory ledger, order fulfillment |
-| **Shopper / Customer** | `customer@mallmind.local` | `<LOCAL_DEMO_PASSWORD>` | Directory, navigation, voice concierge, cart, checkout |
-| *(Self-Registration)* | Any valid email | Minimum 8 chars | Instant customer account creation via `/register` |
+```bash
+git clone https://github.com/riyas2509/MallMind-AI.git
+cd MallMind-AI
+```
 
----
+### Configure Environment
 
-## 7. Quality Assurance & Verification Summary
+Review the environment configuration template and prepare the required local configuration.
 
-During **Phase 8 Comprehensive Quality Assurance**, the complete system underwent 124 automated end-to-end regression tests across 10 functional dimensions:
+Never commit actual credentials, API keys, JWT signing secrets, or private environment files.
 
-| Test Suite | Tests Executed | Passed | Failed | Pass Rate |
-| :--- | :---: | :---: | :---: | :---: |
-| Customer Journey & E-Commerce | 20 | 20 | 0 | 100.0% |
-| Retailer & Admin Operations | 17 | 17 | 0 | 100.0% |
-| Security & RBAC Isolation | 19 | 19 | 0 | 100.0% |
-| Database Integrity & Transactions | 6 | 6 | 0 | 100.0% |
-| AI Model Reliability & RAG | 16 | 16 | 0 | 100.0% |
-| Navigation & Topological Graph | 8 | 8 | 0 | 100.0% |
-| Performance & Latency Benchmarks | 12 | 12 | 0 | 100.0% |
-| UI Usability & Accessibility | 12 | 10 | 2 | 83.3% |
-| Defect Regression Gates | 14 | 13 | 1 | 92.9% |
-| **Overall System Total** | **124** | **121** | **3** | **97.6%** |
+### Start the Application
 
-- **Critical (P0) Defects:** 0
-- **High (P1) Defects:** 0
-- **Medium (P2) Defects:** 1 (Non-blocking: Read-modify-write lost update risk under high concurrent checkout without row-level locking)
-- **Low / Cosmetic (P3) Defects:** 2 (Lighthouse color contrast edge cases on muted badges, aria-label omission on digital twin zoom buttons)
-- **Final Verdict:** **READY WITH DOCUMENTED LIMITATIONS**
+On Windows, with Docker Desktop running:
+
+```bat
+run-mallmind.bat
+```
+
+The startup script is designed to launch:
+
+| Service | Local Address |
+|---|---|
+| Frontend | http://localhost:5173 |
+| Java Backend | http://localhost:8085 |
+| Python AI Service | http://localhost:8001 |
+| FastAPI Swagger Documentation | http://localhost:8001/docs |
+| PostgreSQL | localhost:5433 |
+
+For detailed installation instructions and platform-specific setup, refer to the [Setup Guide](MALLMIND_AI_SETUP_GUIDE.md).
+
+### Stop the Application
+
+```bat
+stop-mallmind.bat
+```
+
+Refer to the [Operational Runbook](MALLMIND_AI_RUNBOOK.md) for service health checks, logs, database backups, and troubleshooting.
 
 ---
 
-## 8. Documented Architectural & Prototype Assumptions
+## 📂 Repository Structure
 
-In keeping with rigorous academic integrity, the following limitations are formally documented:
-1. **Schematic Digital Twin:** Coordinates use an estimated scale factor (0.25 meters per coordinate unit) representing schematic store topology rather than laser-scanned architectural blueprints.
-2. **Demonstration Inventory & Payments:** Stock levels represent seeded demonstration inventory rather than live retailer ERP integrations. Payment checkout uses a sandbox gateway.
-3. **Simulated Footfall Series:** Historical demand data for the Random Forest model is synthetically generated using calibrated retail distribution curves.
-4. **Deep Learning Generalization:** TextCNN intent model achieves 44.4% accuracy on out-of-domain synthetic phrasings, automatically backed by rule-based keyword fallback. ResNet18 visual classification has an expected domain gap when categorizing e-commerce studio shots vs. real-world store shelf images.
-5. **Universal Tax Assumption:** A standard 18% GST rate is applied universally across products as a prototype baseline.
+```text
+MallMind-AI/
+│
+├── backend/                       # Java Spring Boot backend
+│
+├── frontend/                      # React + TypeScript application
+│
+├── model-service/                 # Python FastAPI AI service
+│
+├── data/
+│   └── seed/                      # Database seed data
+│
+├── MALLMIND_AI_FINAL_PROJECT_REPORT.md
+├── MALLMIND_AI_FINAL_PRESENTATION.pptx
+├── MALLMIND_AI_ARCHITECTURE_DIAGRAMS.md
+├── MALLMIND_AI_LIVE_DEMO_RUNBOOK.md
+│
+├── MALLMIND_AI_SETUP_GUIDE.md
+├── MALLMIND_AI_RUNBOOK.md
+├── MALLMIND_AI_VIVA_QUESTION_BANK.md
+│
+├── MALLMIND_AI_PHASE3_DIGITAL_TWIN_REPORT.md
+├── MALLMIND_AI_PHASE4_INTELLIGENCE_REPORT.md
+├── MALLMIND_AI_PHASE4_CLOSURE_REPORT.md
+├── MALLMIND_AI_PHASE5_IMPLEMENTATION_REPORT.md
+├── MALLMIND_AI_PHASE5_CLOSURE_AUDIT.md
+├── MALLMIND_AI_PHASE6_IMPLEMENTATION_REPORT.md
+├── MALLMIND_AI_PHASE6_CLOSURE_REPORT.md
+│
+├── MALLMIND_AI_PHASE7_MODEL_AND_DATA_AUDIT.md
+├── MALLMIND_AI_PHASE7_DATA_SCIENCE_REPORT.md
+├── MALLMIND_AI_PHASE7_DEEP_LEARNING_REPORT.md
+├── MALLMIND_AI_PHASE7_MATHEMATICAL_FOUNDATIONS.md
+├── MALLMIND_AI_PHASE7_INTEGRATION_REPORT.md
+├── MALLMIND_AI_PHASE7_FINAL_VERIFICATION_REPORT.md
+├── MALLMIND_AI_PHASE7_FINAL_CLOSURE_AUDIT.md
+│
+├── MALLMIND_AI_PHASE8_SYSTEM_TEST_PLAN.md
+├── MALLMIND_AI_PHASE8_FINAL_QA_REPORT.md
+├── MALLMIND_AI_PHASE8_SECURITY_AUDIT.md
+├── MALLMIND_AI_PHASE8_AI_RELIABILITY_REPORT.md
+├── MALLMIND_AI_PHASE8_DATABASE_INTEGRITY_REPORT.md
+├── MALLMIND_AI_PHASE8_NAVIGATION_VALIDATION_REPORT.md
+├── MALLMIND_AI_PHASE8_PERFORMANCE_REPORT.md
+├── MALLMIND_AI_PHASE8_RETAILER_ADMIN_REPORT.md
+├── MALLMIND_AI_PHASE8_CUSTOMER_JOURNEY_REPORT.md
+├── MALLMIND_AI_PHASE8_UI_ACCESSIBILITY_REPORT.md
+├── MALLMIND_AI_PHASE8_DEFECT_REGISTER.md
+│
+├── MALLMIND_AI_PHASE9_REPOSITORY_AUDIT.md
+├── MALLMIND_AI_PHASE9_SUBMISSION_READINESS_REPORT.md
+│
+├── docker-compose.yml
+├── run-mallmind.bat
+├── stop-mallmind.bat
+├── package.json
+├── package-lock.json
+├── .gitignore
+└── README.md
+```
+
+*The structure above highlights the principal project directories and documentation. Refer to the repository for the complete file listing.*
 
 ---
 
-## 9. Academic Project Documentation Index
+## 📚 Project Documentation
 
-| Document | File Link | Purpose |
-| :--- | :--- | :--- |
-| **Repository Audit** | [MALLMIND_AI_PHASE9_REPOSITORY_AUDIT.md](file:///c:/Users/riyam/Downloads/mallmind-main/MALLMIND_AI_PHASE9_REPOSITORY_AUDIT.md) | Component inventory, dependency audit, file hygiene |
-| **Setup Guide** | [MALLMIND_AI_SETUP_GUIDE.md](file:///c:/Users/riyam/Downloads/mallmind-main/MALLMIND_AI_SETUP_GUIDE.md) | Step-by-step installation instructions for all OS |
-| **Operational Runbook** | [MALLMIND_AI_RUNBOOK.md](file:///c:/Users/riyam/Downloads/mallmind-main/MALLMIND_AI_RUNBOOK.md) | Commands, health checks, troubleshooting, port resolution |
-| **System Architecture Diagrams** | [MALLMIND_AI_ARCHITECTURE_DIAGRAMS.md](file:///c:/Users/riyam/Downloads/mallmind-main/MALLMIND_AI_ARCHITECTURE_DIAGRAMS.md) | 15 detailed Mermaid architecture & sequence diagrams |
-| **Academic Project Report** | [MALLMIND_AI_FINAL_PROJECT_REPORT.md](file:///c:/Users/riyam/Downloads/mallmind-main/MALLMIND_AI_FINAL_PROJECT_REPORT.md) | Complete 12-chapter comprehensive project dissertation |
-| **Live Demo Script** | [MALLMIND_AI_LIVE_DEMO_RUNBOOK.md](file:///c:/Users/riyam/Downloads/mallmind-main/MALLMIND_AI_LIVE_DEMO_RUNBOOK.md) | 4-part structured viva & examiner presentation script |
-| **Viva Question Bank** | [MALLMIND_AI_VIVA_QUESTION_BANK.md](file:///c:/Users/riyam/Downloads/mallmind-main/MALLMIND_AI_VIVA_QUESTION_BANK.md) | Deep technical defence questions & answers for viva |
-| **Submission Readiness Report** | [MALLMIND_AI_PHASE9_SUBMISSION_READINESS_REPORT.md](file:///c:/Users/riyam/Downloads/mallmind-main/MALLMIND_AI_PHASE9_SUBMISSION_READINESS_REPORT.md) | Formal audit checklist and submission clearance |
+The repository contains technical and academic documentation covering the complete development lifecycle.
+
+| Document | Description |
+|---|---|
+| [Final Project Report](MALLMIND_AI_FINAL_PROJECT_REPORT.md) | Comprehensive academic project report |
+| [Architecture Diagrams](MALLMIND_AI_ARCHITECTURE_DIAGRAMS.md) | System architecture and technical diagrams |
+| [Setup Guide](MALLMIND_AI_SETUP_GUIDE.md) | Installation and configuration |
+| [Operational Runbook](MALLMIND_AI_RUNBOOK.md) | Startup, shutdown, health checks and troubleshooting |
+| [Live Demo Runbook](MALLMIND_AI_LIVE_DEMO_RUNBOOK.md) | Structured demonstration workflow |
+| [Viva Question Bank](MALLMIND_AI_VIVA_QUESTION_BANK.md) | Technical questions and defence preparation |
+| [Phase 7 Final Audit](MALLMIND_AI_PHASE7_FINAL_CLOSURE_AUDIT.md) | Data Science and Deep Learning validation |
+| [Phase 8 Final QA](MALLMIND_AI_PHASE8_FINAL_QA_REPORT.md) | Complete system quality-assurance report |
+| [Phase 9 Repository Audit](MALLMIND_AI_PHASE9_REPOSITORY_AUDIT.md) | Final repository assessment |
+| [Submission Readiness](MALLMIND_AI_PHASE9_SUBMISSION_READINESS_REPORT.md) | Academic submission-readiness assessment |
 
 ---
-*Developed for College Demonstration & Academic Examination, November 2026.*
-#   M a l l M i n d - A I  
- 
+
+## ⚠️ Known Limitations
+
+MallMind AI is an academic engineering prototype. Its capabilities and evaluation results must be understood within the following limitations.
+
+| Area | Limitation |
+|---|---|
+| Digital Twin | Schematic representation rather than surveyed architectural CAD plans |
+| Navigation | Physical distances are estimated using a 0.25 m/unit calibration |
+| Indoor Positioning | No live indoor GPS or infrastructure-based positioning |
+| Inventory | Seeded demonstration inventory; no live POS/ERP synchronization |
+| Payments | Sandbox payment processing, not real financial settlement |
+| Tax | Uniform 18% GST is a prototype assumption, not universal tax treatment |
+| Demand Forecasting | Evaluation uses simulated historical interaction data |
+| Intent Classification | Limited strict template-disjoint generalisation |
+| Image Classification | Significant domain gap on real retail photography |
+| Recommendation | Original MAP@5 evaluation has circular relevance-label limitations |
+| Concurrency | High-contention checkout has a documented lost-update risk |
+| Audit Logs | Application-level protection, not database-level WORM storage |
+
+These limitations are retained in the technical reports and should be considered before any real-world commercial deployment.
+
+---
+
+## 🚀 Future Scope
+
+Potential future improvements include:
+
+- Integration with official architectural floor plans.
+- More accurate indoor positioning.
+- Live retailer POS and ERP integrations.
+- Production payment gateway integration.
+- Concurrency-safe inventory transactions.
+- Improved multilingual ASR and intent classification.
+- Retail-domain image datasets and model validation.
+- Independent user-preference-based recommendation evaluation.
+- Real historical mall demand data.
+- Stronger audit-log integrity and retention controls.
+- Deployment and scalability validation.
+
+---
+
+## 🎓 Academic Context
+
+MallMind AI was developed as a multidisciplinary engineering capstone project integrating concepts from:
+
+- Java Programming and Object-Oriented Design.
+- Software Engineering.
+- Database Management Systems.
+- E-Commerce.
+- Data Science.
+- Deep Learning.
+- Linear Algebra.
+- Startup Creation and Business Modelling.
+- Presentation and Communication Skills.
+
+The project demonstrates the integration of these academic disciplines into a single multi-service software application.
+
+---
+
+## 👩‍💻 Author
+
+**Riya Mayank Shah**
+
+B.Tech — Artificial Intelligence & Machine Learning
+
+GitHub: [@riyas2509](https://github.com/riyas2509)
+
+Project Repository: [MallMind-AI](https://github.com/riyas2509/MallMind-AI)
+
+---
+
+## 📄 License
+
+No open-source license has been specified yet.
+
+Until a license is added, the repository should not be assumed to grant permission to reuse, modify, or redistribute its code or assets.
+
+---
+
+<p align="center">
+  <strong>MallMind AI</strong><br/>
+  Making Physical Mall Experiences More Intelligent.<br/><br/>
+  Built with AI, Software Engineering, and a focus on connected retail experiences.
+</p>
