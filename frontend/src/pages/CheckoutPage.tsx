@@ -79,8 +79,8 @@ export default function CheckoutPage() {
             <h1 style={{ fontSize: 26, fontWeight: 800, margin: '4px 0 8px', color: '#065F46' }}>
               Order #{completedOrder.orderNumber} Placed!
             </h1>
-            <p className="muted" style={{ maxWidth: 460, margin: '0 auto 20px', fontSize: 14 }}>
-              Your order has been transmitted directly to the respective store managers at Nexus Ahmedabad One.
+            <p className="muted" style={{ maxWidth: 480, margin: '0 auto 20px', fontSize: 13, lineHeight: 1.5 }}>
+              This is a prototype demonstration order recorded in the local sandbox. Note: No physical order has been transmitted to real-world commercial retail stores.
             </p>
 
             {/* Pickup PIN & Reference */}

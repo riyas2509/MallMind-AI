@@ -70,11 +70,11 @@ export default function OffersPage() {
     <div className="stack" style={{ gap: 28 }}>
       <div>
         <div className="badge badge-gold" style={{ marginBottom: 6 }}>
-          <Sparkles size={13} /> Exclusive In-Mall Promotions
+          <Sparkles size={13} /> Active Demonstration Promotions
         </div>
-        <h1>Today's Flash Deals & Offers</h1>
+        <h1>Mall Demonstration Deals & Offers</h1>
         <p className="muted">
-          Exclusive discounts available at participating stores today. Visit the shop in-person to claim.
+          Promotional offers simulated for prototype demonstration at Nexus Ahmedabad One. Visit store counters in-person to view current real-time sales.
         </p>
       </div>
 
@@ -105,11 +105,7 @@ export default function OffersPage() {
                 }}
               />
               <div style={{ position: 'absolute', top: 12, left: 12 }}>
-                {o.sponsored ? (
-                  <span className="badge badge-gold">⭐ Sponsored Deal</span>
-                ) : (
-                  <span className="badge badge-success">🔥 In-Store Offer</span>
-                )}
+                <span className="badge badge-gold">Demonstration Offer</span>
               </div>
               <div style={{ position: 'absolute', bottom: 12, left: 16, color: '#fff' }}>
                 <span style={{ fontSize: 13, opacity: 0.85 }}>{o.shopName}</span>
@@ -123,8 +119,8 @@ export default function OffersPage() {
               </p>
 
               <div className="row-between" style={{ paddingTop: 8, borderTop: '1px solid var(--border-subtle)' }}>
-                <span className="badge" style={{ background: 'var(--primary-light)', color: 'var(--primary)' }}>
-                  <Clock size={12} /> Valid Today
+                <span className="badge" style={{ background: 'var(--primary-light)', color: 'var(--primary)', fontSize: 12 }}>
+                  <Clock size={12} /> Valid: {o.validFrom} to {o.validTo}
                 </span>
                 <Link
                   to={`/map?toLabel=${encodeURIComponent(o.shopName)}`}

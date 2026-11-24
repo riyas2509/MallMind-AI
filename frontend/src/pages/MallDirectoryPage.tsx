@@ -117,7 +117,7 @@ export default function MallDirectoryPage() {
               Mall Directory & Store Guide
             </h1>
             <p style={{ margin: 0, color: '#CBD5E1', fontSize: 15, lineHeight: 1.6 }}>
-              Explore 30 verified anchor stores, luxury boutiques, food court diners, and multiplex entertainment spread across all 5 physical levels.
+              Explore 30 stores in the prototype directory across fashion, electronics, dining, and multiplex entertainment across all 5 levels.
             </p>
           </div>
 
@@ -366,12 +366,12 @@ export default function MallDirectoryPage() {
                       flex: 1,
                     }}
                   >
-                    {shop.description || 'Verified premier retailer at Nexus Ahmedabad One, Vastrapur.'}
+                    {shop.description || 'Store located at Nexus Ahmedabad One, Vastrapur (Prototype Directory).'}
                   </p>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, color: '#64748B', marginTop: 4 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                      <Clock size={12} color="#10B981" /> 10:00 AM - 10:00 PM
+                      <Clock size={12} color="#10B981" /> Demo Mall Hours: 10:00 AM - 10:00 PM
                     </div>
                   </div>
 

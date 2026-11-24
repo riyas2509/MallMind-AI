@@ -12,7 +12,6 @@ import {
   Check,
   ShoppingBag,
   Search,
-  Sigma,
   Layers,
 } from 'lucide-react';
 
@@ -87,44 +86,21 @@ export default function ProductComparePage() {
     setSearchQuery('');
   }
 
-  // Linear Algebra: Compute Feature Vectors and Euclidean Distance / Cosine Similarity
+  // Compare Selected Products
   const vectorAnalysis = useMemo(() => {
     if (comparedProducts.length < 2) return null;
 
     const pA = comparedProducts[0];
     const pB = comparedProducts[1];
 
-    // Normalized Feature Vector 1: Price (scale 0 to 100,000)
-    const normPriceA = Math.min(1, pA.effectivePrice / 80000);
-    const normPriceB = Math.min(1, pB.effectivePrice / 80000);
-
-    // Normalized Feature Vector 2: Discount ratio
-    const discA = pA.discountPrice ? (pA.price - pA.discountPrice) / pA.price : 0;
-    const discB = pB.discountPrice ? (pB.price - pB.discountPrice) / pB.price : 0;
-
-    // Normalized Feature Vector 3: Floor index (LG = 0, G = 0.25, 1F = 0.5, 2F = 0.75, 3F = 1.0)
-    const floorIndexA = (pA.shopFloorNumber + 1) / 4;
-    const floorIndexB = (pB.shopFloorNumber + 1) / 4;
-
-    // Euclidean distance: d(A, B) = sqrt(sum((Ai - Bi)^2))
-    const euclideanDist = Math.sqrt(
-      Math.pow(normPriceA - normPriceB, 2) +
-      Math.pow(discA - discB, 2) +
-      Math.pow(floorIndexA - floorIndexB, 2)
-    );
-
-    // Cosine similarity: (A . B) / (|A| * |B|)
-    const dotProduct = normPriceA * normPriceB + discA * discB + floorIndexA * floorIndexB;
-    const magA = Math.sqrt(Math.pow(normPriceA, 2) + Math.pow(discA, 2) + Math.pow(floorIndexA, 2));
-    const magB = Math.sqrt(Math.pow(normPriceB, 2) + Math.pow(discB, 2) + Math.pow(floorIndexB, 2));
-    const cosineSim = magA > 0 && magB > 0 ? dotProduct / (magA * magB) : 1;
-
     return {
       productAName: pA.name,
       productBName: pB.name,
-      euclideanDistance: euclideanDist.toFixed(4),
-      cosineSimilarity: (cosineSim * 100).toFixed(1),
       priceDifference: Math.abs(pA.effectivePrice - pB.effectivePrice),
+      cheaperProduct: pA.effectivePrice < pB.effectivePrice ? pA.name : pB.name,
+      savingsAmount: Math.abs(pA.effectivePrice - pB.effectivePrice),
+      sameFloor: pA.shopFloorNumber === pB.shopFloorNumber,
+      sameCategory: pA.category === pB.category,
     };
   }, [comparedProducts]);
 
@@ -251,24 +227,24 @@ export default function ProductComparePage() {
         )}
       </div>
 
-      {/* Linear Algebra Mathematical Explainability Card */}
+      {/* Product Comparison Summary Card */}
       {vectorAnalysis && (
         <div
           className="card"
           style={{
-            background: 'linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%)',
-            border: '1px solid #BFDBFE',
+            background: 'var(--surface)',
+            border: '1px solid var(--border)',
             padding: 20,
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-            <Sigma size={18} color="#2563EB" />
-            <h3 style={{ margin: 0, fontSize: 15, fontWeight: 700, color: '#1E3A8A' }}>
-              Linear Algebra Vector Analysis ({vectorAnalysis.productAName} vs {vectorAnalysis.productBName})
+            <Scale size={18} color="var(--primary)" />
+            <h3 style={{ margin: 0, fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>
+              Comparison Highlights: {vectorAnalysis.productAName} vs {vectorAnalysis.productBName}
             </h3>
           </div>
-          <p style={{ margin: 0, fontSize: 13, color: '#3B82F6', lineHeight: 1.5 }}>
-            Each product is transformed into a 3D feature space <strong>x = [Price, Discount Ratio, Floor Index]</strong>.
+          <p style={{ margin: 0, fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.5 }}>
+            Factual attribute comparison across price, physical store location, and catalogue categories.
           </p>
 
           <div
@@ -279,22 +255,34 @@ export default function ProductComparePage() {
               marginTop: 14,
             }}
           >
-            <div style={{ background: '#fff', padding: '12px 16px', borderRadius: 8, border: '1px solid #DBEAFE' }}>
-              <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600, textTransform: 'uppercase' }}>Euclidean Distance ‖xA - xB‖</div>
-              <div style={{ fontSize: 20, fontWeight: 800, color: '#1E40AF', marginTop: 2 }}>{vectorAnalysis.euclideanDistance}</div>
-              <div style={{ fontSize: 11, color: '#6B7280', marginTop: 2 }}>Normalized feature space separation</div>
+            <div style={{ background: '#fff', padding: '12px 16px', borderRadius: 8, border: '1px solid var(--border)' }}>
+              <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>Price Difference</div>
+              <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--primary)', marginTop: 2 }}>
+                ₹{vectorAnalysis.priceDifference.toLocaleString('en-IN')}
+              </div>
+              <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>
+                {vectorAnalysis.cheaperProduct} is more affordable
+              </div>
             </div>
 
-            <div style={{ background: '#fff', padding: '12px 16px', borderRadius: 8, border: '1px solid #DBEAFE' }}>
-              <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600, textTransform: 'uppercase' }}>Cosine Similarity cos(θ)</div>
-              <div style={{ fontSize: 20, fontWeight: 800, color: '#059669', marginTop: 2 }}>{vectorAnalysis.cosineSimilarity}%</div>
-              <div style={{ fontSize: 11, color: '#6B7280', marginTop: 2 }}>Orientation alignment in catalogue space</div>
+            <div style={{ background: '#fff', padding: '12px 16px', borderRadius: 8, border: '1px solid var(--border)' }}>
+              <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>Floor Location</div>
+              <div style={{ fontSize: 20, fontWeight: 800, color: vectorAnalysis.sameFloor ? '#10b981' : '#d97706', marginTop: 2 }}>
+                {vectorAnalysis.sameFloor ? 'Same Floor' : 'Different Floors'}
+              </div>
+              <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>
+                {vectorAnalysis.sameFloor ? 'Located on the same mall level' : 'Requires vertical transit between shops'}
+              </div>
             </div>
 
-            <div style={{ background: '#fff', padding: '12px 16px', borderRadius: 8, border: '1px solid #DBEAFE' }}>
-              <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600, textTransform: 'uppercase' }}>Direct Budget Gap</div>
-              <div style={{ fontSize: 20, fontWeight: 800, color: '#D97706', marginTop: 2 }}>₹{vectorAnalysis.priceDifference.toLocaleString('en-IN')}</div>
-              <div style={{ fontSize: 11, color: '#6B7280', marginTop: 2 }}>Absolute retail price divergence</div>
+            <div style={{ background: '#fff', padding: '12px 16px', borderRadius: 8, border: '1px solid var(--border)' }}>
+              <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>Category Match</div>
+              <div style={{ fontSize: 20, fontWeight: 800, color: vectorAnalysis.sameCategory ? '#2563eb' : '#64748b', marginTop: 2 }}>
+                {vectorAnalysis.sameCategory ? 'Matched' : 'Cross-Category'}
+              </div>
+              <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>
+                {vectorAnalysis.sameCategory ? 'Both share the same category' : 'Different merchandise categories'}
+              </div>
             </div>
           </div>
         </div>

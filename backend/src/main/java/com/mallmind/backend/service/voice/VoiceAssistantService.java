@@ -39,8 +39,8 @@ import java.util.Set;
 public class VoiceAssistantService {
 
     private static final double CLARIFICATION_CONFIDENCE_FLOOR = 0.4;
-    private static final Set<String> FRESH_SEARCH_INTENTS =
-            Set.of("PRODUCT_SEARCH", "SHOP_SEARCH", "NAVIGATION", "FACILITY_SEARCH", "PRODUCT_COMPARE");
+    private static final Set<String> FRESH_SEARCH_INTENTS = Set.of("PRODUCT_SEARCH", "SHOP_SEARCH", "NAVIGATION",
+            "FACILITY_SEARCH", "PRODUCT_COMPARE");
     private static final String ENTRANCE_QR_CODE = "QR-G-ENTRANCE";
 
     private static final Map<String, FacilityType> FACILITY_WORD_TO_TYPE = Map.of(
@@ -76,7 +76,8 @@ public class VoiceAssistantService {
     }
 
     public VoiceQueryResult handleText(String sessionId, String text) {
-        String effectiveSessionId = sessionId != null && !sessionId.isBlank() ? sessionId : sessionService.newSessionId();
+        String effectiveSessionId = sessionId != null && !sessionId.isBlank() ? sessionId
+                : sessionService.newSessionId();
         IntentResult nlu = modelServiceClient.classifyIntent(text);
 
         if (nlu.lowConfidence() || nlu.confidence() < CLARIFICATION_CONFIDENCE_FLOOR) {
@@ -111,7 +112,8 @@ public class VoiceAssistantService {
 
     private Dispatched handleProductSearch(VoiceSlots slots) {
         BigDecimal maxPrice = slots.getMaxBudget() != null ? BigDecimal.valueOf(slots.getMaxBudget()) : null;
-        var criteria = new ProductSearchCriteria(null, slots.getBrand(), slots.getCategory(), slots.getColor(), null, maxPrice);
+        var criteria = new ProductSearchCriteria(null, slots.getBrand(), slots.getCategory(), slots.getColor(), null,
+                maxPrice);
         List<ProductResponse> results = productService.search(criteria);
 
         if (results.isEmpty()) {
@@ -124,17 +126,22 @@ public class VoiceAssistantService {
         for (int i = 0; i < top.size(); i++) {
             ProductResponse p = top.get(i);
             sb.append(p.name()).append(" at ₹").append(p.effectivePrice());
-            if (i < top.size() - 1) sb.append("; ");
+            if (i < top.size() - 1)
+                sb.append("; ");
         }
         return new Dispatched(sb.toString(), results);
     }
 
     private String describeNoProducts(VoiceSlots slots) {
         StringBuilder sb = new StringBuilder("I couldn't find any products");
-        if (slots.getCategory() != null) sb.append(" in ").append(slots.getCategory());
-        if (slots.getBrand() != null) sb.append(" from ").append(slots.getBrand());
-        if (slots.getColor() != null) sb.append(" in ").append(slots.getColor());
-        if (slots.getMaxBudget() != null) sb.append(" under ₹").append(slots.getMaxBudget().longValue());
+        if (slots.getCategory() != null)
+            sb.append(" in ").append(slots.getCategory());
+        if (slots.getBrand() != null)
+            sb.append(" from ").append(slots.getBrand());
+        if (slots.getColor() != null)
+            sb.append(" in ").append(slots.getColor());
+        if (slots.getMaxBudget() != null)
+            sb.append(" under ₹").append(slots.getMaxBudget().longValue());
         sb.append(" in the current catalogue.");
         return sb.toString();
     }
@@ -147,11 +154,13 @@ public class VoiceAssistantService {
             return new Dispatched("I couldn't find any shops matching that.", results);
         }
         List<ShopResponse> top = results.subList(0, Math.min(3, results.size()));
-        StringBuilder sb = new StringBuilder("I found " + results.size() + " shop" + (results.size() == 1 ? "" : "s") + ": ");
+        StringBuilder sb = new StringBuilder(
+                "I found " + results.size() + " shop" + (results.size() == 1 ? "" : "s") + ": ");
         for (int i = 0; i < top.size(); i++) {
             ShopResponse s = top.get(i);
             sb.append(s.name()).append(" on Floor ").append(s.floorNumber());
-            if (i < top.size() - 1) sb.append("; ");
+            if (i < top.size() - 1)
+                sb.append("; ");
         }
         return new Dispatched(sb.toString(), results);
     }
@@ -192,12 +201,37 @@ public class VoiceAssistantService {
         if (facilities.isEmpty()) {
             return new Dispatched("I couldn't find a " + slots.getFacility() + " in the mall directory.", null);
         }
-        Facility facility = facilities.get(0);
-        RouteResponse route = navigationGraphService.findRoute(resolveEntranceNodeId(), facility.getNavigationNode().getId());
-        String spoken = "There's " + FACILITY_WORD_SPOKEN.getOrDefault(slots.getFacility(), slots.getFacility())
-                + " on Floor " + facility.getFloor().getFloorNumber()
-                + ". Starting from the main entrance: " + String.join(" ", route.spokenDirections());
-        return new Dispatched(spoken, route);
+
+        // Algorithmic nearest amenity selection via Dijkstra shortest graph distance
+        Facility bestFacility = null;
+        RouteResponse bestRoute = null;
+        Long startNode = resolveEntranceNodeId();
+
+        for (Facility candidate : facilities) {
+            if (candidate.getNavigationNode() != null) {
+                try {
+                    RouteResponse r = navigationGraphService.findRoute(startNode,
+                            candidate.getNavigationNode().getId());
+                    if (bestRoute == null || r.totalDistanceMeters() < bestRoute.totalDistanceMeters()) {
+                        bestRoute = r;
+                        bestFacility = candidate;
+                    }
+                } catch (Exception ignored) {
+                    // Node may not be reachable or isolated
+                }
+            }
+        }
+
+        if (bestFacility == null || bestRoute == null) {
+            bestFacility = facilities.get(0);
+            bestRoute = navigationGraphService.findRoute(startNode, bestFacility.getNavigationNode().getId());
+        }
+
+        String spoken = "The nearest " + FACILITY_WORD_SPOKEN.getOrDefault(slots.getFacility(), slots.getFacility())
+                + " is located on Floor " + bestFacility.getFloor().getFloorNumber()
+                + " (" + bestRoute.totalDistanceMeters() + " meters away). Starting from the main entrance: "
+                + String.join(" ", bestRoute.spokenDirections());
+        return new Dispatched(spoken, bestRoute);
     }
 
     private Long resolveFacilityNodeId(String facilityWord) {
@@ -206,19 +240,43 @@ public class VoiceAssistantService {
             return null;
         }
         List<Facility> facilities = facilityRepository.findByTypeWithFloorAndNode(type);
-        return facilities.isEmpty() ? null : facilities.get(0).getNavigationNode().getId();
+        if (facilities.isEmpty()) {
+            return null;
+        }
+        Long startNode = resolveEntranceNodeId();
+        Facility bestFacility = null;
+        double bestDist = Double.MAX_VALUE;
+        for (Facility candidate : facilities) {
+            if (candidate.getNavigationNode() != null) {
+                try {
+                    RouteResponse r = navigationGraphService.findRoute(startNode,
+                            candidate.getNavigationNode().getId());
+                    if (r.totalDistanceMeters() < bestDist) {
+                        bestDist = r.totalDistanceMeters();
+                        bestFacility = candidate;
+                    }
+                } catch (Exception ignored) {
+                }
+            }
+        }
+        return (bestFacility != null && bestFacility.getNavigationNode() != null)
+                ? bestFacility.getNavigationNode().getId()
+                : facilities.get(0).getNavigationNode().getId();
     }
 
-    /** No real indoor positioning exists yet (Part 15 doesn't require GPS/BLE
+    /**
+     * No real indoor positioning exists yet (Part 15 doesn't require GPS/BLE
      * beacons), so every voice route starts from the main entrance -- a
-     * documented limitation, not a fabricated "current location". */
+     * documented limitation, not a fabricated "current location".
+     */
     private Long resolveEntranceNodeId() {
         Long cached = entranceNodeId;
         if (cached != null) {
             return cached;
         }
         NavigationNode entrance = navigationNodeRepository.findByQrCode(ENTRANCE_QR_CODE)
-                .orElseThrow(() -> new IllegalStateException("Seed data is missing the main entrance node (" + ENTRANCE_QR_CODE + ")"));
+                .orElseThrow(() -> new IllegalStateException(
+                        "Seed data is missing the main entrance node (" + ENTRANCE_QR_CODE + ")"));
         entranceNodeId = entrance.getId();
         return entranceNodeId;
     }

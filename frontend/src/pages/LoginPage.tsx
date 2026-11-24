@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { HttpError } from '../api/client';
-import { Compass, Lock, Mail, Shield, Store } from 'lucide-react';
+import { Compass, Lock, Mail } from 'lucide-react';
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -26,16 +26,6 @@ export default function LoginPage() {
     }
   }
 
-  const fillAdmin = () => {
-    setEmail('admin@mallmind.local');
-    setPassword('AdminPass123!');
-  };
-
-  const fillRetailer = () => {
-    setEmail('retailer@mallmind.local');
-    setPassword('RetailerPass123!');
-  };
-
   return (
     <div style={{ maxWidth: 440, margin: '40px auto 80px' }}>
       <div className="card" style={{ padding: 36, boxShadow: 'var(--shadow-xl)' }}>
@@ -45,39 +35,6 @@ export default function LoginPage() {
           </div>
           <h2 style={{ fontSize: 24, marginBottom: 4 }}>Welcome Back</h2>
           <p className="muted">Sign in to your MallMind AI customer or store account</p>
-        </div>
-
-        {/* Quick Demo Fill Buttons */}
-        <div
-          style={{
-            padding: 14,
-            borderRadius: 'var(--radius-sm)',
-            background: 'var(--primary-light)',
-            marginBottom: 20,
-            fontSize: 12,
-          }}
-        >
-          <span style={{ fontWeight: 700, color: 'var(--primary)', display: 'block', marginBottom: 6 }}>
-            QUICK 1-CLICK DEMO ACCOUNTS:
-          </span>
-          <div className="row" style={{ gap: 8 }}>
-            <button
-              type="button"
-              className="btn btn-secondary btn-sm"
-              onClick={fillAdmin}
-              style={{ flex: 1, fontSize: 12 }}
-            >
-              <Shield size={13} style={{ color: 'var(--primary)' }} /> Admin Account
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary btn-sm"
-              onClick={fillRetailer}
-              style={{ flex: 1, fontSize: 12 }}
-            >
-              <Store size={13} style={{ color: '#10b981' }} /> Retailer Account
-            </button>
-          </div>
         </div>
 
         <form className="stack" onSubmit={handleSubmit} style={{ gap: 16 }}>

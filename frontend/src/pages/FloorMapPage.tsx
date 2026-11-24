@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { api } from '../api/client';
 import type { FacilityResponse, FloorMapResponse, FloorSummary, RouteResponse, ShopResponse } from '../api/types';
-import { FALLBACK_FLOORS, getFallbackFloorMap, getFallbackRoute } from '../data/fallbackData';
+import { FALLBACK_FLOORS, FALLBACK_FACILITIES, FALLBACK_SHOPS, getFallbackFloorMap, getFallbackRoute } from '../data/fallbackData';
 import { getShopImage } from '../utils/images';
 import {
   Compass,
@@ -25,6 +25,8 @@ import {
   ZoomOut,
   RotateCcw,
   Accessibility,
+  AlertTriangle,
+  Box,
 } from 'lucide-react';
 
 interface Selected {
@@ -39,6 +41,15 @@ interface Selected {
   id?: number | string;
 }
 
+const STARTING_POINTS = [
+  { nodeId: 21, floorNumber: 0, label: 'Main Grand Entrance (Vastrapur Gate • Floor G)' },
+  { nodeId: 25, floorNumber: 0, label: 'Central Atrium East Kiosk (Floor G)' },
+  { nodeId: 1, floorNumber: -1, label: 'LG Parking & Valet Entrance (Floor LG)' },
+  { nodeId: 41, floorNumber: 1, label: 'West Balcony Kiosk (Floor 1F)' },
+  { nodeId: 61, floorNumber: 2, label: 'West Corridor Kiosk (Floor 2F)' },
+  { nodeId: 81, floorNumber: 3, label: 'Food Court & Cinema Concourse (Floor 3F)' },
+];
+
 const ENTRANCE_QR = 'QR-G-ENTRANCE';
 
 export default function FloorMapPage() {
@@ -46,10 +57,10 @@ export default function FloorMapPage() {
   const [floors, setFloors] = useState<FloorSummary[]>(FALLBACK_FLOORS);
   const [activeFloor, setActiveFloor] = useState<number>(Number(searchParams.get('floor') ?? 0));
   const [floorMap, setFloorMap] = useState<FloorMapResponse | null>(() => getFallbackFloorMap(Number(searchParams.get('floor') ?? 0)));
-  const [entrance, setEntrance] = useState<{ nodeId: number; floorNumber: number; label: string } | null>({
+  const [entrance, setEntrance] = useState<{ nodeId: number; floorNumber: number; label: string }>({
     nodeId: 21,
     floorNumber: 0,
-    label: 'Main Grand Entrance (Vastrapur Gate)',
+    label: 'Main Grand Entrance (Vastrapur Gate • Floor G)',
   });
   const [selected, setSelected] = useState<Selected | null>(null);
   const [route, setRoute] = useState<RouteResponse | null>(null);
@@ -59,6 +70,7 @@ export default function FloorMapPage() {
   const [accessibleOnly, setAccessibleOnly] = useState(false);
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [viewMode, setViewMode] = useState<'2d' | 'isometric'>('2d');
 
   // Live Navigation Simulation State
   const [isNavigating, setIsNavigating] = useState(false);
@@ -79,7 +91,7 @@ export default function FloorMapPage() {
       .get<{ nodeId: number; floorNumber: number; label: string }>(`/api/navigation/checkin?qrCode=${ENTRANCE_QR}`)
       .then(setEntrance)
       .catch(() => {
-        setEntrance({ nodeId: 21, floorNumber: 0, label: 'Main Grand Entrance (Vastrapur Gate)' });
+        setEntrance({ nodeId: 21, floorNumber: 0, label: 'Main Grand Entrance (Vastrapur Gate • Floor G)' });
       });
   }, []);
 
@@ -121,10 +133,15 @@ export default function FloorMapPage() {
       } catch {
         // Compute client fallback route
         const fallback = getFallbackRoute(fromId, toNodeId);
-        setRoute(fallback);
-        if (autoStart) {
-          setIsNavigating(true);
-          setCurrentStepIndex(0);
+        if (fallback) {
+          setRoute(fallback);
+          if (autoStart) {
+            setIsNavigating(true);
+            setCurrentStepIndex(0);
+          }
+        } else {
+          setRoute(null);
+          setError('No direct route found between the selected starting point and destination. Please choose another starting kiosk or accessible transition.');
         }
       } finally {
         setRouting(false);
@@ -242,11 +259,51 @@ export default function FloorMapPage() {
   const hasArrived = isNavigating && route && currentStepIndex === route.steps.length - 1;
 
   // Compute direction icon for current guidance
-  const currentInstruction = route?.spokenDirections?.[Math.min(currentStepIndex, (route.spokenDirections.length || 1) - 1)] ||
+  const currentInstruction =
+    route?.spokenDirections?.[Math.min(currentStepIndex, (route.spokenDirections.length || 1) - 1)] ||
     (selected ? `Head toward ${selected.name}` : 'Select a destination');
 
   return (
     <div className="stack" style={{ gap: 20 }}>
+      {/* Prototype Positioning Disclaimer Banner */}
+      <div
+        style={{
+          background: 'var(--bg-brand-light)',
+          border: '1px solid rgba(36, 88, 74, 0.25)',
+          borderRadius: 'var(--radius-sm)',
+          padding: '8px 14px',
+          fontSize: 12,
+          color: 'var(--brand-primary)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+        }}
+      >
+        <Compass size={14} style={{ flexShrink: 0 }} />
+        <span>
+          <strong>Indoor Digital Twin & Navigation:</strong> Nexus Ahmedabad One (Alpha One Mall, Vastrapur). Starting points are mapped to physical entry kiosks. Dijkstra pathfinding evaluates real corridor graph edges.
+        </span>
+      </div>
+
+      {error && (
+        <div
+          style={{
+            background: '#FEF2F2',
+            border: '1px solid #FCA5A5',
+            borderRadius: 'var(--radius-sm)',
+            padding: '10px 16px',
+            color: '#991B1B',
+            fontSize: 13,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+          }}
+        >
+          <AlertTriangle size={16} style={{ flexShrink: 0 }} />
+          <span>{error}</span>
+        </div>
+      )}
+
       {/* ================= GOOGLE MAPS INDOOR HUD HEADER ================= */}
       <div
         className="card"
@@ -274,11 +331,47 @@ export default function FloorMapPage() {
                 }}
               />
               <div style={{ flex: 1 }}>
-                <span style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.04em' }}>
-                  Starting Point
+                <span
+                  style={{
+                    fontSize: 10,
+                    color: 'var(--text-muted)',
+                    textTransform: 'uppercase',
+                    fontWeight: 700,
+                    letterSpacing: '0.04em',
+                  }}
+                >
+                  Starting Point (Selected Kiosk)
                 </span>
-                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>
-                  {entrance?.label || 'Vastrapur Grand Entrance • Ground Floor Check-In'}
+                <div style={{ marginTop: 2 }}>
+                  <select
+                    value={entrance.nodeId}
+                    onChange={(e) => {
+                      const chosen = STARTING_POINTS.find((p) => p.nodeId === Number(e.target.value));
+                      if (chosen) {
+                        setEntrance(chosen);
+                        if (selected) {
+                          void computeRoute(selected.navigationNodeId);
+                        }
+                      }
+                    }}
+                    style={{
+                      padding: '4px 8px',
+                      fontSize: 13,
+                      fontWeight: 600,
+                      borderRadius: 6,
+                      border: '1px solid var(--border-color)',
+                      background: '#fff',
+                      color: 'var(--text-primary)',
+                      width: '100%',
+                      maxWidth: 440,
+                    }}
+                  >
+                    {STARTING_POINTS.map((sp) => (
+                      <option key={sp.nodeId} value={sp.nodeId}>
+                        {sp.label}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>
@@ -296,105 +389,202 @@ export default function FloorMapPage() {
                 }}
               />
               <div style={{ flex: 1 }}>
-                <span style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.04em' }}>
+                <span
+                  style={{
+                    fontSize: 10,
+                    color: 'var(--text-muted)',
+                    textTransform: 'uppercase',
+                    fontWeight: 700,
+                    letterSpacing: '0.04em',
+                  }}
+                >
                   Destination
                 </span>
-                <div style={{ fontSize: 13, fontWeight: 600, color: selected ? 'var(--brand-primary)' : 'var(--text-muted)' }}>
-                  {selected ? `${selected.name} (Floor ${selected.floorNumber === -1 ? 'LG' : selected.floorNumber === 0 ? 'G' : selected.floorNumber})` : 'Select any store or amenity below to calculate route'}
+                <div style={{ marginTop: 2 }}>
+                  <select
+                    value={selected?.navigationNodeId ?? ''}
+                    onChange={(e) => {
+                      const val = Number(e.target.value);
+                      if (!val) return;
+                      const shop = FALLBACK_SHOPS.find((s) => s.navigationNodeId === val);
+                      const facility = FALLBACK_FACILITIES.find((f) => f.navigationNodeId === val);
+                      if (shop) {
+                        setSelected({
+                          kind: 'shop',
+                          name: shop.name,
+                          category: shop.category,
+                          navigationNodeId: shop.navigationNodeId,
+                          floorNumber: shop.floorNumber,
+                          x: shop.x,
+                          y: shop.y,
+                          description: shop.description ?? undefined,
+                          id: shop.id,
+                        });
+                        setActiveFloor(shop.floorNumber);
+                        void computeRoute(shop.navigationNodeId);
+                      } else if (facility) {
+                        setSelected({
+                          kind: 'facility',
+                          name: facility.label,
+                          category: facility.type,
+                          navigationNodeId: facility.navigationNodeId,
+                          floorNumber: facility.floorNumber,
+                          x: facility.x,
+                          y: facility.y,
+                          id: facility.id,
+                        });
+                        setActiveFloor(facility.floorNumber);
+                        void computeRoute(facility.navigationNodeId);
+                      }
+                    }}
+                    style={{
+                      padding: '4px 8px',
+                      fontSize: 13,
+                      fontWeight: 600,
+                      borderRadius: 6,
+                      border: '1px solid var(--border-color)',
+                      background: '#fff',
+                      color: selected ? 'var(--brand-primary)' : 'var(--text-secondary)',
+                      width: '100%',
+                      maxWidth: 440,
+                    }}
+                  >
+                    <option value="">-- Choose destination store or amenity --</option>
+                    <optgroup label="Stores & Dining (30 Directory Stores)">
+                      {FALLBACK_SHOPS.map((s) => (
+                        <option key={s.id} value={s.navigationNodeId}>
+                          {s.name} (Floor {s.floorNumber === -1 ? 'LG' : s.floorNumber === 0 ? 'G' : s.floorNumber} · {s.category})
+                        </option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Facilities & Amenities (11 Mall Facilities)">
+                      {FALLBACK_FACILITIES.map((f) => (
+                        <option key={f.id} value={f.navigationNodeId}>
+                          {f.label} (Floor {f.floorNumber === -1 ? 'LG' : f.floorNumber === 0 ? 'G' : f.floorNumber})
+                        </option>
+                      ))}
+                    </optgroup>
+                  </select>
                 </div>
               </div>
-            </div>
-
-            {/* Wheelchair Accessible Toggle */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, paddingTop: 4 }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer', fontSize: 12, fontWeight: 600, color: accessibleOnly ? 'var(--brand-primary)' : 'var(--text-secondary)' }}>
-                <input
-                  type="checkbox"
-                  checked={accessibleOnly}
-                  onChange={(e) => handleToggleAccessible(e.target.checked)}
-                  style={{ cursor: 'pointer', accentColor: 'var(--brand-primary)' }}
-                />
-                <Accessibility size={14} style={{ color: accessibleOnly ? 'var(--brand-primary)' : 'var(--text-muted)' }} />
-                <span>Wheelchair Accessible (Glass Elevators Only)</span>
-              </label>
             </div>
           </div>
 
-          {/* Route Stats & Navigation Controls */}
-          {route && (
+          {/* Right Action: Route Metrics & 2D/Isometric View Toggle */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'flex-end' }}>
+            {/* View Mode Toggle Button */}
             <div
               style={{
                 display: 'flex',
-                alignItems: 'center',
-                gap: 16,
-                padding: '10px 16px',
-                background: 'var(--bg-primary)',
+                background: '#EAE8E1',
                 borderRadius: 'var(--radius-sm)',
-                border: '1px solid var(--border-color)',
+                padding: 3,
+                gap: 4,
               }}
             >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: 'var(--text-secondary)' }}>
-                  <Footprints size={13} style={{ color: 'var(--route-blue)' }} />
-                  <span>Walking Distance & Time</span>
-                </div>
-                <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--route-blue)', fontFamily: 'var(--font-headings)' }}>
-                  ~{estimatedMins} min <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>({estimatedWalkingMeters} m)</span>
-                </div>
-                <div style={{ fontSize: 10, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 4, marginTop: 2 }}>
-                  <span style={{ background: 'var(--bg-surface)', padding: '1px 5px', borderRadius: 3, border: '1px solid var(--border-color)', fontWeight: 600 }}>
-                    {route.routeType === 'MULTI_FLOOR_ACCESSIBLE_ELEVATOR' ? '♿ Elevator Only' : route.routeType === 'MULTI_FLOOR_STANDARD' ? 'Escalators/Stairs' : 'Same Floor'}
-                  </span>
-                  <span>•</span>
-                  <span>1 unit ≈ 0.25 m (Est.)</span>
-                </div>
-              </div>
-
-              {/* Start Navigation Simulation Button */}
               <button
-                className="btn btn-sm"
+                onClick={() => setViewMode('2d')}
                 style={{
-                  background: isNavigating ? 'var(--color-error)' : 'var(--brand-primary)',
-                  color: '#fff',
                   border: 'none',
-                  padding: '9px 16px',
-                  fontWeight: 600,
-                  fontSize: 13,
+                  background: viewMode === '2d' ? '#FFFFFF' : 'transparent',
+                  color: viewMode === '2d' ? 'var(--brand-primary)' : 'var(--text-secondary)',
+                  fontWeight: viewMode === '2d' ? 700 : 500,
+                  fontSize: 11,
+                  padding: '5px 12px',
+                  borderRadius: 4,
+                  cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 6,
-                }}
-                onClick={() => {
-                  if (isNavigating) {
-                    setIsNavigating(false);
-                    setCurrentStepIndex(0);
-                  } else {
-                    setIsNavigating(true);
-                    setCurrentStepIndex(0);
-                  }
+                  gap: 5,
+                  boxShadow: viewMode === '2d' ? 'var(--shadow-xs)' : 'none',
                 }}
               >
-                {isNavigating ? (
-                  <>
-                    <Square size={14} /> Stop Walking
-                  </>
-                ) : (
-                  <>
-                    <Play size={14} /> Start Walking
-                  </>
-                )}
+                <Layers size={13} />
+                <span>2D Plan</span>
+              </button>
+              <button
+                onClick={() => setViewMode('isometric')}
+                style={{
+                  border: 'none',
+                  background: viewMode === 'isometric' ? '#FFFFFF' : 'transparent',
+                  color: viewMode === 'isometric' ? 'var(--brand-primary)' : 'var(--text-secondary)',
+                  fontWeight: viewMode === 'isometric' ? 700 : 500,
+                  fontSize: 11,
+                  padding: '5px 12px',
+                  borderRadius: 4,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 5,
+                  boxShadow: viewMode === 'isometric' ? 'var(--shadow-xs)' : 'none',
+                }}
+              >
+                <Box size={13} />
+                <span>2.5D Isometric</span>
               </button>
             </div>
-          )}
+
+            {/* Accessibility Checkbox */}
+            <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={accessibleOnly}
+                onChange={(e) => handleToggleAccessible(e.target.checked)}
+                style={{ accentColor: 'var(--brand-primary)' }}
+              />
+              <Accessibility size={14} style={{ color: accessibleOnly ? 'var(--brand-primary)' : 'var(--text-muted)' }} />
+              <span style={{ fontWeight: accessibleOnly ? 600 : 400 }}>Wheelchair Accessible (Elevator Only)</span>
+            </label>
+
+            {/* Route summary badge */}
+            {route && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--brand-primary)' }}>
+                    ~{estimatedWalkingMeters} m
+                  </div>
+                  <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>
+                    ~{estimatedMins} min walk • {route.steps.length} steps
+                  </div>
+                </div>
+
+                {!isNavigating ? (
+                  <button
+                    className="btn btn-primary btn-sm"
+                    onClick={() => {
+                      setIsNavigating(true);
+                      setCurrentStepIndex(0);
+                    }}
+                    style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px' }}
+                  >
+                    <Play size={14} fill="#fff" />
+                    <span>Start Guidance</span>
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={() => {
+                      setIsNavigating(false);
+                      if (simTimerRef.current) clearInterval(simTimerRef.current);
+                    }}
+                    style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px' }}
+                  >
+                    <Square size={14} fill="currentColor" />
+                    <span>Stop</span>
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* ================= GOOGLE MAPS TURN GUIDANCE BANNER ================= */}
+      {/* ================= TURN-BY-TURN GUIDANCE BANNER ================= */}
       {route && (
         <div
           style={{
-            background: hasArrived ? 'var(--color-success)' : 'var(--brand-primary)',
-            color: '#FFFFFF',
+            background: hasArrived ? '#E8F5EF' : 'var(--brand-primary)',
+            color: hasArrived ? '#0F5132' : '#FFFFFF',
             borderRadius: 'var(--radius-md)',
             padding: '12px 20px',
             display: 'flex',
@@ -406,32 +596,34 @@ export default function FloorMapPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             <div
               style={{
-                width: 36,
-                height: 36,
-                borderRadius: 'var(--radius-xs)',
-                background: 'rgba(255, 255, 255, 0.15)',
+                width: 38,
+                height: 38,
+                borderRadius: '50%',
+                background: hasArrived ? 'rgba(15, 81, 50, 0.15)' : 'rgba(255, 255, 255, 0.15)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                flexShrink: 0,
               }}
             >
               {hasArrived ? (
-                <CheckCircle2 size={22} />
+                <CheckCircle2 size={20} />
               ) : currentInstruction.toLowerCase().includes('right') ? (
                 <CornerUpRight size={20} />
               ) : currentInstruction.toLowerCase().includes('left') ? (
                 <CornerUpLeft size={20} />
-              ) : (
+              ) : currentInstruction.toLowerCase().includes('elevator') || currentInstruction.toLowerCase().includes('escalator') ? (
                 <ArrowUp size={20} />
+              ) : (
+                <Footprints size={20} />
               )}
             </div>
-
             <div>
-              <div style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.06em', opacity: 0.85 }}>
-                {hasArrived ? 'Destination Arrived' : `Step ${currentStepIndex + 1} of ${route.steps.length}`}
+              <div style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.01em' }}>
+                {hasArrived ? `Arrived at ${selected?.name}!` : currentInstruction}
               </div>
-              <div style={{ fontSize: 15, fontWeight: 700, fontFamily: 'var(--font-headings)' }}>
-                {hasArrived ? `You have arrived at ${selected?.name}!` : currentInstruction}
+              <div style={{ fontSize: 11, opacity: 0.85, marginTop: 2 }}>
+                Step {currentStepIndex + 1} of {route.steps.length} • {activeFloor === -1 ? 'LG' : activeFloor === 0 ? 'Ground Floor' : `Floor ${activeFloor}`}
               </div>
             </div>
           </div>
@@ -439,24 +631,22 @@ export default function FloorMapPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <button
               onClick={() => setAudioGuidance(!audioGuidance)}
-              title={audioGuidance ? 'Mute Voice Directions' : 'Enable Voice Directions'}
+              title={audioGuidance ? 'Mute Voice Directions' : 'Unmute Voice Directions'}
               style={{
-                background: 'rgba(255, 255, 255, 0.15)',
+                background: 'rgba(255, 255, 255, 0.2)',
                 border: 'none',
+                color: 'inherit',
                 borderRadius: 'var(--radius-xs)',
-                color: '#fff',
-                width: 32,
-                height: 32,
+                padding: '6px 10px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
               }}
             >
               {audioGuidance ? <Volume2 size={16} /> : <VolumeX size={16} />}
             </button>
             <div style={{ fontSize: 12, fontWeight: 600, opacity: 0.9 }}>
-              {isNavigating ? 'GPS Active' : 'Step-by-Step Preview'}
+              {isNavigating ? 'Simulated Wayfinding' : 'Step-by-Step Preview'}
             </div>
           </div>
         </div>
@@ -473,7 +663,13 @@ export default function FloorMapPage() {
             borderRadius: 'var(--radius-md)',
             overflow: 'hidden',
             border: '1px solid var(--border-color)',
-            boxShadow: 'var(--shadow-sm)',
+            boxShadow:
+              viewMode === 'isometric'
+                ? '0 30px 60px rgba(32, 42, 50, 0.18), 0 10px 20px rgba(32, 42, 50, 0.1)'
+                : 'var(--shadow-sm)',
+            perspective: viewMode === 'isometric' ? '1200px' : 'none',
+            padding: viewMode === 'isometric' ? '30px 10px' : 0,
+            transition: 'all 0.4s ease',
           }}
         >
           {/* Top Floating Overlay Badge */}
@@ -482,7 +678,7 @@ export default function FloorMapPage() {
               position: 'absolute',
               top: 14,
               left: 14,
-              zIndex: 10,
+              zIndex: 20,
               background: 'rgba(255, 255, 255, 0.95)',
               backdropFilter: 'blur(8px)',
               padding: '6px 14px',
@@ -501,6 +697,12 @@ export default function FloorMapPage() {
             <span>{floorMap?.floor.label || `Floor ${activeFloor}`}</span>
             <span style={{ color: 'var(--border-strong)' }}>•</span>
             <span style={{ color: 'var(--text-secondary)' }}>{floorMap?.shops.length || 0} Stores</span>
+            {viewMode === 'isometric' && (
+              <>
+                <span style={{ color: 'var(--border-strong)' }}>•</span>
+                <span style={{ color: 'var(--brand-primary)', fontWeight: 700 }}>2.5D Isometric Mode</span>
+              </>
+            )}
           </div>
 
           {/* VERTICAL FLOOR SELECTOR PILL (Floating on right edge) */}
@@ -509,7 +711,7 @@ export default function FloorMapPage() {
               position: 'absolute',
               top: 14,
               right: 14,
-              zIndex: 15,
+              zIndex: 25,
               background: 'var(--bg-surface)',
               borderRadius: 'var(--radius-md)',
               padding: 4,
@@ -550,281 +752,370 @@ export default function FloorMapPage() {
             })}
           </div>
 
-          {/* SVG FLOOR PLAN */}
-          <svg
-            viewBox={`0 0 ${planWidth} ${planHeight}`}
-            width="100%"
-            style={{ display: 'block', maxHeight: 580 }}
+          {/* SVG FLOOR PLAN (With 2.5D Isometric Perspective Tilt support) */}
+          <div
+            style={{
+              transform:
+                viewMode === 'isometric'
+                  ? 'rotateX(46deg) rotateZ(-26deg) scale(0.92)'
+                  : 'none',
+              transformOrigin: '50% 50%',
+              transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+              boxShadow:
+                viewMode === 'isometric'
+                  ? '0 20px 40px rgba(32, 42, 50, 0.25)'
+                  : 'none',
+              borderRadius: 12,
+            }}
           >
-            <defs>
-              <linearGradient id="gmapsRoute" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#276EF1" />
-                <stop offset="100%" stopColor="#1A73E8" />
-              </linearGradient>
-            </defs>
-
-            <g
-              transform={`translate(${pan.x}, ${pan.y}) scale(${zoom})`}
-              style={{ transformOrigin: `${planWidth / 2}px ${planHeight / 2}px`, transition: 'transform 0.15s ease-out' }}
+            <svg
+              viewBox={`0 0 ${planWidth} ${planHeight}`}
+              width="100%"
+              style={{ display: 'block', maxHeight: 580 }}
             >
-            {/* Mall Outer Boundary Floor Slab */}
-            <rect
-              x={25}
-              y={25}
-              width={planWidth - 50}
-              height={planHeight - 50}
-              rx={12}
-              fill="#F4F3ED"
-              stroke="#D8D6CE"
-              strokeWidth={2}
-            />
+              <defs>
+                <linearGradient id="gmapsRoute" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#276EF1" />
+                  <stop offset="100%" stopColor="#1A73E8" />
+                </linearGradient>
+                <filter id="slabShadow" x="-5%" y="-5%" width="110%" height="115%">
+                  <feDropShadow dx="0" dy="8" stdDeviation="6" floodColor="#202A32" floodOpacity="0.14" />
+                </filter>
+              </defs>
 
-            {/* Central Pedestrian Corridor */}
-            <rect
-              x={100}
-              y={260}
-              width={planWidth - 200}
-              height={80}
-              rx={8}
-              fill="#E8E6DF"
-              stroke="#CBC8BC"
-              strokeWidth={1}
-            />
-
-            {/* Corridor Center Walkway Tile Guide */}
-            <line
-              x1={100}
-              y1={300}
-              x2={planWidth - 100}
-              y2={300}
-              stroke="rgba(32, 42, 50, 0.12)"
-              strokeWidth={1.5}
-              strokeDasharray="6 6"
-            />
-
-            {/* Vertical Connectors: Escalators & Elevators */}
-            <g transform="translate(500, 275)">
-              <rect x={-32} y={-14} width={64} height={28} rx={4} fill="#E5EDE7" stroke="#24584A" strokeWidth={1} />
-              <text x={0} y={4} textAnchor="middle" fill="#24584A" fontSize={9.5} fontWeight={700}>
-                ESCALATOR
-              </text>
-            </g>
-
-            <g transform="translate(700, 275)">
-              <rect x={-30} y={-14} width={60} height={28} rx={4} fill="#FAF6EE" stroke="#B58A52" strokeWidth={1} />
-              <text x={0} y={4} textAnchor="middle" fill="#B58A52" fontSize={9.5} fontWeight={700}>
-                ELEVATOR
-              </text>
-            </g>
-
-            {/* ENTRANCE GATES */}
-            {activeFloor === 0 && (
-              <g transform="translate(50, 260)">
-                <rect x={0} y={0} width={65} height={80} rx={6} fill="#E8F5EF" stroke="#21865A" strokeWidth={1.5} />
-                <text x={32} y={38} textAnchor="middle" fill="#21865A" fontSize={9} fontWeight={800}>
-                  VASTRAPUR
-                </text>
-                <text x={32} y={52} textAnchor="middle" fill="#21865A" fontSize={9} fontWeight={800}>
-                  ENTRANCE
-                </text>
-                <circle cx={32} cy={66} r={4} fill="#21865A" />
-              </g>
-            )}
-            {activeFloor === -1 && (
-              <g transform="translate(50, 260)">
-                <rect x={0} y={0} width={65} height={80} rx={6} fill="#E8F5EF" stroke="#21865A" strokeWidth={1.5} />
-                <text x={32} y={38} textAnchor="middle" fill="#21865A" fontSize={9} fontWeight={800}>
-                  VALET
-                </text>
-                <text x={32} y={52} textAnchor="middle" fill="#21865A" fontSize={9} fontWeight={800}>
-                  PARKING
-                </text>
-                <circle cx={32} cy={66} r={4} fill="#21865A" />
-              </g>
-            )}
-
-            {/* SHOPS */}
-            {floorMap?.shops.map((s) => {
-              const isSelected = selected?.name === s.name;
-              return (
-                <g
-                  key={`shop-${s.id}`}
-                  onClick={() => onMarkerClick('shop', s)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  {/* Shop room box */}
+              <g
+                transform={`translate(${pan.x}, ${pan.y}) scale(${zoom})`}
+                style={{ transformOrigin: `${planWidth / 2}px ${planHeight / 2}px`, transition: 'transform 0.15s ease-out' }}
+              >
+                {/* 2.5D Extruded Architectural Base Slab */}
+                {viewMode === 'isometric' && (
                   <rect
-                    x={s.x - 72}
-                    y={s.y - 48}
-                    width={144}
-                    height={96}
-                    rx={8}
-                    fill={isSelected ? '#E5EDE7' : '#FFFFFF'}
-                    stroke={isSelected ? '#24584A' : '#D8D6CE'}
-                    strokeWidth={isSelected ? 2.5 : 1}
+                    x={25}
+                    y={33}
+                    width={planWidth - 50}
+                    height={planHeight - 50}
+                    rx={12}
+                    fill="#C9C7BF"
                   />
+                )}
 
-                  {/* Doorway slot connecting to corridor */}
-                  <line
-                    x1={s.x - 15}
-                    y1={s.y < 300 ? s.y + 48 : s.y - 48}
-                    x2={s.x + 15}
-                    y2={s.y < 300 ? s.y + 48 : s.y - 48}
-                    stroke="#E8E6DF"
-                    strokeWidth={3}
-                  />
-
-                  {/* Marker Pin Icon */}
-                  <circle
-                    cx={s.x}
-                    cy={s.y - 12}
-                    r={isSelected ? 14 : 12}
-                    fill={isSelected ? '#24584A' : '#697580'}
-                    stroke="#ffffff"
-                    strokeWidth={2}
-                  />
-                  <text
-                    x={s.x}
-                    y={s.y - 8}
-                    textAnchor="middle"
-                    fontSize={10}
-                    fill="#ffffff"
-                    fontWeight={700}
-                  >
-                    {s.id}
-                  </text>
-
-                  {/* Shop Name Label */}
-                  <text
-                    x={s.x}
-                    y={s.y + 16}
-                    textAnchor="middle"
-                    fontSize={12}
-                    fontWeight={700}
-                    fill={isSelected ? '#24584A' : '#202A32'}
-                    fontFamily="var(--font-headings)"
-                  >
-                    {s.name}
-                  </text>
-
-                  {/* Category label */}
-                  <text
-                    x={s.x}
-                    y={s.y + 32}
-                    textAnchor="middle"
-                    fontSize={10}
-                    fill="#697580"
-                  >
-                    {s.category}
-                  </text>
-                </g>
-              );
-            })}
-
-            {/* FACILITIES (Restrooms, Food Court, ATM, Parking) */}
-            {floorMap?.facilities.map((f) => {
-              const isSelected = selected?.name === f.label;
-              return (
-                <g
-                  key={`fac-${f.id}`}
-                  onClick={() => onMarkerClick('facility', f)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <rect
-                    x={f.x - 48}
-                    y={f.y - 32}
-                    width={96}
-                    height={64}
-                    rx={6}
-                    fill={isSelected ? '#FAF6EE' : '#FAF9F6'}
-                    stroke={isSelected ? '#B58A52' : '#E3E1DA'}
-                    strokeWidth={isSelected ? 2 : 1}
-                  />
-                  <circle cx={f.x} cy={f.y - 10} r={10} fill="#B58A52" />
-                  <text
-                    x={f.x}
-                    y={f.y + 16}
-                    textAnchor="middle"
-                    fontSize={10}
-                    fontWeight={700}
-                    fill="#202A32"
-                  >
-                    {f.label}
-                  </text>
-                </g>
-              );
-            })}
-
-            {/* GOOGLE MAPS BLUE NAVIGATION ROUTE */}
-            {routePoints && (
-              <g>
-                {/* Route Buffer Shadow */}
-                <polyline
-                  points={routePoints}
-                  fill="none"
-                  stroke="#276EF1"
-                  strokeWidth={7}
-                  strokeOpacity={0.2}
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                />
-                {/* Solid Core Path */}
-                <polyline
-                  points={routePoints}
-                  fill="none"
-                  stroke="#276EF1"
-                  strokeWidth={4.5}
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                />
-                {/* Animated Directional Walking Dots */}
-                <polyline
-                  points={routePoints}
-                  fill="none"
-                  stroke="#ffffff"
+                {/* Mall Outer Boundary Floor Slab */}
+                <rect
+                  x={25}
+                  y={25}
+                  width={planWidth - 50}
+                  height={planHeight - 50}
+                  rx={12}
+                  fill="#F4F3ED"
+                  stroke="#D8D6CE"
                   strokeWidth={2}
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeDasharray="4 8"
-                  className="animated-route"
+                  filter={viewMode === 'isometric' ? 'url(#slabShadow)' : undefined}
                 />
-              </g>
-            )}
 
-            {/* LIVE GPS LOCATION PIN (Origin/Current Position) */}
-            {isNavigating && isSimPointOnActiveFloor ? (
-              <g transform={`translate(${currentStep.x}, ${currentStep.y})`}>
-                <circle cx={0} cy={0} r={7} fill="#276EF1" stroke="#ffffff" strokeWidth={2} />
-                <circle cx={0} cy={0} r={16} fill="rgba(39, 110, 241, 0.25)">
-                  <animate attributeName="r" values="7;20;7" dur="1.5s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="0.7;0;0.7" dur="1.5s" repeatCount="indefinite" />
-                </circle>
-              </g>
-            ) : entrance && entrance.floorNumber === activeFloor ? (
-              <g transform="translate(60, 300)">
-                <circle cx={0} cy={0} r={7} fill="#21865A" stroke="#ffffff" strokeWidth={2} />
-                <circle cx={0} cy={0} r={16} fill="rgba(33, 134, 90, 0.25)">
-                  <animate attributeName="r" values="7;18;7" dur="2s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="0.7;0;0.7" dur="2s" repeatCount="indefinite" />
-                </circle>
-              </g>
-            ) : null}
+                {/* Central Pedestrian Corridor */}
+                <rect
+                  x={100}
+                  y={260}
+                  width={planWidth - 200}
+                  height={80}
+                  rx={8}
+                  fill="#E8E6DF"
+                  stroke="#CBC8BC"
+                  strokeWidth={1}
+                />
 
-            {/* RED DROP PIN AT DESTINATION */}
-            {selected && selected.x && selected.y && selected.floorNumber === activeFloor && (
-              <g transform={`translate(${selected.x}, ${selected.y - 20})`}>
-                <ellipse cx={0} cy={20} rx={6} ry={3} fill="rgba(32, 42, 50, 0.25)" />
-                <path
-                  d="M0,-22 C-8,-22 -14,-16 -14,-7 C-14,4 0,18 0,18 C0,18 14,4 14,-7 C14,-16 8,-22 0,-22 Z"
-                  fill="#C74747"
-                  stroke="#ffffff"
+                {/* Corridor Center Walkway Tile Guide */}
+                <line
+                  x1={100}
+                  y1={300}
+                  x2={planWidth - 100}
+                  y2={300}
+                  stroke="rgba(32, 42, 50, 0.12)"
                   strokeWidth={1.5}
+                  strokeDasharray="6 6"
                 />
-                <circle cx={0} cy={-9} r={4.5} fill="#ffffff" />
+
+                {/* Vertical Connectors: Escalators & Elevators with Wheelchair Badge */}
+                <g transform="translate(500, 275)">
+                  <rect x={-34} y={-14} width={68} height={28} rx={4} fill="#E5EDE7" stroke="#24584A" strokeWidth={1} />
+                  <text x={0} y={4} textAnchor="middle" fill="#24584A" fontSize={9.5} fontWeight={700}>
+                    ⚡ ESCALATOR
+                  </text>
+                </g>
+
+                <g transform="translate(700, 275)">
+                  <rect x={-36} y={-14} width={72} height={28} rx={4} fill="#FAF6EE" stroke="#B58A52" strokeWidth={1.2} />
+                  <text x={0} y={4} textAnchor="middle" fill="#B58A52" fontSize={9.5} fontWeight={700}>
+                    🛗 LIFT (ACC)
+                  </text>
+                </g>
+
+                {/* ENTRANCE GATES */}
+                {activeFloor === 0 && (
+                  <g transform="translate(50, 260)">
+                    <rect x={0} y={0} width={65} height={80} rx={6} fill="#E8F5EF" stroke="#21865A" strokeWidth={1.5} />
+                    <text x={32} y={34} textAnchor="middle" fill="#21865A" fontSize={8.5} fontWeight={800}>
+                      VASTRAPUR
+                    </text>
+                    <text x={32} y={48} textAnchor="middle" fill="#21865A" fontSize={8.5} fontWeight={800}>
+                      ENTRANCE
+                    </text>
+                    <circle cx={32} cy={62} r={4} fill="#21865A" />
+                  </g>
+                )}
+                {activeFloor === -1 && (
+                  <g transform="translate(50, 260)">
+                    <rect x={0} y={0} width={65} height={80} rx={6} fill="#E8F5EF" stroke="#21865A" strokeWidth={1.5} />
+                    <text x={32} y={34} textAnchor="middle" fill="#21865A" fontSize={8.5} fontWeight={800}>
+                      VALET
+                    </text>
+                    <text x={32} y={48} textAnchor="middle" fill="#21865A" fontSize={8.5} fontWeight={800}>
+                      PARKING
+                    </text>
+                    <circle cx={32} cy={62} r={4} fill="#21865A" />
+                  </g>
+                )}
+
+                {/* SHOPS (30 Directory Stores) */}
+                {floorMap?.shops.map((s) => {
+                  const isSelected = selected?.name === s.name;
+                  return (
+                    <g
+                      key={`shop-${s.id}`}
+                      onClick={() => onMarkerClick('shop', s)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {/* Shop 2.5D Drop Shadow */}
+                      {viewMode === 'isometric' && (
+                        <rect
+                          x={s.x - 70}
+                          y={s.y - 44}
+                          width={144}
+                          height={96}
+                          rx={8}
+                          fill="#D4D2CA"
+                        />
+                      )}
+
+                      {/* Shop room box */}
+                      <rect
+                        x={s.x - 72}
+                        y={s.y - 48}
+                        width={144}
+                        height={96}
+                        rx={8}
+                        fill={isSelected ? '#E5EDE7' : '#FFFFFF'}
+                        stroke={isSelected ? '#24584A' : '#D8D6CE'}
+                        strokeWidth={isSelected ? 2.5 : 1}
+                      />
+
+                      {/* Doorway slot connecting to corridor */}
+                      <line
+                        x1={s.x - 15}
+                        y1={s.y < 300 ? s.y + 48 : s.y - 48}
+                        x2={s.x + 15}
+                        y2={s.y < 300 ? s.y + 48 : s.y - 48}
+                        stroke="#E8E6DF"
+                        strokeWidth={3}
+                      />
+
+                      {/* Marker Pin Icon */}
+                      <circle
+                        cx={s.x}
+                        cy={s.y - 12}
+                        r={isSelected ? 14 : 12}
+                        fill={isSelected ? '#24584A' : '#697580'}
+                        stroke="#ffffff"
+                        strokeWidth={2}
+                      />
+                      <text
+                        x={s.x}
+                        y={s.y - 8}
+                        textAnchor="middle"
+                        fontSize={10}
+                        fill="#ffffff"
+                        fontWeight={700}
+                      >
+                        {s.id}
+                      </text>
+
+                      {/* Shop Name Label */}
+                      <text
+                        x={s.x}
+                        y={s.y + 16}
+                        textAnchor="middle"
+                        fontSize={12}
+                        fontWeight={700}
+                        fill={isSelected ? '#24584A' : '#202A32'}
+                        fontFamily="var(--font-headings)"
+                      >
+                        {s.name}
+                      </text>
+
+                      {/* Category label */}
+                      <text
+                        x={s.x}
+                        y={s.y + 32}
+                        textAnchor="middle"
+                        fontSize={10}
+                        fill="#697580"
+                      >
+                        {s.category}
+                      </text>
+                    </g>
+                  );
+                })}
+
+                {/* FACILITIES (Restrooms, Food Court, ATM, Parking with Visual Icons) */}
+                {floorMap?.facilities.map((f) => {
+                  const isSelected = selected?.name === f.label;
+                  const iconSymbol =
+                    f.type === 'WASHROOM'
+                      ? '🚻'
+                      : f.type === 'ATM'
+                      ? '🏧'
+                      : f.type === 'CUSTOMER_SERVICE'
+                      ? 'ℹ️'
+                      : f.type === 'PARKING_ACCESS'
+                      ? '🅿️'
+                      : '🍽️';
+
+                  return (
+                    <g
+                      key={`fac-${f.id}`}
+                      onClick={() => onMarkerClick('facility', f)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {viewMode === 'isometric' && (
+                        <rect
+                          x={f.x - 46}
+                          y={f.y - 28}
+                          width={96}
+                          height={64}
+                          rx={6}
+                          fill="#D4D2CA"
+                        />
+                      )}
+                      <rect
+                        x={f.x - 48}
+                        y={f.y - 32}
+                        width={96}
+                        height={64}
+                        rx={6}
+                        fill={isSelected ? '#FAF6EE' : '#FAF9F6'}
+                        stroke={isSelected ? '#B58A52' : '#E3E1DA'}
+                        strokeWidth={isSelected ? 2 : 1}
+                      />
+                      <circle cx={f.x} cy={f.y - 12} r={11} fill="#B58A52" />
+                      <text
+                        x={f.x}
+                        y={f.y - 8}
+                        textAnchor="middle"
+                        fontSize={11}
+                        fill="#ffffff"
+                      >
+                        {iconSymbol}
+                      </text>
+                      <text
+                        x={f.x}
+                        y={f.y + 14}
+                        textAnchor="middle"
+                        fontSize={9.5}
+                        fontWeight={700}
+                        fill="#202A32"
+                      >
+                        {f.label.split(' ')[0]}
+                      </text>
+                      <text
+                        x={f.x}
+                        y={f.y + 25}
+                        textAnchor="middle"
+                        fontSize={8.5}
+                        fill="#697580"
+                      >
+                        {f.type}
+                      </text>
+                    </g>
+                  );
+                })}
+
+                {/* NAVIGATION ROUTE (Dijkstra Core Path & Walking Dots) */}
+                {routePoints && (
+                  <g>
+                    {/* Route Buffer Shadow */}
+                    <polyline
+                      points={routePoints}
+                      fill="none"
+                      stroke="#276EF1"
+                      strokeWidth={7}
+                      strokeOpacity={0.2}
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                    />
+                    {/* Solid Core Path */}
+                    <polyline
+                      points={routePoints}
+                      fill="none"
+                      stroke="#276EF1"
+                      strokeWidth={4.5}
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                    />
+                    {/* Directional Walking Dots */}
+                    <polyline
+                      points={routePoints}
+                      fill="none"
+                      stroke="#ffffff"
+                      strokeWidth={2}
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                      strokeDasharray="4 8"
+                    />
+                  </g>
+                )}
+
+                {/* STARTING KIOSK BEACON ("You Are Here") */}
+                {entrance && entrance.floorNumber === activeFloor && (
+                  <g transform="translate(60, 300)">
+                    <circle cx={0} cy={0} r={8} fill="#21865A" stroke="#ffffff" strokeWidth={2.5} />
+                    <circle cx={0} cy={0} r={18} fill="rgba(33, 134, 90, 0.3)">
+                      <animate attributeName="r" values="8;22;8" dur="2s" repeatCount="indefinite" />
+                      <animate attributeName="opacity" values="0.8;0;0.8" dur="2s" repeatCount="indefinite" />
+                    </circle>
+                    <rect x={-40} y={-32} width={80} height={18} rx={4} fill="#21865A" />
+                    <text x={0} y={-20} textAnchor="middle" fill="#ffffff" fontSize={8} fontWeight={800}>
+                      START KIOSK
+                    </text>
+                  </g>
+                )}
+
+                {/* LIVE SIMULATION POSITION PIN */}
+                {isNavigating && isSimPointOnActiveFloor && (
+                  <g transform={`translate(${currentStep.x}, ${currentStep.y})`}>
+                    <circle cx={0} cy={0} r={8} fill="#276EF1" stroke="#ffffff" strokeWidth={2.5} />
+                    <circle cx={0} cy={0} r={20} fill="rgba(39, 110, 241, 0.3)">
+                      <animate attributeName="r" values="8;24;8" dur="1.4s" repeatCount="indefinite" />
+                      <animate attributeName="opacity" values="0.8;0;0.8" dur="1.4s" repeatCount="indefinite" />
+                    </circle>
+                  </g>
+                )}
+
+                {/* RED DROP PIN AT DESTINATION */}
+                {selected && selected.x && selected.y && selected.floorNumber === activeFloor && (
+                  <g transform={`translate(${selected.x}, ${selected.y - 20})`}>
+                    <ellipse cx={0} cy={20} rx={6} ry={3} fill="rgba(32, 42, 50, 0.25)" />
+                    <path
+                      d="M0,-22 C-8,-22 -14,-16 -14,-7 C-14,4 0,18 0,18 C0,18 14,4 14,-7 C14,-16 8,-22 0,-22 Z"
+                      fill="#C74747"
+                      stroke="#ffffff"
+                      strokeWidth={1.5}
+                    />
+                    <circle cx={0} cy={-9} r={4.5} fill="#ffffff" />
+                  </g>
+                )}
               </g>
-            )}
-            </g>
-          </svg>
+            </svg>
+          </div>
 
           {/* Floating Zoom & Pan Controls */}
           <div
@@ -832,7 +1123,7 @@ export default function FloorMapPage() {
               position: 'absolute',
               bottom: 50,
               right: 14,
-              zIndex: 15,
+              zIndex: 25,
               background: 'var(--bg-surface)',
               borderRadius: 'var(--radius-sm)',
               padding: 3,
@@ -846,21 +1137,57 @@ export default function FloorMapPage() {
             <button
               onClick={() => setZoom((z) => Math.min(2.2, Math.round((z + 0.2) * 10) / 10))}
               title="Zoom In"
-              style={{ width: 28, height: 28, borderRadius: 4, border: 'none', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-primary)' }}
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: 4,
+                border: 'none',
+                background: 'transparent',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--text-primary)',
+              }}
             >
               <ZoomIn size={15} />
             </button>
             <button
               onClick={() => setZoom((z) => Math.max(0.8, Math.round((z - 0.2) * 10) / 10))}
               title="Zoom Out"
-              style={{ width: 28, height: 28, borderRadius: 4, border: 'none', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-primary)' }}
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: 4,
+                border: 'none',
+                background: 'transparent',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--text-primary)',
+              }}
             >
               <ZoomOut size={15} />
             </button>
             <button
-              onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); }}
+              onClick={() => {
+                setZoom(1);
+                setPan({ x: 0, y: 0 });
+              }}
               title="Reset View"
-              style={{ width: 28, height: 28, borderRadius: 4, border: 'none', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-primary)' }}
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: 4,
+                border: 'none',
+                background: 'transparent',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--text-primary)',
+              }}
             >
               <RotateCcw size={13} />
             </button>
@@ -882,7 +1209,7 @@ export default function FloorMapPage() {
           >
             <div className="row" style={{ gap: 6 }}>
               <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#21865A' }} />
-              <span>Current Position (Entrance)</span>
+              <span>Starting Kiosk</span>
             </div>
             <div className="row" style={{ gap: 6 }}>
               <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#C74747' }} />
@@ -890,7 +1217,7 @@ export default function FloorMapPage() {
             </div>
             <div className="row" style={{ gap: 6 }}>
               <span style={{ width: 20, height: 3, background: '#276EF1', borderRadius: 2 }} />
-              <span>Navigation Route</span>
+              <span>Dijkstra Corridor Route</span>
             </div>
             <div className="row" style={{ gap: 6 }}>
               <span style={{ width: 8, height: 8, borderRadius: 2, background: '#E5EDE7', border: '1px solid #24584A' }} />
@@ -898,10 +1225,10 @@ export default function FloorMapPage() {
             </div>
             <div className="row" style={{ gap: 6 }}>
               <span style={{ width: 8, height: 8, borderRadius: 2, background: '#FAF6EE', border: '1px solid #B58A52' }} />
-              <span>Glass Elevator (Accessible)</span>
+              <span>Glass Lift (Wheelchair Accessible)</span>
             </div>
             <div className="row" style={{ gap: 6, marginLeft: 'auto', fontWeight: 600, color: 'var(--brand-primary)' }}>
-              <span>Scale: 1 unit ≈ 0.25 m (Schematic Digital Twin)</span>
+              <span>Nexus Ahmedabad One • Vastrapur</span>
             </div>
           </div>
         </div>
@@ -1010,7 +1337,7 @@ export default function FloorMapPage() {
                 Indoor Architectural Wayfinding
               </h4>
               <p style={{ fontSize: 12, margin: 0, color: 'var(--text-secondary)' }}>
-                Select any store or amenity on the floor plan to view walking directions.
+                Select any store or amenity on the floor plan or toggle the 2.5D Isometric view to explore Nexus Ahmedabad One.
               </p>
             </div>
           )}

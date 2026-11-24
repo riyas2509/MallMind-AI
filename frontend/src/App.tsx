@@ -19,6 +19,7 @@ import ShopDetailPage from './pages/ShopDetailPage';
 import ProductComparePage from './pages/ProductComparePage';
 import CheckoutPage from './pages/CheckoutPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
+import AcademicDemoPage from './pages/AcademicDemoPage';
 import type { ReactNode } from 'react';
 
 function RequireAuth({ children }: { children: ReactNode }) {
@@ -27,8 +28,16 @@ function RequireAuth({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }
 
+function RequireAdmin({ children }: { children: ReactNode }) {
+  const { user, hasRole } = useAuth();
+  if (!user) return <Navigate to="/login" replace />;
+  if (!hasRole('ADMIN')) return <Navigate to="/" replace />;
+  return <>{children}</>;
+}
+
 function RequireRetailer({ children }: { children: ReactNode }) {
-  const { hasRole } = useAuth();
+  const { user, hasRole } = useAuth();
+  if (!user) return <Navigate to="/login" replace />;
   if (!hasRole('ADMIN') && !hasRole('RETAILER')) return <Navigate to="/" replace />;
   return <>{children}</>;
 }
@@ -50,7 +59,15 @@ export default function App() {
               <Route path="/compare" element={<ProductComparePage />} />
               <Route path="/map" element={<FloorMapPage />} />
               <Route path="/offers" element={<OffersPage />} />
-              <Route path="/admin" element={<AdminDashboardPage />} />
+              <Route path="/academic-demo" element={<AcademicDemoPage />} />
+              <Route
+                path="/admin"
+                element={
+                  <RequireAdmin>
+                    <AdminDashboardPage />
+                  </RequireAdmin>
+                }
+              />
               <Route
                 path="/checkout"
                 element={

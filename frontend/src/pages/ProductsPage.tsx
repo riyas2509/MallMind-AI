@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { api } from '../api/client';
 import type { ProductResponse, RecommendationResponse } from '../api/types';
 import { FALLBACK_PRODUCTS } from '../data/fallbackData';
@@ -10,6 +10,10 @@ import {
   Sparkles,
   RotateCcw,
   Tag,
+  Scale,
+  X,
+  Compass,
+  Info,
 } from 'lucide-react';
 
 interface Filters {
@@ -83,6 +87,28 @@ export default function ProductsPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState<'relevance' | 'price-asc' | 'price-desc'>('relevance');
+  const [comparedIds, setComparedIds] = useState<number[]>([]);
+  const [showCompareModal, setShowCompareModal] = useState(false);
+  const [onlyDiscounted, setOnlyDiscounted] = useState(false);
+  const [isFallbackMode, setIsFallbackMode] = useState(false);
+
+  const toggleCompare = (prod: ProductResponse) => {
+    setComparedIds((prev) => {
+      if (prev.includes(prod.id)) {
+        return prev.filter((id) => id !== prod.id);
+      }
+      if (prev.length >= 4) {
+        return prev;
+      }
+      return [...prev, prod.id];
+    });
+  };
+
+  const comparedProducts = useMemo(() => {
+    return comparedIds
+      .map((id) => (results ?? FALLBACK_PRODUCTS).find((p) => p.id === id))
+      .filter((p): p is ProductResponse => p !== undefined);
+  }, [comparedIds, results]);
 
   const runSearch = useCallback(async (f: Filters) => {
     setLoading(true);
@@ -108,13 +134,16 @@ export default function ProductsPage() {
       ]);
       if (Array.isArray(searchRes) && searchRes.length > 0) {
         setResults(searchRes);
+        setIsFallbackMode(false);
       } else {
         setResults(filterFallbackProducts(f));
+        setIsFallbackMode(true);
       }
       setRecommended(recRes);
     } catch {
       // Fallback to offline catalog
       setResults(filterFallbackProducts(f));
+      setIsFallbackMode(true);
     } finally {
       setLoading(false);
     }
@@ -131,14 +160,17 @@ export default function ProductsPage() {
 
   const sortedResults = useMemo(() => {
     if (!results) return [];
-    const list = [...results];
+    let list = [...results];
+    if (onlyDiscounted) {
+      list = list.filter((p) => p.discountPrice != null && p.discountPrice < p.price);
+    }
     if (sortBy === 'price-asc') {
       return list.sort((a, b) => a.effectivePrice - b.effectivePrice);
     } else if (sortBy === 'price-desc') {
       return list.sort((a, b) => b.effectivePrice - a.effectivePrice);
     }
     return list;
-  }, [results, sortBy]);
+  }, [results, sortBy, onlyDiscounted]);
 
   return (
     <div className="stack" style={{ gap: 28 }}>
@@ -146,11 +178,11 @@ export default function ProductsPage() {
       <div className="row-between" style={{ flexWrap: 'wrap' }}>
         <div>
           <div className="badge badge-gold" style={{ marginBottom: 6 }}>
-            <Tag size={13} /> Real-Time Catalogue
+            <Tag size={13} /> Demo Catalogue
           </div>
           <h1>Explore Store Products</h1>
           <p className="muted">
-            Browse live in-store stock across 30 verified retailers at Nexus Ahmedabad One.
+            Browse demonstration products across 30 stores in the Nexus Ahmedabad One prototype directory.
           </p>
         </div>
 
@@ -166,6 +198,62 @@ export default function ProductsPage() {
             <option value="price-desc">Price: High to Low</option>
           </select>
         </div>
+      </div>
+
+      {/* Offline / Fallback Indicator */}
+      {isFallbackMode && (
+        <div
+          style={{
+            background: '#F8FAFC',
+            border: '1px solid #CBD5E1',
+            color: '#475569',
+            padding: '10px 16px',
+            borderRadius: 'var(--radius-sm)',
+            fontSize: 12,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+          }}
+        >
+          <Info size={16} color="#64748B" style={{ flexShrink: 0 }} />
+          <span>
+            <strong>Prototype Offline Demonstration Mode:</strong> Operating on the curated 20-product seed catalogue. Live backend inventory service is currently offline or unreachable.
+          </span>
+        </div>
+      )}
+
+      {/* Demonstration Promotional Offers Banner */}
+      <div
+        className="card"
+        style={{
+          background: 'linear-gradient(135deg, #24584A 0%, #1A4036 100%)',
+          color: '#fff',
+          padding: '16px 20px',
+          borderRadius: 'var(--radius-md)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: 12,
+        }}
+      >
+        <div className="row" style={{ gap: 10 }}>
+          <Tag size={18} style={{ color: 'var(--brand-accent)' }} />
+          <div>
+            <span style={{ fontWeight: 700, fontSize: 13 }}>Active Demonstration Offers:</span>{' '}
+            <span style={{ fontSize: 13, color: '#D4DDD7' }}>
+              Special discounts active on Zara blazers (20% off), Nike shoes, H&M hoodies, and more.
+            </span>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={() => setOnlyDiscounted(!onlyDiscounted)}
+          className={`btn btn-sm ${onlyDiscounted ? 'btn-primary' : 'btn-secondary'}`}
+          style={{ fontSize: 12, padding: '6px 12px' }}
+        >
+          {onlyDiscounted ? 'Show All Products' : 'Filter Discounted Items Only'}
+        </button>
       </div>
 
       {/* Filter controls */}
@@ -301,7 +389,7 @@ export default function ProductsPage() {
       {/* Results Header */}
       <div className="row-between">
         <div className="muted" style={{ fontWeight: 600 }}>
-          {loading ? 'Searching live inventory...' : `${sortedResults.length} Products Found`}
+          {loading ? 'Searching catalogue...' : `${sortedResults.length} Products Found`}
         </div>
       </div>
 
@@ -323,9 +411,225 @@ export default function ProductsPage() {
 
       <div className="grid-cards">
         {sortedResults.map((p) => (
-          <ProductCard key={p.id} product={p} />
+          <ProductCard
+            key={p.id}
+            product={p}
+            onToggleCompare={toggleCompare}
+            isCompared={comparedIds.includes(p.id)}
+          />
         ))}
       </div>
+
+      {/* Floating Bottom Comparison Drawer */}
+      {comparedIds.length > 0 && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: 24,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: 'var(--text-primary)',
+            color: '#fff',
+            borderRadius: 50,
+            padding: '10px 20px',
+            boxShadow: '0 12px 32px rgba(0,0,0,0.3)',
+            zIndex: 90,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 16,
+            maxWidth: '90vw',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <Scale size={16} color="var(--brand-accent)" />
+            <span style={{ fontSize: 13, fontWeight: 700 }}>
+              {comparedIds.length} {comparedIds.length === 1 ? 'Product' : 'Products'} Selected
+            </span>
+          </div>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+            {comparedProducts.map((p) => (
+              <span
+                key={p.id}
+                style={{
+                  background: 'rgba(255,255,255,0.15)',
+                  fontSize: 11,
+                  padding: '3px 8px',
+                  borderRadius: 12,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 4,
+                }}
+              >
+                {p.name.length > 15 ? p.name.slice(0, 15) + '…' : p.name}
+                <X
+                  size={12}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => toggleCompare(p)}
+                />
+              </span>
+            ))}
+          </div>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <button
+              className="btn btn-primary btn-sm"
+              onClick={() => setShowCompareModal(true)}
+              style={{ fontSize: 12, padding: '5px 14px' }}
+            >
+              Compare Attributes
+            </button>
+            <button
+              className="btn btn-ghost btn-xs"
+              onClick={() => setComparedIds([])}
+              style={{ color: '#CBD5E1', fontSize: 11 }}
+            >
+              Clear
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Integrated Side-by-Side Product Comparison Modal */}
+      {showCompareModal && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.6)',
+            zIndex: 100,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 20,
+            backdropFilter: 'blur(4px)',
+          }}
+          onClick={() => setShowCompareModal(false)}
+        >
+          <div
+            className="card"
+            style={{
+              width: '100%',
+              maxWidth: 960,
+              maxHeight: '90vh',
+              overflowY: 'auto',
+              background: '#fff',
+              padding: 24,
+              borderRadius: 16,
+              boxShadow: 'var(--shadow-xl)',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="row-between" style={{ marginBottom: 20 }}>
+              <div>
+                <div className="badge badge-gold" style={{ marginBottom: 4 }}>
+                  <Scale size={12} /> Product Attribute Comparison
+                </div>
+                <h2 style={{ margin: 0, fontSize: 22 }}>Compare Selected Products</h2>
+              </div>
+              <button
+                className="btn btn-ghost btn-sm"
+                onClick={() => setShowCompareModal(false)}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {comparedProducts.length === 0 ? (
+              <p className="muted">No products selected. Click "Compare" on product cards to add items.</p>
+            ) : (
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: 13 }}>
+                  <thead>
+                    <tr style={{ borderBottom: '2px solid var(--border-color)' }}>
+                      <th style={{ padding: '10px 12px', width: 140 }}>Attribute</th>
+                      {comparedProducts.map((p) => (
+                        <th key={p.id} style={{ padding: '10px 12px', minWidth: 180 }}>
+                          <img
+                            src={p.imageUrl || undefined}
+                            alt={p.name}
+                            style={{ width: '100%', height: 110, objectFit: 'cover', borderRadius: 8, marginBottom: 8 }}
+                          />
+                          <div style={{ fontWeight: 700, fontSize: 14 }}>{p.name}</div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
+                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Price</td>
+                      {comparedProducts.map((p) => (
+                        <td key={p.id} style={{ padding: '10px 12px' }}>
+                          <strong style={{ fontSize: 16, color: 'var(--brand-primary)' }}>₹{p.effectivePrice.toLocaleString('en-IN')}</strong>
+                          {p.discountPrice && (
+                            <span style={{ fontSize: 12, color: 'var(--text-secondary)', textDecoration: 'line-through', marginLeft: 6 }}>
+                              ₹{p.price.toLocaleString('en-IN')}
+                            </span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
+                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Store & Floor</td>
+                      {comparedProducts.map((p) => (
+                        <td key={p.id} style={{ padding: '10px 12px' }}>
+                          <div style={{ fontWeight: 600 }}>{p.shopName}</div>
+                          <div className="muted" style={{ fontSize: 11 }}>
+                            Floor {p.shopFloorNumber === -1 ? 'LG' : p.shopFloorNumber === 0 ? 'G' : p.shopFloorNumber}
+                          </div>
+                        </td>
+                      ))}
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
+                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Category</td>
+                      {comparedProducts.map((p) => (
+                        <td key={p.id} style={{ padding: '10px 12px' }}>{p.category}</td>
+                      ))}
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
+                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Brand</td>
+                      {comparedProducts.map((p) => (
+                        <td key={p.id} style={{ padding: '10px 12px' }}>{p.brand || '—'}</td>
+                      ))}
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
+                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Status</td>
+                      {comparedProducts.map((p) => (
+                        <td key={p.id} style={{ padding: '10px 12px' }}>
+                          <span className={`badge ${p.available ? 'badge-success' : 'badge-danger'}`}>
+                            {p.available ? 'In Stock (Demo)' : 'Out of Stock'}
+                          </span>
+                        </td>
+                      ))}
+                    </tr>
+                    <tr>
+                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Actions</td>
+                      {comparedProducts.map((p) => (
+                        <td key={p.id} style={{ padding: '10px 12px' }}>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                            <Link
+                              to={`/products/${p.id}`}
+                              className="btn btn-primary btn-sm"
+                              style={{ fontSize: 11, textAlign: 'center' }}
+                            >
+                              View Product
+                            </Link>
+                            <Link
+                              to={`/map?floor=${p.shopFloorNumber}&toLabel=${encodeURIComponent(p.shopName)}`}
+                              className="btn btn-secondary btn-sm"
+                              style={{ fontSize: 11, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}
+                            >
+                              <Compass size={12} /> Map Route
+                            </Link>
+                          </div>
+                        </td>
+                      ))}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

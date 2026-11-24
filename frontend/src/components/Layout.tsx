@@ -7,18 +7,15 @@ import {
   Compass,
   ShoppingBag,
   Map,
-  Tag,
-  Heart,
   PackageCheck,
   Store,
   User,
   Clock,
   Phone,
   HelpCircle,
-  Scale,
-  Brain,
   Menu,
   X,
+  ShieldCheck,
 } from 'lucide-react';
 
 export default function Layout() {
@@ -57,7 +54,7 @@ export default function Layout() {
             </div>
           </NavLink>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links - Simplified Visitor Nav */}
           <nav className="nav-links desktop-nav">
             <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} end>
               Home
@@ -74,54 +71,40 @@ export default function Layout() {
               <ShoppingBag size={14} />
               Products
             </NavLink>
-            <NavLink to="/compare" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              <Scale size={14} />
-              Compare
+            <NavLink to="/cart" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+              <ShoppingBag size={14} />
+              Cart
+              {cart && cart.totalItemCount > 0 && (
+                <span className="cart-count" style={{ marginLeft: 4 }}>{cart.totalItemCount}</span>
+              )}
             </NavLink>
-            <NavLink to="/offers" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              <Tag size={14} />
-              Offers
-            </NavLink>
-            <NavLink to="/admin" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              <Brain size={14} />
-              ML Studio
-            </NavLink>
-            {user && (
-              <NavLink to="/wishlist" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-                <Heart size={14} />
-                Wishlist
+            {user && hasRole('ADMIN') && (
+              <NavLink to="/admin" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <ShieldCheck size={14} />
+                Mall Administration
               </NavLink>
             )}
-            {user && (
-              <NavLink to="/orders" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-                <PackageCheck size={14} />
-                Orders
-              </NavLink>
-            )}
-            {(hasRole('ADMIN') || hasRole('RETAILER')) && (
+            {user && hasRole('RETAILER') && !hasRole('ADMIN') && (
               <NavLink to="/retailer" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
                 <Store size={14} />
-                Retailer
+                Retailer Portal
               </NavLink>
             )}
           </nav>
 
           <div style={{ flex: 1 }} />
 
-          {/* User & Bag Controls */}
+          {/* User Controls */}
           <div className="row" style={{ gap: 10 }}>
-            {user && (
-              <NavLink to="/cart" className="cart-button" aria-label="Shopping Bag">
-                <ShoppingBag size={16} />
-                <span style={{ fontSize: 13, fontWeight: 600 }}>Bag</span>
-                {cart && cart.totalItemCount > 0 && (
-                  <span className="cart-count">{cart.totalItemCount}</span>
-                )}
-              </NavLink>
-            )}
-
             {user ? (
               <div className="row" style={{ gap: 8 }}>
+                <NavLink
+                  to="/orders"
+                  className={({ isActive }) => `btn btn-ghost btn-xs ${isActive ? 'active' : ''}`}
+                  style={{ fontSize: 12, color: 'var(--text-secondary)' }}
+                >
+                  <PackageCheck size={13} /> Orders
+                </NavLink>
                 <div
                   className="row"
                   style={{
@@ -198,12 +181,10 @@ export default function Layout() {
           >
             {[
               { to: '/', label: 'Home', icon: Compass },
-              { to: '/directory', label: 'Mall Directory (30 Stores)', icon: Store },
-              { to: '/map', label: 'Interactive Mall Map (5 Levels)', icon: Map },
-              { to: '/products', label: 'In-Mall Catalogue', icon: ShoppingBag },
-              { to: '/compare', label: 'Product Compare Matrix', icon: Scale },
-              { to: '/offers', label: 'Promotions & Deals', icon: Tag },
-              { to: '/admin', label: 'ML Studio & Telemetry', icon: Brain },
+              { to: '/directory', label: 'Mall Directory', icon: Store },
+              { to: '/map', label: 'Mall Map', icon: Map },
+              { to: '/products', label: 'Products', icon: ShoppingBag },
+              { to: '/cart', label: `Cart${cart && cart.totalItemCount > 0 ? ` (${cart.totalItemCount})` : ''}`, icon: ShoppingBag },
             ].map((item) => {
               const Icon = item.icon;
               return (
@@ -221,35 +202,67 @@ export default function Layout() {
               );
             })}
 
-            {user && (
+            {user ? (
               <>
                 <div style={{ height: 1, background: 'var(--border-color)', margin: '6px 0' }} />
-                <NavLink
-                  to="/wishlist"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-                  style={{ padding: '10px 14px', fontSize: 14 }}
-                >
-                  <Heart size={16} /> Wishlist
-                </NavLink>
                 <NavLink
                   to="/orders"
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                   style={{ padding: '10px 14px', fontSize: 14 }}
                 >
-                  <PackageCheck size={16} /> Orders History
+                  <PackageCheck size={16} /> My Orders
                 </NavLink>
-                {(hasRole('ADMIN') || hasRole('RETAILER')) && (
+                {hasRole('ADMIN') && (
+                  <NavLink
+                    to="/admin"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+                    style={{ padding: '10px 14px', fontSize: 14 }}
+                  >
+                    <ShieldCheck size={16} /> Mall Administration
+                  </NavLink>
+                )}
+                {hasRole('RETAILER') && (
                   <NavLink
                     to="/retailer"
                     onClick={() => setMobileMenuOpen(false)}
                     className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                     style={{ padding: '10px 14px', fontSize: 14 }}
                   >
-                    <Store size={16} /> Retailer Inventory Portal
+                    <Store size={16} /> Retailer Portal
                   </NavLink>
                 )}
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    logout();
+                  }}
+                  className="btn btn-ghost btn-sm"
+                  style={{ justifyContent: 'flex-start', padding: '10px 14px', fontSize: 14, color: 'var(--color-error)' }}
+                >
+                  Sign Out ({user.fullName})
+                </button>
+              </>
+            ) : (
+              <>
+                <div style={{ height: 1, background: 'var(--border-color)', margin: '6px 0' }} />
+                <NavLink
+                  to="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="btn btn-secondary btn-sm"
+                  style={{ justifyContent: 'center' }}
+                >
+                  <User size={14} /> Sign In
+                </NavLink>
+                <NavLink
+                  to="/register"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="btn btn-primary btn-sm"
+                  style={{ justifyContent: 'center' }}
+                >
+                  Register
+                </NavLink>
               </>
             )}
           </div>
@@ -276,11 +289,11 @@ export default function Layout() {
               </div>
             </div>
             <p className="muted" style={{ maxWidth: 360, lineHeight: 1.6, fontSize: 13 }}>
-              Commercial indoor navigation and retail discovery system engineered for Nexus Ahmedabad One (Alpha One Mall), Vastrapur. Real-time Dijkstra graph wayfinding, 30 verified anchor stores, and trilingual voice assistance.
+              Indoor navigation and retail discovery prototype developed for Nexus Ahmedabad One (Alpha One Mall), Vastrapur. Dijkstra-based indoor route planning, 30 stores in prototype directory, and trilingual voice assistance.
             </p>
             <div className="row" style={{ gap: 8, marginTop: 4 }}>
               <span className="badge badge-success">
-                <Clock size={12} /> Open Today · 10:00 AM – 10:00 PM
+                <Clock size={12} /> Demo Hours · 10:00 AM – 10:00 PM
               </span>
             </div>
           </div>
@@ -297,16 +310,16 @@ export default function Layout() {
             <NavLink to="/directory?floor=3" className="muted" style={{ textDecoration: 'none' }}>Third Floor (Level 3)</NavLink>
           </div>
 
-          {/* Column 3: Intelligence Modules */}
+          {/* Column 3: Intelligence & Academic Demo */}
           <div className="stack" style={{ gap: 8 }}>
             <strong style={{ fontSize: 12, color: 'var(--text-primary)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-              INTELLIGENCE
+              ACADEMIC & RESEARCH
             </strong>
-            <Link to="/map" className="muted" style={{ textDecoration: 'none' }}>Dijkstra Graph Routing</Link>
-            <Link to="/compare" className="muted" style={{ textDecoration: 'none' }}>Linear Algebra Vector Analysis</Link>
-            <Link to="/admin" className="muted" style={{ textDecoration: 'none' }}>PyTorch TextCNN Intent Engine</Link>
-            <Link to="/admin" className="muted" style={{ textDecoration: 'none' }}>RandomForest Demand Forecaster</Link>
-            <Link to="/admin" className="muted" style={{ textDecoration: 'none' }}>Gujarat SSIP 2.0 Policy Matrix</Link>
+            <Link to="/map" className="muted" style={{ textDecoration: 'none' }}>Dijkstra Indoor Wayfinding</Link>
+            <Link to="/academic-demo" className="muted" style={{ textDecoration: 'none', color: 'var(--brand-accent)' }}>Academic & ML Evaluation</Link>
+            <Link to="/products" className="muted" style={{ textDecoration: 'none' }}>In-Mall Product Discovery</Link>
+            <Link to="/compare" className="muted" style={{ textDecoration: 'none' }}>Product Comparison</Link>
+            <Link to="/offers" className="muted" style={{ textDecoration: 'none' }}>Demonstration Offers</Link>
           </div>
 
           {/* Column 4: Concierge & Location */}
@@ -315,14 +328,14 @@ export default function Layout() {
               MALL CONCIERGE
             </strong>
             <span className="muted" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Phone size={13} /> +91 (079) 4019-1111
+              <Phone size={13} /> +91 (079) 4019-1111 (Demo)
             </span>
             <span className="muted" style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
               <HelpCircle size={13} style={{ flexShrink: 0, marginTop: 3 }} />
-              Information Desk at Vastrapur Grand Entrance (Floor G)
+              Information Desk at Vastrapur Grand Entrance (Floor G) · Prototype Demonstration
             </span>
             <span className="muted" style={{ fontSize: 12, marginTop: 8 }}>
-              © 2026 MallMind AI. Alpha One Mall Digital Twin.
+              © 2026 MallMind AI. Nexus Ahmedabad One Prototype.
             </span>
           </div>
         </div>

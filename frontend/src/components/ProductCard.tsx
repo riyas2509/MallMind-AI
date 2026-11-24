@@ -5,7 +5,7 @@ import { useAuth } from '../auth/AuthContext';
 import { useCart } from '../auth/CartContext';
 import { api } from '../api/client';
 import { getProductImage } from '../utils/images';
-import { ShoppingBag, Heart, MapPin, Check, Star } from 'lucide-react';
+import { ShoppingBag, Heart, MapPin, Check, Scale } from 'lucide-react';
 
 const FLOOR_SHORT: Record<number, string> = {
   [-1]: 'LG',
@@ -15,7 +15,13 @@ const FLOOR_SHORT: Record<number, string> = {
   3: '3F',
 };
 
-export default function ProductCard({ product }: { product: ProductResponse }) {
+interface ProductCardProps {
+  product: ProductResponse;
+  onToggleCompare?: (product: ProductResponse) => void;
+  isCompared?: boolean;
+}
+
+export default function ProductCard({ product, onToggleCompare, isCompared }: ProductCardProps) {
   const { user } = useAuth();
   const { addToCart } = useCart();
   const [added, setAdded] = useState(false);
@@ -27,9 +33,7 @@ export default function ProductCard({ product }: { product: ProductResponse }) {
     ? Math.round(((product.price - (product.discountPrice ?? product.price)) / product.price) * 100)
     : 0;
 
-  const imageUrl = product.imageUrl || getProductImage(product.id, product.category);
-  const rating = (4.4 + ((product.id * 7) % 6) / 10).toFixed(1);
-  const reviewsCount = 18 + ((product.id * 13) % 85);
+  const imageUrl = product.imageUrl || getProductImage(product.id, product.category, product.name);
   const floorTag = FLOOR_SHORT[product.shopFloorNumber] || `F${product.shopFloorNumber}`;
 
   const handleAddToCart = async () => {
@@ -88,6 +92,38 @@ export default function ProductCard({ product }: { product: ProductResponse }) {
             <Heart size={14} fill={inWishlist ? '#C74747' : 'none'} color={inWishlist ? '#C74747' : '#697580'} />
           </button>
         )}
+
+        {onToggleCompare && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onToggleCompare(product);
+            }}
+            title={isCompared ? 'Remove from comparison' : 'Compare product'}
+            style={{
+              position: 'absolute',
+              bottom: 8,
+              left: 8,
+              background: isCompared ? 'var(--brand-primary)' : 'rgba(255, 255, 255, 0.95)',
+              color: isCompared ? '#fff' : 'var(--text-primary)',
+              border: '1px solid var(--border-color)',
+              borderRadius: 4,
+              padding: '3px 8px',
+              fontSize: 10,
+              fontWeight: 700,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 4,
+              cursor: 'pointer',
+              boxShadow: 'var(--shadow-xs)',
+              backdropFilter: 'blur(4px)',
+            }}
+          >
+            <Scale size={11} /> {isCompared ? 'Comparing' : 'Compare'}
+          </button>
+        )}
       </div>
 
       <div className="pro-card-body">
@@ -99,11 +135,9 @@ export default function ProductCard({ product }: { product: ProductResponse }) {
             <MapPin size={11} style={{ color: 'var(--brand-primary)' }} />
             <span>{product.shopName} · Floor {floorTag}</span>
           </Link>
-          <div className="row" style={{ gap: 3, fontSize: 11, color: 'var(--brand-accent)', fontWeight: 600 }}>
-            <Star size={11} fill="var(--brand-accent)" color="var(--brand-accent)" />
-            <span>{rating}</span>
-            <span style={{ color: 'var(--text-muted)' }}>({reviewsCount})</span>
-          </div>
+          <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 500 }}>
+            {product.category}
+          </span>
         </div>
 
         <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>

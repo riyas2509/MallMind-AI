@@ -35,4 +35,8 @@ public record RouteResponse(
                 List.of(),
                 "SAME_FLOOR");
     }
+
+    public double totalDistanceMeters() {
+        return estimatedDistanceMeters != null ? estimatedDistanceMeters : Math.round(totalDistance * 0.25 * 10.0) / 10.0;
+    }
 }

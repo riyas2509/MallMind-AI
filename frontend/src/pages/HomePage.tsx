@@ -130,7 +130,7 @@ export default function HomePage() {
               maxWidth: 640,
             }}
           >
-            Navigate all 5 physical levels, 30 verified anchor stores, and live retailer inventories using real-time Dijkstra shortest-path wayfinding and multilingual voice concierge.
+            Navigate 5 mall levels and 30 stores in the prototype directory with demo product catalogue & inventory using Dijkstra-based indoor route planning and multilingual voice concierge.
           </p>
 
           {/* Quick Search */}
@@ -206,12 +206,12 @@ export default function HomePage() {
         <div className="card" style={{ padding: 20 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              Physical Stores
+              Prototype Stores
             </span>
             <Store size={18} color="var(--brand-primary)" />
           </div>
           <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'var(--font-headings)' }}>
-            {shops.length || 30} Verified Stores
+            {shops.length || 30} Stores in Directory
           </div>
           <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 4 }}>
             Zara, H&M, Shoppers Stop, Reliance Digital, Cinepolis
@@ -221,7 +221,7 @@ export default function HomePage() {
         <div className="card" style={{ padding: 20 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              Building Levels
+              Mall Levels
             </span>
             <Layers size={18} color="var(--brand-primary)" />
           </div>
@@ -236,12 +236,12 @@ export default function HomePage() {
         <div className="card" style={{ padding: 20 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              Shortest Path
+              Route Planning
             </span>
             <Compass size={18} color="var(--route-blue)" />
           </div>
           <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'var(--font-headings)' }}>
-            Dijkstra Routing
+            Dijkstra Wayfinding
           </div>
           <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 4 }}>
             67 topological navigation nodes across Vastrapur gates
@@ -390,12 +390,94 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* --- ACTIVE DEMONSTRATION OFFERS --- */}
+      <section className="stack" style={{ gap: 16 }}>
+        <div className="row-between">
+          <div>
+            <div className="badge badge-gold" style={{ marginBottom: 6 }}>
+              <Sparkles size={12} /> Demonstration Promotions
+            </div>
+            <h2>In-Mall Promotional Offers</h2>
+            <p className="muted">Simulated promotional deals and discounts at participating stores for prototype demonstration.</p>
+          </div>
+          <Link to="/products" className="btn btn-secondary btn-sm">
+            View All Products <ArrowRight size={13} />
+          </Link>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 18 }}>
+          {[
+            {
+              store: 'Zara',
+              floor: 'Ground Floor (G)',
+              title: 'Mid-Season Fashion Fest: 20% Off',
+              desc: 'Special demonstration promotion on high-street jackets, denim, and winter apparel.',
+              validity: 'Valid: Nov 20, 2026 – Dec 05, 2026',
+              tag: '20% OFF',
+              nodeId: 26,
+            },
+            {
+              store: 'Nike Store',
+              floor: 'First Floor (1F)',
+              title: 'Buy 2 Get 1 Free on Dri-Fit Gear',
+              desc: 'Stock up on marathon training gear, breathable tees, and athletic shoes.',
+              validity: 'Valid: Nov 20, 2026 – Dec 10, 2026',
+              tag: 'BUY 2 GET 1',
+              nodeId: 49,
+            },
+            {
+              store: 'Starbucks Coffee',
+              floor: 'Ground Floor (G)',
+              title: 'Free Frappuccino Upsize',
+              desc: 'Demonstration promotion: complimentary Tall-to-Grande beverage upsize.',
+              validity: 'Valid: Nov 20, 2026 – Nov 30, 2026',
+              tag: 'FREE UPSIZE',
+              nodeId: 30,
+            },
+          ].map((offer, idx) => (
+            <div
+              key={idx}
+              className="card"
+              style={{
+                padding: '20px 22px',
+                border: '1px solid var(--border-color)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 10,
+                background: 'var(--bg-surface)',
+              }}
+            >
+              <div className="row-between">
+                <span className="badge badge-gold">{offer.tag}</span>
+                <span style={{ fontSize: 11, color: 'var(--text-secondary)' }}>{offer.floor}</span>
+              </div>
+              <div>
+                <h3 style={{ fontSize: 16, margin: '2px 0 4px', color: 'var(--text-primary)' }}>{offer.title}</h3>
+                <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--brand-primary)' }}>{offer.store}</span>
+              </div>
+              <p className="muted" style={{ fontSize: 12, lineHeight: 1.5, flex: 1, margin: 0 }}>
+                {offer.desc}
+              </p>
+              <div className="row-between" style={{ marginTop: 6, paddingTop: 10, borderTop: '1px solid var(--border-color)', fontSize: 11 }}>
+                <span style={{ color: 'var(--text-secondary)' }}>{offer.validity}</span>
+                <Link
+                  to={`/map?toNodeId=${offer.nodeId}&toLabel=${encodeURIComponent(offer.store)}`}
+                  style={{ color: 'var(--brand-primary)', fontWeight: 600, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}
+                >
+                  <Compass size={12} /> Navigate
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* --- IN-MALL INVENTORY CATALOGUE --- */}
       <section className="stack" style={{ gap: 16 }}>
         <div className="row-between">
           <div>
-            <h2>Verified In-Store Inventory</h2>
-            <p className="muted">Products currently available across mall retailers with in-store pickup readiness.</p>
+            <h2>Demo Product Catalogue & Inventory</h2>
+            <p className="muted">Demonstration product listings across mall stores with mock in-store pickup readiness.</p>
           </div>
           <Link to="/products" className="btn btn-secondary btn-sm">
             Browse All Products <ArrowRight size={13} />
@@ -454,10 +536,10 @@ export default function HomePage() {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
             <ShieldCheck size={18} color="var(--brand-primary)" />
-            <strong style={{ fontSize: 15, color: 'var(--brand-primary)' }}>Verified Physical Mall Twin</strong>
+            <strong style={{ fontSize: 15, color: 'var(--brand-primary)' }}>Five-Floor Prototype Map</strong>
           </div>
           <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: 16 }}>
-            Every shop coordinate, escalator node, and vertical floor connector accurately reflects the physical layout of Nexus Ahmedabad One, Vastrapur.
+            Schematic topological model depicting shop nodes, escalators, and vertical connectors for Nexus Ahmedabad One, Vastrapur. Designed for demonstration and prototype indoor wayfinding.
           </p>
           <Link to="/map" className="btn btn-primary" style={{ width: '100%', fontSize: 13 }}>
             Open 5-Level Architectural Map <ArrowRight size={14} />

@@ -308,13 +308,13 @@ export default function AdminDashboardPage() {
         <div className="row-between" style={{ alignItems: 'flex-start', flexWrap: 'wrap', gap: 16 }}>
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.12)', padding: '4px 10px', borderRadius: 20, fontSize: 11, fontWeight: 700, letterSpacing: '0.05em', marginBottom: 8 }}>
-              <ShieldCheck size={13} color="#10B981" /> MALL OPERATIONS COMMAND CENTER · PHASE 6
+              <ShieldCheck size={13} color="#10B981" /> MALL ADMINISTRATION
             </div>
             <h1 style={{ fontSize: 26, fontWeight: 800, margin: '2px 0 6px', color: '#fff' }}>
-              Alpha One Mall Administration
+              Mall Administration
             </h1>
             <p style={{ margin: 0, fontSize: 13, color: '#94A3B8', maxWidth: 640 }}>
-              Central management portal for Nexus Ahmedabad One (Vastrapur). Live structural digital twin, five-floor store registry, retailer onboarding, authoritative inventory controls, and order oversight.
+              Operational control center for Nexus Ahmedabad One. Floor management, store registry, retailer access, and administrative oversight.
             </p>
           </div>
 
@@ -408,10 +408,10 @@ export default function AdminDashboardPage() {
                 <Store size={18} color="var(--brand-primary)" />
               </div>
               <div style={{ fontSize: 28, fontWeight: 800, margin: '8px 0 2px', color: 'var(--text-primary)' }}>
-                {stats?.totalStores ?? '...'}
+                {stats?.totalStores ?? 0}
               </div>
               <div style={{ fontSize: 11, color: '#10B981', fontWeight: 600 }}>
-                {stats?.activeStores} Active · {stats?.inactiveStores} Inactive
+                {stats?.activeStores ?? 0} Active · {stats?.inactiveStores ?? 0} Inactive
               </div>
             </div>
 
@@ -424,7 +424,7 @@ export default function AdminDashboardPage() {
                 {stats?.totalFloors ?? 5} Levels
               </div>
               <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>
-                {stats?.totalFacilities} Navigable Facilities (LG to 3F)
+                {stats?.totalFacilities ?? 0} Navigable Facilities (LG to 3F)
               </div>
             </div>
 
@@ -434,10 +434,10 @@ export default function AdminDashboardPage() {
                 <Users size={18} color="#D97706" />
               </div>
               <div style={{ fontSize: 28, fontWeight: 800, margin: '8px 0 2px', color: 'var(--text-primary)' }}>
-                {stats?.activeRetailers ?? '...'}
+                {stats?.activeRetailers ?? 0}
               </div>
               <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>
-                {stats?.totalUsers} Registered Accounts (DB)
+                {stats?.totalUsers ?? 0} Registered Accounts (DB)
               </div>
             </div>
 
@@ -447,10 +447,10 @@ export default function AdminDashboardPage() {
                 <Package size={18} color="#059669" />
               </div>
               <div style={{ fontSize: 28, fontWeight: 800, margin: '8px 0 2px', color: 'var(--text-primary)' }}>
-                {stats?.totalProducts ?? '...'}
+                {stats?.totalProducts ?? 0}
               </div>
               <div style={{ fontSize: 11, color: (stats?.lowStockCount ?? 0) > 0 ? '#EF4444' : '#10B981', fontWeight: 600 }}>
-                {stats?.lowStockCount} Low Stock · {stats?.outOfStockCount} Out
+                {stats?.lowStockCount ?? 0} Low Stock · {stats?.outOfStockCount ?? 0} Out
               </div>
             </div>
 
@@ -463,7 +463,7 @@ export default function AdminDashboardPage() {
                 ₹{stats?.totalRevenue?.toLocaleString('en-IN') ?? '0'}
               </div>
               <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>
-                {stats?.totalOrders} Total Orders (Excl. Cancelled)
+                {stats?.totalOrders ?? 0} Total Orders (Excl. Cancelled)
               </div>
             </div>
           </div>
