@@ -34,6 +34,7 @@ export default function ProductCard({ product, onToggleCompare, isCompared }: Pr
     : 0;
 
   const imageUrl = product.imageUrl || getProductImage(product.id, product.category, product.name);
+  const [imgSrc, setImgSrc] = useState(imageUrl);
   const floorTag = FLOOR_SHORT[product.shopFloorNumber] || `F${product.shopFloorNumber}`;
 
   const handleAddToCart = async () => {
@@ -67,7 +68,18 @@ export default function ProductCard({ product, onToggleCompare, isCompared }: Pr
     <div className="pro-card">
       <div className="pro-card-image-wrap">
         <Link to={`/products/${product.id}`}>
-          <img src={imageUrl} alt={product.name} className="pro-card-image" loading="lazy" />
+          <img
+            src={imgSrc}
+            alt={product.name}
+            className="pro-card-image"
+            loading="lazy"
+            onError={() => {
+              const fallback = getProductImage(product.id, product.category, product.name);
+              if (imgSrc !== fallback) {
+                setImgSrc(fallback);
+              }
+            }}
+          />
         </Link>
 
         {discounted && (

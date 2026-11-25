@@ -15,6 +15,9 @@ export interface ProductResponse {
   shopId: number;
   shopName: string;
   shopFloorNumber: number;
+  description?: string | null;
+  specifications?: string | null;
+  stockQuantity?: number | null;
 }
 
 export interface ShopResponse {

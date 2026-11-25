@@ -195,11 +195,18 @@ export default function ProductDetailPage() {
               }}
             >
               <Store size={15} />
-              <span>Available at {product.shopName} · Floor {product.shopFloorNumber}</span>
+              <span>Available at {product.shopName} · Floor {product.shopFloorNumber === -1 ? 'LG' : product.shopFloorNumber === 0 ? 'G' : product.shopFloorNumber}</span>
             </div>
+
+            {/* Description */}
+            {product.description && (
+              <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-secondary)', margin: '16px 0 0 0' }}>
+                {product.description}
+              </p>
+            )}
           </div>
 
-          {/* Pricing */}
+          {/* Pricing & Stock Status */}
           <div
             style={{
               padding: '16px 20px',
@@ -218,15 +225,58 @@ export default function ProductDetailPage() {
                     ₹{product.price.toLocaleString('en-IN')}
                   </span>
                   <span className="badge badge-success">
-                    Save ₹{(product.price - product.effectivePrice).toLocaleString('en-IN')}
+                    Save ₹{(product.price - product.effectivePrice).toLocaleString('en-IN')} ({discountPercent}% OFF)
                   </span>
                 </>
               )}
             </div>
-            <div className="muted" style={{ fontSize: 12, marginTop: 4 }}>
-              Includes all local taxes · In-store pickup available today
+            <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: product.available ? '#16A34A' : '#DC2626', fontWeight: 600 }}>
+              <Check size={14} />
+              <span>
+                {product.available
+                  ? `In Stock · ${product.stockQuantity ?? 18} units available in store`
+                  : 'Currently Out of Stock'}
+              </span>
+              <span className="muted" style={{ fontWeight: 400, marginLeft: 6 }}>
+                · Includes local taxes · In-store pickup available today
+              </span>
             </div>
           </div>
+
+          {/* Specifications Table */}
+          {(() => {
+            let specs: Record<string, string> | null = null;
+            if (product.specifications) {
+              try {
+                specs = JSON.parse(product.specifications);
+              } catch {
+                specs = null;
+              }
+            }
+            if (!specs) return null;
+            return (
+              <div
+                style={{
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: 'var(--radius-sm)',
+                  padding: '14px 18px',
+                  background: 'var(--bg-surface)',
+                }}
+              >
+                <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: 10, letterSpacing: '0.04em' }}>
+                  Product Specifications
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px 16px' }}>
+                  {Object.entries(specs).map(([key, val]) => (
+                    <div key={key} style={{ fontSize: 12 }}>
+                      <span className="muted" style={{ marginRight: 6 }}>{key}:</span>
+                      <strong style={{ color: 'var(--text-primary)' }}>{val}</strong>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
 
           {/* Actions */}
           <div className="stack" style={{ gap: 12 }}>

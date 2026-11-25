@@ -73,7 +73,7 @@ async function runTestSuite() {
   }, {
     name: '', category: 'Watches & Accessories', brand: '', color: '', maxPrice: '', availableOnly: false
   });
-  const t3Pass = t3.results.length === 1 && t3.results[0].name.includes('Titan') && t3.isFallbackMode === true;
+  const t3Pass = t3.results.length >= 10 && t3.results[0].name.includes('Titan') && t3.isFallbackMode === true;
   console.log(`  [${t3Pass ? 'PASS' : 'FAIL'}] Offline fallback activated: count=${t3.results.length}, isFallbackMode=${t3.isFallbackMode}, item="${t3.results[0]?.name}"`);
 
   console.log('\n--- TEST 4: Backend 500 Internal Server Error ---');
@@ -82,7 +82,7 @@ async function runTestSuite() {
   }, {
     name: '', category: 'Bags & Accessories', brand: '', color: '', maxPrice: '', availableOnly: false
   });
-  const t4Pass = t4.results.length === 1 && t4.results[0].name.includes('Miniso') && t4.isFallbackMode === true;
+  const t4Pass = t4.results.length >= 10 && t4.results[0].name.includes('Miniso') && t4.isFallbackMode === true;
   console.log(`  [${t4Pass ? 'PASS' : 'FAIL'}] 500 error fallback activated: count=${t4.results.length}, isFallbackMode=${t4.isFallbackMode}, item="${t4.results[0]?.name}"`);
 
   console.log('\n--- TEST 5: Fallback Products Counts Across All 16 Categories ---');
