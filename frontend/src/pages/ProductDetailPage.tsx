@@ -164,7 +164,9 @@ export default function ProductDetailPage() {
         <div className="stack" style={{ gap: 20 }}>
           <div>
             <div className="row" style={{ gap: 8, marginBottom: 8 }}>
-              <span className="badge">{product.category}</span>
+              <Link to={`/products?category=${encodeURIComponent(product.category)}`} style={{ textDecoration: 'none' }}>
+                <span className="badge">{product.category}</span>
+              </Link>
               {product.brand && (
                 <span className="badge" style={{ background: 'var(--bg-main)', color: 'var(--text-secondary)' }}>
                   {product.brand}

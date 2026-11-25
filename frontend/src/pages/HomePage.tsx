@@ -64,13 +64,14 @@ export default function HomePage() {
   };
 
   const categories = [
-    { name: 'Fashion & Apparel', icon: '👔' },
-    { name: 'Electronics & Gadgets', icon: '💻' },
-    { name: 'Footwear & Sportswear', icon: '👟' },
-    { name: 'Food Court & Dining', icon: '🍽️' },
-    { name: 'Multiplex & Cinema', icon: '🎬' },
-    { name: 'Beauty & Cosmetics', icon: '💄' },
-    { name: 'Home & Living', icon: '🛋️' },
+    { name: 'Apparel', label: 'Fashion & Apparel', icon: '👔' },
+    { name: 'Electronics', label: 'Electronics & Gadgets', icon: '💻' },
+    { name: 'Footwear', label: 'Footwear', icon: '👟' },
+    { name: 'Sportswear', label: 'Sportswear', icon: '🏃' },
+    { name: 'Dining & Food Court', label: 'Food Court & Dining', icon: '🍽️' },
+    { name: 'Entertainment & Cinema', label: 'Multiplex & Cinema', icon: '🎬' },
+    { name: 'Beauty & Cosmetics', label: 'Beauty & Cosmetics', icon: '💄' },
+    { name: 'Ethnic Wear', label: 'Ethnic Wear', icon: '🥻' },
   ];
 
   return (
@@ -181,7 +182,8 @@ export default function HomePage() {
             {categories.map((c) => (
               <Link
                 key={c.name}
-                to={`/directory?category=${encodeURIComponent(c.name)}`}
+                to={`/products?category=${encodeURIComponent(c.name)}`}
+                title={`Explore ${c.label} products`}
                 style={{
                   background: 'rgba(255, 255, 255, 0.1)',
                   color: '#FFFFFF',
@@ -194,7 +196,7 @@ export default function HomePage() {
                   transition: 'background-color 0.15s ease',
                 }}
               >
-                <span>{c.icon}</span> {c.name}
+                <span>{c.icon}</span> {c.label}
               </Link>
             ))}
           </div>

@@ -135,9 +135,13 @@ export default function ProductCard({ product, onToggleCompare, isCompared }: Pr
             <MapPin size={11} style={{ color: 'var(--brand-primary)' }} />
             <span>{product.shopName} · Floor {floorTag}</span>
           </Link>
-          <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 500 }}>
+          <Link
+            to={`/products?category=${encodeURIComponent(product.category)}`}
+            style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 500, textDecoration: 'none' }}
+            title={`Browse more in ${product.category}`}
+          >
             {product.category}
-          </span>
+          </Link>
         </div>
 
         <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>

@@ -1,8 +1,14 @@
 import { useCallback, useEffect, useState, useMemo } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { api } from '../api/client';
 import type { ProductResponse, RecommendationResponse } from '../api/types';
 import { FALLBACK_PRODUCTS } from '../data/fallbackData';
+import {
+  MALL_CATEGORIES,
+  CATEGORY_NAMES,
+  matchCategory,
+  normalizeCategoryName,
+} from '../utils/categories';
 import ProductCard from '../components/ProductCard';
 import {
   Search,
@@ -12,8 +18,8 @@ import {
   Tag,
   Scale,
   X,
-  Compass,
   Info,
+  Check,
 } from 'lucide-react';
 
 interface Filters {
@@ -25,32 +31,23 @@ interface Filters {
   availableOnly: boolean;
 }
 
-const EMPTY_FILTERS: Filters = { name: '', category: '', brand: '', color: '', maxPrice: '', availableOnly: false };
+const EMPTY_FILTERS: Filters = {
+  name: '',
+  category: '',
+  brand: '',
+  color: '',
+  maxPrice: '',
+  availableOnly: false,
+};
 
-const CATEGORIES = [
-  'All Categories',
-  'Footwear',
-  'Apparel',
-  'Mobile & Gadgets',
-  'Beauty & Cosmetics',
-  'Watches & Accessories',
-  'Jewelry',
-  'Sportswear',
-  'Home Decor',
-  'Opticals',
-  'Electronics',
-  'Toys & Games',
-  'Books & Stationery',
-  'Bags & Accessories',
-  'Gifts & Novelty',
-  'Confectionery',
-  'Pharmacy & Health',
-];
+const CATEGORIES = ['All Categories', ...CATEGORY_NAMES];
 
 function buildQuery(params: Record<string, string>): string {
   const q = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
-    if (value && value.trim() && value !== 'All Categories') q.set(key, value.trim());
+    if (value && value.trim() && value !== 'All Categories') {
+      q.set(key, value.trim());
+    }
   }
   const s = q.toString();
   return s ? `?${s}` : '';
@@ -58,31 +55,40 @@ function buildQuery(params: Record<string, string>): string {
 
 function filterFallbackProducts(f: Filters): ProductResponse[] {
   return FALLBACK_PRODUCTS.filter((p) => {
-    if (f.name && !p.name.toLowerCase().includes(f.name.toLowerCase())) return false;
-    if (f.category && f.category !== 'All Categories' && p.category !== f.category) return false;
-    if (f.brand && p.brand && !p.brand.toLowerCase().includes(f.brand.toLowerCase())) return false;
-    if (f.color && p.color && !p.color.toLowerCase().includes(f.color.toLowerCase())) return false;
-    if (f.maxPrice && p.effectivePrice > Number(f.maxPrice)) return false;
+    if (f.name && !p.name.toLowerCase().includes(f.name.toLowerCase().trim())) return false;
+    if (f.category && f.category !== 'All Categories' && !matchCategory(p.category, f.category)) return false;
+    if (f.brand && (!p.brand || !p.brand.toLowerCase().includes(f.brand.toLowerCase().trim()))) return false;
+    if (f.color && (!p.color || !p.color.toLowerCase().includes(f.color.toLowerCase().trim()))) return false;
+    if (f.maxPrice && (p.effectivePrice ?? p.price) > Number(f.maxPrice)) return false;
     if (f.availableOnly && !p.available) return false;
     return true;
   });
 }
 
 export default function ProductsPage() {
-  const [searchParams] = useSearchParams();
-  const initialCategory = searchParams.get('category') || '';
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Parse initial filters from URL
+  const initialCategory = normalizeCategoryName(searchParams.get('category'));
   const initialName = searchParams.get('name') || '';
+  const initialBrand = searchParams.get('brand') || '';
 
   const [filters, setFilters] = useState<Filters>({
     ...EMPTY_FILTERS,
     category: initialCategory,
     name: initialName,
+    brand: initialBrand,
   });
-  const [results, setResults] = useState<ProductResponse[] | null>(() => filterFallbackProducts({
-    ...EMPTY_FILTERS,
-    category: initialCategory,
-    name: initialName,
-  }));
+
+  const [results, setResults] = useState<ProductResponse[] | null>(() =>
+    filterFallbackProducts({
+      ...EMPTY_FILTERS,
+      category: initialCategory,
+      name: initialName,
+      brand: initialBrand,
+    }),
+  );
+
   const [recommended, setRecommended] = useState<RecommendationResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -91,6 +97,15 @@ export default function ProductsPage() {
   const [showCompareModal, setShowCompareModal] = useState(false);
   const [onlyDiscounted, setOnlyDiscounted] = useState(false);
   const [isFallbackMode, setIsFallbackMode] = useState(false);
+
+  // Dynamic category product counts for visitor catalogue
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { 'All Categories': FALLBACK_PRODUCTS.length };
+    MALL_CATEGORIES.forEach((c) => {
+      counts[c.name] = FALLBACK_PRODUCTS.filter((p) => matchCategory(p.category, c.name)).length;
+    });
+    return counts;
+  }, []);
 
   const toggleCompare = (prod: ProductResponse) => {
     setComparedIds((prev) => {
@@ -110,52 +125,102 @@ export default function ProductsPage() {
       .filter((p): p is ProductResponse => p !== undefined);
   }, [comparedIds, results]);
 
-  const runSearch = useCallback(async (f: Filters) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const [searchRes, recRes] = await Promise.all([
-        api.get<ProductResponse[]>(
-          `/api/products${buildQuery({
-            name: f.name,
-            category: f.category,
-            brand: f.brand,
-            color: f.color,
-            maxPrice: f.maxPrice,
-            available: f.availableOnly ? 'true' : '',
-            sortBy: sortBy,
-          })}`,
-        ),
-        api
-          .get<RecommendationResponse>(
-            `/api/products/recommendations${buildQuery({ category: f.category, brand: f.brand, color: f.color, maxBudget: f.maxPrice, maxResults: '6' })}`,
-          )
-          .catch(() => null),
-      ]);
-      if (Array.isArray(searchRes) && searchRes.length > 0) {
-        setResults(searchRes);
-        setIsFallbackMode(false);
-      } else {
+  const runSearch = useCallback(
+    async (f: Filters) => {
+      setLoading(true);
+      setError(null);
+      try {
+        const queryCategory = normalizeCategoryName(f.category);
+        const [searchRes, recRes] = await Promise.all([
+          api.get<ProductResponse[]>(
+            `/api/products${buildQuery({
+              name: f.name,
+              category: queryCategory,
+              brand: f.brand,
+              color: f.color,
+              maxPrice: f.maxPrice,
+              available: f.availableOnly ? 'true' : '',
+              sortBy: sortBy,
+            })}`,
+          ),
+          api
+            .get<RecommendationResponse>(
+              `/api/products/recommendations${buildQuery({
+                category: queryCategory,
+                brand: f.brand,
+                color: f.color,
+                maxBudget: f.maxPrice,
+                maxResults: '6',
+              })}`,
+            )
+            .catch(() => null),
+        ]);
+
+        if (Array.isArray(searchRes)) {
+          // If live API returns an array, use it directly (even if length is 0 for specific criteria)
+          setResults(searchRes);
+          setIsFallbackMode(false);
+        } else {
+          setResults(filterFallbackProducts(f));
+          setIsFallbackMode(true);
+        }
+        setRecommended(recRes);
+      } catch {
+        // Fallback to offline demonstration catalogue
         setResults(filterFallbackProducts(f));
         setIsFallbackMode(true);
+      } finally {
+        setLoading(false);
       }
-      setRecommended(recRes);
-    } catch {
-      // Fallback to offline catalog
-      setResults(filterFallbackProducts(f));
-      setIsFallbackMode(true);
-    } finally {
-      setLoading(false);
-    }
-  }, [sortBy]);
+    },
+    [sortBy],
+  );
 
+  // Synchronize when URL search parameters change (from Navigation, Home, Product Details, or Category Pills)
   useEffect(() => {
-    void runSearch(filters);
-  }, []);
+    const rawCategory = searchParams.get('category') || '';
+    const categoryParam = normalizeCategoryName(rawCategory);
+    const nameParam = searchParams.get('name') || '';
+    const brandParam = searchParams.get('brand') || '';
+
+    const newFilters: Filters = {
+      ...EMPTY_FILTERS,
+      category: categoryParam,
+      name: nameParam,
+      brand: brandParam,
+    };
+    setFilters(newFilters);
+    void runSearch(newFilters);
+  }, [searchParams, runSearch]);
+
+  const handleCategorySelect = (catName: string) => {
+    const next = new URLSearchParams(searchParams);
+    if (catName === 'All Categories' || (filters.category && matchCategory(filters.category, catName))) {
+      next.delete('category');
+    } else {
+      next.set('category', catName);
+    }
+    setSearchParams(next);
+  };
+
+  const handleDropdownChange = (val: string) => {
+    const next = new URLSearchParams(searchParams);
+    if (val === 'All Categories' || !val) {
+      next.delete('category');
+    } else {
+      next.set('category', val);
+    }
+    setSearchParams(next);
+  };
 
   const handleReset = () => {
-    setFilters(EMPTY_FILTERS);
-    void runSearch(EMPTY_FILTERS);
+    setSearchParams(new URLSearchParams());
+  };
+
+  const handleClearCategory = () => {
+    const next = new URLSearchParams(searchParams);
+    next.delete('category');
+    setSearchParams(next);
   };
 
   const sortedResults = useMemo(() => {
@@ -173,25 +238,29 @@ export default function ProductsPage() {
   }, [results, sortBy, onlyDiscounted]);
 
   return (
-    <div className="stack" style={{ gap: 28 }}>
-      {/* Title & Filter bar */}
-      <div className="row-between" style={{ flexWrap: 'wrap' }}>
+    <div className="stack" style={{ gap: 24 }}>
+      {/* Title & Sort Bar */}
+      <div className="row-between" style={{ flexWrap: 'wrap', gap: 12 }}>
         <div>
           <div className="badge badge-gold" style={{ marginBottom: 6 }}>
-            <Tag size={13} /> Demo Catalogue
+            <Tag size={13} /> Demo Catalogue & Inventory
           </div>
-          <h1>Explore Store Products</h1>
-          <p className="muted">
-            Browse demonstration products across 30 stores in the Nexus Ahmedabad One prototype directory.
+          <h1 style={{ fontSize: 'clamp(22px, 3vw, 30px)', margin: '0 0 6px 0' }}>
+            Explore Store Products
+          </h1>
+          <p className="muted" style={{ margin: 0, fontSize: 13 }}>
+            Browse curated demonstration products across 30 stores at Nexus Ahmedabad One, Vastrapur.
           </p>
         </div>
 
         <div className="row" style={{ gap: 10 }}>
-          <span className="muted" style={{ fontSize: 13 }}>Sort by:</span>
+          <span className="muted" style={{ fontSize: 13, fontWeight: 500 }}>
+            Sort by:
+          </span>
           <select
             value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as any)}
-            style={{ width: 'auto', padding: '6px 12px', fontSize: 13 }}
+            onChange={(e) => setSortBy(e.target.value as 'relevance' | 'price-asc' | 'price-desc')}
+            style={{ width: 'auto', padding: '6px 12px', fontSize: 13, borderRadius: 6 }}
           >
             <option value="relevance">Featured & Relevant</option>
             <option value="price-asc">Price: Low to High</option>
@@ -217,12 +286,128 @@ export default function ProductsPage() {
         >
           <Info size={16} color="#64748B" style={{ flexShrink: 0 }} />
           <span>
-            <strong>Prototype Offline Demonstration Mode:</strong> Operating on the curated 20-product seed catalogue. Live backend inventory service is currently offline or unreachable.
+            <strong>Prototype Offline Demonstration Mode:</strong> Operating on the curated 24-product showcase catalogue. Live backend inventory service is currently offline or unreachable.
           </span>
         </div>
       )}
 
-      {/* Demonstration Promotional Offers Banner */}
+      {/* QUICK CATEGORY PILLS BAR */}
+      <div
+        className="card"
+        style={{
+          padding: '14px 18px',
+          background: 'var(--bg-surface)',
+          border: '1px solid var(--border-color)',
+          borderRadius: 'var(--radius-md)',
+          boxShadow: 'var(--shadow-xs)',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            Merchandise Categories
+          </span>
+          {filters.category && filters.category !== 'All Categories' && (
+            <button
+              onClick={handleClearCategory}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: 'var(--brand-primary)',
+                fontSize: 11,
+                fontWeight: 600,
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 4,
+              }}
+            >
+              <span>Clear category filter</span>
+              <X size={12} />
+            </button>
+          )}
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            gap: 8,
+            overflowX: 'auto',
+            paddingBottom: 4,
+            alignItems: 'center',
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => handleCategorySelect('All Categories')}
+            style={{
+              borderRadius: 20,
+              padding: '6px 14px',
+              fontSize: 12,
+              fontWeight: 600,
+              whiteSpace: 'nowrap',
+              border: !filters.category || filters.category === 'All Categories'
+                ? '1px solid var(--brand-primary)'
+                : '1px solid var(--border-color)',
+              background: !filters.category || filters.category === 'All Categories'
+                ? 'var(--brand-primary)'
+                : 'var(--bg-primary)',
+              color: !filters.category || filters.category === 'All Categories'
+                ? '#FFFFFF'
+                : 'var(--text-primary)',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              transition: 'all 0.15s ease',
+            }}
+          >
+            <span>All Categories</span>
+            <span style={{ opacity: 0.8, fontSize: 11 }}>({FALLBACK_PRODUCTS.length})</span>
+          </button>
+
+          {MALL_CATEGORIES.map((c) => {
+            const isSelected =
+              filters.category !== '' &&
+              filters.category !== 'All Categories' &&
+              matchCategory(filters.category, c.name);
+            const count = categoryCounts[c.name] ?? 0;
+
+            return (
+              <button
+                key={c.name}
+                type="button"
+                onClick={() => handleCategorySelect(c.name)}
+                style={{
+                  borderRadius: 20,
+                  padding: '6px 14px',
+                  fontSize: 12,
+                  fontWeight: isSelected ? 700 : 500,
+                  whiteSpace: 'nowrap',
+                  border: isSelected
+                    ? '1px solid var(--brand-primary)'
+                    : '1px solid var(--border-color)',
+                  background: isSelected
+                    ? 'var(--brand-primary)'
+                    : 'var(--bg-primary)',
+                  color: isSelected ? '#FFFFFF' : 'var(--text-primary)',
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  transition: 'all 0.15s ease',
+                  boxShadow: isSelected ? 'var(--shadow-xs)' : 'none',
+                }}
+              >
+                <span>{c.icon}</span>
+                <span>{c.name}</span>
+                <span style={{ opacity: isSelected ? 0.9 : 0.6, fontSize: 11 }}>({count})</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Active Promotional Offer Banner */}
       <div
         className="card"
         style={{
@@ -256,7 +441,7 @@ export default function ProductsPage() {
         </button>
       </div>
 
-      {/* Filter controls */}
+      {/* Comprehensive Filter Controls */}
       <div
         className="card"
         style={{
@@ -268,6 +453,14 @@ export default function ProductsPage() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            const next = new URLSearchParams(searchParams);
+            if (filters.name.trim()) next.set('name', filters.name.trim());
+            else next.delete('name');
+            if (filters.category && filters.category !== 'All Categories') next.set('category', filters.category);
+            else next.delete('category');
+            if (filters.brand.trim()) next.set('brand', filters.brand.trim());
+            else next.delete('brand');
+            setSearchParams(next);
             void runSearch(filters);
           }}
           style={{
@@ -289,11 +482,13 @@ export default function ProductsPage() {
           </div>
 
           <select
-            value={filters.category || 'All Categories'}
-            onChange={(e) => setFilters({ ...filters, category: e.target.value === 'All Categories' ? '' : e.target.value })}
+            value={normalizeCategoryName(filters.category) || 'All Categories'}
+            onChange={(e) => handleDropdownChange(e.target.value)}
           >
             {CATEGORIES.map((c) => (
-              <option key={c} value={c}>{c}</option>
+              <option key={c} value={c}>
+                {c}
+              </option>
             ))}
           </select>
 
@@ -373,9 +568,7 @@ export default function ProductsPage() {
                 Machine Learning Recommendations
               </strong>
             </div>
-            <span className="badge badge-gold">
-              Source: {recommended.source}
-            </span>
+            <span className="badge badge-gold">Source: {recommended.source}</span>
           </div>
 
           <div className="grid-cards">
@@ -388,24 +581,53 @@ export default function ProductsPage() {
 
       {/* Results Header */}
       <div className="row-between">
-        <div className="muted" style={{ fontWeight: 600 }}>
-          {loading ? 'Searching catalogue...' : `${sortedResults.length} Products Found`}
+        <div style={{ fontSize: 14, color: 'var(--text-secondary)' }}>
+          {loading ? (
+            <span>Searching catalogue...</span>
+          ) : (
+            <span>
+              Showing <strong style={{ color: 'var(--text-primary)' }}>{sortedResults.length}</strong>{' '}
+              {sortedResults.length === 1 ? 'product' : 'products'}
+              {filters.category && filters.category !== 'All Categories' && (
+                <span>
+                  {' '}in <strong style={{ color: 'var(--brand-primary)' }}>{normalizeCategoryName(filters.category)}</strong>
+                </span>
+              )}
+              {filters.brand && <span> by <strong>{filters.brand}</strong></span>}
+              {filters.name && <span> matching "<strong>{filters.name}</strong>"</span>}
+            </span>
+          )}
         </div>
       </div>
 
-      {/* Products Grid */}
+      {/* Products Grid / Empty States */}
       {error && <div className="card error-text">{error}</div>}
 
       {!loading && sortedResults.length === 0 && (
-        <div className="card empty-state" style={{ padding: '60px 20px' }}>
-          <Search size={40} style={{ margin: '0 auto 12px', opacity: 0.4 }} />
-          <h3>No products match your exact criteria</h3>
-          <p className="muted" style={{ marginTop: 6, marginBottom: 16 }}>
-            Try removing some filters or searching for broader categories.
+        <div className="card empty-state" style={{ padding: '60px 20px', textAlign: 'center' }}>
+          <Search size={40} style={{ margin: '0 auto 12px', opacity: 0.35, color: 'var(--text-muted)' }} />
+          <h3 style={{ fontSize: 18, marginBottom: 8, color: 'var(--text-primary)' }}>
+            No products match your exact criteria
+          </h3>
+          <p className="muted" style={{ marginTop: 0, marginBottom: 20, maxWidth: 480, margin: '0 auto 20px' }}>
+            {filters.category && filters.category !== 'All Categories' ? (
+              <span>
+                No demonstration products found in category <strong>"{filters.category}"</strong> with the active search and price filters.
+              </span>
+            ) : (
+              <span>No products matched your search. Try resetting filters to view all products.</span>
+            )}
           </p>
-          <button className="btn btn-secondary" onClick={handleReset}>
-            Reset All Filters
-          </button>
+          <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
+            {filters.category && filters.category !== 'All Categories' && (
+              <button className="btn btn-secondary" onClick={handleClearCategory}>
+                Clear Category Filter
+              </button>
+            )}
+            <button className="btn btn-primary" onClick={handleReset}>
+              Reset All Filters
+            </button>
+          </div>
         </div>
       )}
 
@@ -451,36 +673,37 @@ export default function ProductsPage() {
               <span
                 key={p.id}
                 style={{
-                  background: 'rgba(255,255,255,0.15)',
                   fontSize: 11,
-                  padding: '3px 8px',
-                  borderRadius: 12,
+                  background: 'rgba(255,255,255,0.15)',
+                  padding: '4px 8px',
+                  borderRadius: 20,
                   display: 'flex',
                   alignItems: 'center',
                   gap: 4,
                 }}
               >
-                {p.name.length > 15 ? p.name.slice(0, 15) + '…' : p.name}
-                <X
-                  size={12}
-                  style={{ cursor: 'pointer' }}
+                {p.name.split(' ')[0]}
+                <button
                   onClick={() => toggleCompare(p)}
-                />
+                  style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', padding: 0 }}
+                >
+                  <X size={11} />
+                </button>
               </span>
             ))}
           </div>
-          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: 8 }}>
             <button
               className="btn btn-primary btn-sm"
               onClick={() => setShowCompareModal(true)}
-              style={{ fontSize: 12, padding: '5px 14px' }}
+              style={{ fontSize: 12, padding: '4px 12px' }}
             >
-              Compare Attributes
+              Compare Side-by-Side
             </button>
             <button
-              className="btn btn-ghost btn-xs"
+              className="btn btn-secondary btn-sm"
               onClick={() => setComparedIds([])}
-              style={{ color: '#CBD5E1', fontSize: 11 }}
+              style={{ fontSize: 12, padding: '4px 8px', color: '#fff', borderColor: 'rgba(255,255,255,0.3)' }}
             >
               Clear
             </button>
@@ -488,145 +711,118 @@ export default function ProductsPage() {
         </div>
       )}
 
-      {/* Integrated Side-by-Side Product Comparison Modal */}
+      {/* Side-by-Side Comparison Modal */}
       {showCompareModal && (
         <div
           style={{
             position: 'fixed',
             inset: 0,
             background: 'rgba(0,0,0,0.6)',
-            zIndex: 100,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            zIndex: 100,
             padding: 20,
-            backdropFilter: 'blur(4px)',
           }}
           onClick={() => setShowCompareModal(false)}
         >
           <div
             className="card"
             style={{
+              background: '#fff',
+              maxWidth: 900,
               width: '100%',
-              maxWidth: 960,
               maxHeight: '90vh',
               overflowY: 'auto',
-              background: '#fff',
               padding: 24,
-              borderRadius: 16,
-              boxShadow: 'var(--shadow-xl)',
+              borderRadius: 12,
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="row-between" style={{ marginBottom: 20 }}>
-              <div>
-                <div className="badge badge-gold" style={{ marginBottom: 4 }}>
-                  <Scale size={12} /> Product Attribute Comparison
-                </div>
-                <h2 style={{ margin: 0, fontSize: 22 }}>Compare Selected Products</h2>
+            <div className="row-between" style={{ marginBottom: 16 }}>
+              <div className="row" style={{ gap: 8 }}>
+                <Scale size={20} color="var(--brand-primary)" />
+                <h3 style={{ margin: 0, fontSize: 18 }}>Product Specification Comparison</h3>
               </div>
               <button
                 className="btn btn-ghost btn-sm"
                 onClick={() => setShowCompareModal(false)}
               >
-                <X size={20} />
+                <X size={18} />
               </button>
             </div>
 
-            {comparedProducts.length === 0 ? (
-              <p className="muted">No products selected. Click "Compare" on product cards to add items.</p>
-            ) : (
-              <div style={{ overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: 13 }}>
-                  <thead>
-                    <tr style={{ borderBottom: '2px solid var(--border-color)' }}>
-                      <th style={{ padding: '10px 12px', width: 140 }}>Attribute</th>
-                      {comparedProducts.map((p) => (
-                        <th key={p.id} style={{ padding: '10px 12px', minWidth: 180 }}>
-                          <img
-                            src={p.imageUrl || undefined}
-                            alt={p.name}
-                            style={{ width: '100%', height: 110, objectFit: 'cover', borderRadius: 8, marginBottom: 8 }}
-                          />
-                          <div style={{ fontWeight: 700, fontSize: 14 }}>{p.name}</div>
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
-                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Price</td>
-                      {comparedProducts.map((p) => (
-                        <td key={p.id} style={{ padding: '10px 12px' }}>
-                          <strong style={{ fontSize: 16, color: 'var(--brand-primary)' }}>₹{p.effectivePrice.toLocaleString('en-IN')}</strong>
-                          {p.discountPrice && (
-                            <span style={{ fontSize: 12, color: 'var(--text-secondary)', textDecoration: 'line-through', marginLeft: 6 }}>
-                              ₹{p.price.toLocaleString('en-IN')}
-                            </span>
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                    <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
-                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Store & Floor</td>
-                      {comparedProducts.map((p) => (
-                        <td key={p.id} style={{ padding: '10px 12px' }}>
-                          <div style={{ fontWeight: 600 }}>{p.shopName}</div>
-                          <div className="muted" style={{ fontSize: 11 }}>
-                            Floor {p.shopFloorNumber === -1 ? 'LG' : p.shopFloorNumber === 0 ? 'G' : p.shopFloorNumber}
-                          </div>
-                        </td>
-                      ))}
-                    </tr>
-                    <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
-                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Category</td>
-                      {comparedProducts.map((p) => (
-                        <td key={p.id} style={{ padding: '10px 12px' }}>{p.category}</td>
-                      ))}
-                    </tr>
-                    <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
-                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Brand</td>
-                      {comparedProducts.map((p) => (
-                        <td key={p.id} style={{ padding: '10px 12px' }}>{p.brand || '—'}</td>
-                      ))}
-                    </tr>
-                    <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
-                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Status</td>
-                      {comparedProducts.map((p) => (
-                        <td key={p.id} style={{ padding: '10px 12px' }}>
-                          <span className={`badge ${p.available ? 'badge-success' : 'badge-danger'}`}>
-                            {p.available ? 'In Stock (Demo)' : 'Out of Stock'}
+            <div style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+                <thead>
+                  <tr style={{ borderBottom: '2px solid var(--border)' }}>
+                    <th style={{ padding: '10px 12px', textAlign: 'left', background: '#F8FAFC' }}>Attribute</th>
+                    {comparedProducts.map((p) => (
+                      <th key={p.id} style={{ padding: '10px 12px', textAlign: 'left', minWidth: 160 }}>
+                        <div style={{ fontWeight: 700 }}>{p.name}</div>
+                        <div style={{ color: 'var(--brand-primary)', fontSize: 14 }}>
+                          ₹{p.effectivePrice.toLocaleString('en-IN')}
+                        </div>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600, background: '#F8FAFC' }}>Store</td>
+                    {comparedProducts.map((p) => (
+                      <td key={p.id} style={{ padding: '10px 12px' }}>
+                        {p.shopName} (Floor {p.shopFloorNumber === -1 ? 'LG' : p.shopFloorNumber === 0 ? 'G' : p.shopFloorNumber})
+                      </td>
+                    ))}
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600, background: '#F8FAFC' }}>Category</td>
+                    {comparedProducts.map((p) => (
+                      <td key={p.id} style={{ padding: '10px 12px' }}>
+                        {p.category}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600, background: '#F8FAFC' }}>Brand</td>
+                    {comparedProducts.map((p) => (
+                      <td key={p.id} style={{ padding: '10px 12px' }}>
+                        {p.brand || '—'}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600, background: '#F8FAFC' }}>Color</td>
+                    {comparedProducts.map((p) => (
+                      <td key={p.id} style={{ padding: '10px 12px' }}>
+                        {p.color || '—'}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600, background: '#F8FAFC' }}>Availability</td>
+                    {comparedProducts.map((p) => (
+                      <td key={p.id} style={{ padding: '10px 12px' }}>
+                        {p.available ? (
+                          <span style={{ color: '#16A34A', display: 'flex', alignItems: 'center', gap: 4 }}>
+                            <Check size={14} /> In Stock
                           </span>
-                        </td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Actions</td>
-                      {comparedProducts.map((p) => (
-                        <td key={p.id} style={{ padding: '10px 12px' }}>
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                            <Link
-                              to={`/products/${p.id}`}
-                              className="btn btn-primary btn-sm"
-                              style={{ fontSize: 11, textAlign: 'center' }}
-                            >
-                              View Product
-                            </Link>
-                            <Link
-                              to={`/map?floor=${p.shopFloorNumber}&toLabel=${encodeURIComponent(p.shopName)}`}
-                              className="btn btn-secondary btn-sm"
-                              style={{ fontSize: 11, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}
-                            >
-                              <Compass size={12} /> Map Route
-                            </Link>
-                          </div>
-                        </td>
-                      ))}
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            )}
+                        ) : (
+                          <span style={{ color: '#DC2626' }}>Out of Stock</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style={{ marginTop: 20, textAlign: 'right' }}>
+              <button className="btn btn-secondary btn-sm" onClick={() => setShowCompareModal(false)}>
+                Close Comparison
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -4,6 +4,7 @@ import { api } from '../api/client';
 import type { ShopResponse } from '../api/types';
 import { FALLBACK_SHOPS } from '../data/fallbackData';
 import { getShopImage } from '../utils/images';
+import { matchCategory, normalizeCategoryName } from '../utils/categories';
 import {
   Store,
   MapPin,
@@ -61,7 +62,7 @@ export default function MallDirectoryPage() {
   const filteredShops = useMemo(() => {
     return shops.filter((shop) => {
       const matchesFloor = selectedFloor === null || shop.floorNumber === selectedFloor;
-      const matchesCat = selectedCategory === 'ALL' || shop.category === selectedCategory;
+      const matchesCat = selectedCategory === 'ALL' || matchCategory(shop.category, selectedCategory);
       const q = searchQuery.toLowerCase().trim();
       const matchesQuery =
         !q ||
@@ -207,21 +208,27 @@ export default function MallDirectoryPage() {
             <SlidersHorizontal size={15} /> Category:
           </div>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => handleCategorySelect(cat)}
-                className={`btn btn-xs ${selectedCategory === cat ? 'btn-primary' : 'btn-ghost'}`}
-                style={{
-                  borderRadius: 16,
-                  padding: '4px 10px',
-                  fontSize: 12,
-                  fontWeight: selectedCategory === cat ? 700 : 500,
-                }}
-              >
-                {cat === 'ALL' ? 'All Categories' : cat}
-              </button>
-            ))}
+            {categories.map((cat) => {
+              const isSelected =
+                cat === 'ALL'
+                  ? !selectedCategory || selectedCategory === 'ALL'
+                  : matchCategory(cat, selectedCategory);
+              return (
+                <button
+                  key={cat}
+                  onClick={() => handleCategorySelect(cat)}
+                  className={`btn btn-xs ${isSelected ? 'btn-primary' : 'btn-ghost'}`}
+                  style={{
+                    borderRadius: 16,
+                    padding: '4px 10px',
+                    fontSize: 12,
+                    fontWeight: isSelected ? 700 : 500,
+                  }}
+                >
+                  {cat === 'ALL' ? 'All Categories' : cat}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -231,7 +238,7 @@ export default function MallDirectoryPage() {
         <div style={{ fontSize: 14, color: '#64748B' }}>
           Showing <strong style={{ color: '#0F172A' }}>{filteredShops.length}</strong> stores
           {selectedFloor !== null && ` on ${FLOOR_LABELS[selectedFloor]}`}
-          {selectedCategory !== 'ALL' && ` in ${selectedCategory}`}
+          {selectedCategory !== 'ALL' && ` in ${normalizeCategoryName(selectedCategory)}`}
         </div>
         <Link to="/map" className="btn btn-secondary btn-sm" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <MapPin size={14} /> Open Full 2D Vector Mall Map
